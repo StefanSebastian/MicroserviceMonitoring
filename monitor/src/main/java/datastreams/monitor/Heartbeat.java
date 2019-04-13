@@ -13,7 +13,7 @@ import java.util.Date;
  */
 @Component
 @EnableScheduling
-@ComponentScan(basePackages = "datastreams")
+@ComponentScan(basePackages = "datastreams.monitor")
 public class Heartbeat {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
