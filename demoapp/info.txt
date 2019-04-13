@@ -1,0 +1,6 @@
+A minimal microservice demo application.
+There are 3 services, a discovery server (eureka) and 
+an api gateway (zuul).
+
+Apps can take the port parameter --PORT=xxxx to have 
+multiple instances of the same microservice.
