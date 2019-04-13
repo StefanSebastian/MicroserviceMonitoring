@@ -1,0 +1,26 @@
+server:
+  port: 8762
+
+spring:
+  application:
+    name: zuul-server
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:1111/eureka}
+
+zuul:
+  prefix: /api
+  routes:
+    microservice1:
+      path: /microservice1/**
+      serviceId: microservice1
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 11000
+ribbon:
+  ConnectTimeout: 10000
+  ReadTimeout: 10000
