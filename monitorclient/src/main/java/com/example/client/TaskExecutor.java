@@ -1,5 +1,7 @@
 package com.example.client;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
@@ -44,7 +46,15 @@ public class TaskExecutor {
         heartbeatDTO.setTimestamp(timestamp);
 
         System.out.println(heartbeatDTO);
-        kafkaTemplate.send(topicName, heartbeatDTO.toString());
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            String jsonString = mapper.writeValueAsString(heartbeatDTO);
+            kafkaTemplate.send(topicName, jsonString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
