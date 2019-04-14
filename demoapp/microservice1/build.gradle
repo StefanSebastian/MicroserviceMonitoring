@@ -22,7 +22,9 @@ ext {
 }
 
 dependencies {
-	compile name: 'clienttest'
+	compile name: 'clienttest-1.0.1-SNAPSHOT'
+	compile group: 'org.springframework.kafka', name: 'spring-kafka', version: '2.2.2.RELEASE'
+
 	compile("org.springframework.boot:spring-boot-starter-web")
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
