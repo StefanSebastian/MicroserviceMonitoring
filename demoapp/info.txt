@@ -4,3 +4,5 @@ an api gateway (zuul).
 
 Apps can take the port parameter --PORT=xxxx to have 
 multiple instances of the same microservice.
+
+Calls to services go through zuul ; e.g. localhost:8762/api/microservice1/method1
