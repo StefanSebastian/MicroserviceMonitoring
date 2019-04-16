@@ -16,7 +16,7 @@ import java.lang.management.RuntimeMXBean;
 @ComponentScan(basePackages = "com.example.client")
 public class TaskExecutor {
 
-    @Value("${kafka.topic.name}")
+    @Value("${kafka.heartbeat.topic.name}")
     private String topicName;
 
     @Value("${spring.application.name}")
