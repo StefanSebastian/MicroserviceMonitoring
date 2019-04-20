@@ -1,4 +1,4 @@
-package datastreams.stats;
+package datastreams.stats.dtos;
 
 /**
  * @author stefansebii@gmail.com

@@ -1,4 +1,4 @@
-package datastreams.stats;
+package datastreams.stats.kafkadtos;
 
 /**
  * @author stefansebii@gmail.com

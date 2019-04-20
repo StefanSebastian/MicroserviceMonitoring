@@ -1,5 +1,7 @@
 package datastreams.stats;
 
+import datastreams.stats.dtos.Microservice;
+import datastreams.stats.dtos.RequestsPerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,5 +23,10 @@ public class StatsController {
     @RequestMapping("/onlineservices")
     public @ResponseBody  List<Microservice> getOnlineServices() {
         return statsEngine.getOnlineServices();
+    }
+
+    @RequestMapping("/nrrequests")
+    public @ResponseBody List<RequestsPerService> getNrRequestsPerService() {
+        return statsEngine.getRequestsPerService();
     }
 }
