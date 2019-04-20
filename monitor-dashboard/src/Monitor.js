@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import OnlineServices from './OnlineServices';
 
 class Monitor extends Component {
     render() {
         return(
             <div>
-                hello
+                <OnlineServices />
             </div>
         )
     }
