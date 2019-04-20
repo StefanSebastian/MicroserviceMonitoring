@@ -18,13 +18,20 @@ class OnlineServices extends Component {
         return(
             <div>
                 <h1 className="online_services_heading">Online services</h1>
+                <table border="1">
+                <thead>
+                <tr><th>PID</th><th>Name</th><th>Machine</th></tr>
+                </thead>
+                <tbody>
                 {this.props.onlineServices.map((service) => (
-                    <div key={service.pid}>
-                        <div>{service.pid}</div>
-                        <div>{service.name}</div>
-                        <div>{service.machine}</div>
-                    </div>
+                    <tr key={service.pid}>
+                        <td>{service.pid}</td>
+                        <td>{service.name}</td>
+                        <td>{service.machine}</td>
+                    </tr>
                 ))}
+                </tbody>
+                </table>
             </div>
         )
     }
