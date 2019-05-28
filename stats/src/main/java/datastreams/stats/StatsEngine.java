@@ -1,5 +1,6 @@
 package datastreams.stats;
 
+import datastreams.stats.dtos.AverageRequestTimes;
 import datastreams.stats.dtos.Microservice;
 import datastreams.stats.dtos.RequestsPerService;
 import datastreams.stats.kafkadtos.HeartbeatDTO;
@@ -66,5 +67,29 @@ public class StatsEngine {
             requestsPerServices.add(new RequestsPerService(key, requestsPerServ.get(key)));
         }
         return requestsPerServices;
+    }
+
+    public synchronized List<AverageRequestTimes> getAverageRequestTimes() {
+        expireCache();
+        Map<String, List<Long>> timesPerServ = new HashMap<>();
+        for (TimerDTO timer : timerList) {
+            if (timesPerServ.containsKey(timer.getMicroserviceName())) {
+                timesPerServ.get(timer.getMicroserviceName()).add(timer.getDuration());
+            } else {
+                List<Long> timerList = new LinkedList<>();
+                timerList.add(timer.getDuration());
+                timesPerServ.put(timer.getMicroserviceName(), timerList);
+
+            }
+        }
+
+        List<AverageRequestTimes> avgReqTimes = new LinkedList<>();
+        for (String microserviceName : timesPerServ.keySet()) {
+            List<Long> times = timesPerServ.get(microserviceName);
+            long sum = times.stream().reduce(0L, Long::sum);
+            long avgDuration = sum / times.size();
+            avgReqTimes.add(new AverageRequestTimes(microserviceName, avgDuration));
+        }
+        return avgReqTimes;
     }
 }

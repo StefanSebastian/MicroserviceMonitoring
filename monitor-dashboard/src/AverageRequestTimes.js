@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getRequestsPerService } from './actions';
+import { getAverageRequestTimesPerService } from './actions';
 import { Bar } from 'react-chartjs-2';
 
-class RequestsPerService extends Component {
+class AverageRequestTimes extends Component {
     
     componentDidMount() {
         console.log("starting periodic fetch")
-        this.interval = setInterval(() => this.props.dispatch(getRequestsPerService()), 1000)
+        this.interval = setInterval(() => this.props.dispatch(getAverageRequestTimesPerService()), 1000)
     }
 
     componentWillUnmount() {
@@ -16,18 +16,18 @@ class RequestsPerService extends Component {
     }
 
     render() {
-        console.log(this.props.requestsPerService);
+        console.log(this.props.averageRequestTimes);
         var labels = []
         var values = []
         var req
-        for (req of this.props.requestsPerService) {
-            labels.push(req.serviceName)
-            values.push(req.nrRequests)
+        for (req of this.props.averageRequestTimes) {
+            labels.push(req.service)
+            values.push(req.duration)
         }
 
         var data = {
             labels: labels,
-            label: "Requests per service in the last minute",
+            label: "Average request times per service in the last minute",
             datasets: [{ data: values }]
         }
         var options = {
@@ -35,7 +35,7 @@ class RequestsPerService extends Component {
         }
         return(
             <div>
-                <h1>Nr requests per service in the last minute</h1>
+                <h1>Average request times per service in the last minute</h1>
                 <Bar data={data} options={options} height={300} width={400}/>
             </div>
         )
@@ -44,8 +44,8 @@ class RequestsPerService extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        requestsPerService: state.requestsPerService
+        averageRequestTimes: state.averageRequestTimes
     }
 }
 
-export default connect(mapStateToProps)(RequestsPerService);
+export default connect(mapStateToProps)(AverageRequestTimes);

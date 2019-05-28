@@ -1,5 +1,6 @@
 package datastreams.stats;
 
+import datastreams.stats.dtos.AverageRequestTimes;
 import datastreams.stats.dtos.Microservice;
 import datastreams.stats.dtos.RequestsPerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,10 @@ public class StatsController {
     @RequestMapping("/nrrequests")
     public @ResponseBody List<RequestsPerService> getNrRequestsPerService() {
         return statsEngine.getRequestsPerService();
+    }
+
+    @RequestMapping("/avgtimes")
+    public @ResponseBody List<AverageRequestTimes> getAverageRequestTimes() {
+        return statsEngine.getAverageRequestTimes();
     }
 }

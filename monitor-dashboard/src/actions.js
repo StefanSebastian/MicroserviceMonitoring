@@ -8,6 +8,39 @@ export const GET_REQUESTS_PER_SERVICE_STARTED = 'GET_REQUESTS_PER_SERVICE_STARTE
 export const GET_REQUESTS_PER_SERVICE_SUCCESS = 'GET_REQUESTS_PER_SERVICE_SUCCESS';
 export const GET_REQUESTS_PER_SERVICE_FAILED = 'GET_REQUESTS_PER_SERVICE_FAILED';
 
+export const GET_AVERAGE_REQUEST_TIMES_STARTED = 'GET_AVERAGE_REQUEST_TIMES_STARTED';
+export const GET_AVERAGE_REQUEST_TIMES_SUCCESS = 'GET_AVERAGE_REQUEST_TIMES_SUCCESS';
+export const GET_AVERAGE_REQUEST_TIMES_FAILED = 'GET_AVERAGE_REQUEST_TIMES_FAILED';
+
+export function getAverageRequestTimesStarted() {
+    return {
+        type: GET_AVERAGE_REQUEST_TIMES_STARTED
+    }
+}
+
+export function getAverageRequestTimesFailed() {
+    return {
+        type: GET_AVERAGE_REQUEST_TIMES_FAILED
+    }
+}
+
+export function getAverageRequestTimesSuccess(json) {
+    return {
+        type: GET_AVERAGE_REQUEST_TIMES_SUCCESS,
+        averageRequestTimes: json
+    }
+}
+
+export function getAverageRequestTimesPerService() {
+    return dispatch => {
+        dispatch(getAverageRequestTimesStarted())
+        return fetch(`http://localhost:8080/avgtimes`)
+        .then(handleError)
+        .then(json => dispatch(getAverageRequestTimesSuccess(json)))
+        .catch(function(error) {dispatch(getAverageRequestTimesFailed(error.message))})
+    }
+}
+
 export function getRequestsPerServiceStarted() {
     return {
         type: GET_REQUESTS_PER_SERVICE_STARTED
