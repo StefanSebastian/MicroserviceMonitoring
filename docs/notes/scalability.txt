@@ -1,0 +1,52 @@
+https://dzone.com/articles/microservices-architecture-introduction-to-auto-sc
+Implementing auto scaling
+1. naming server (provides location transparency) - I use eureka
+2. load balancer - I use ribbon
+3. when to increase/decrease
+kubernetes can do it automatically (means using its own stack)
+
+https://learnk8s.io/blog/scaling-spring-boot-microservices
+- kubernetes ; with more details
+use the prometheus metrics api
+specify a metric and some thresholds
+
+https://sci-hub.tw/https://ieeexplore.ieee.org/document/8818401
+does not implement the monitoring component
+-> relies on service mesh-enabled cloud environment
+Microscaler - name of the app 
+some monitoring component gathers data from proxies and stores 
+them in a timeseries database
+Microscaler monitors performance metrics in a sliding window
+when SLA violation is detected in the window
+the scaling-needed service starts issuing commands
+
+SLA violation -> service request latency 
+Criterion for scaling : service power
+P50 - average latency of the slowest 50percent of requests to one micro-service
+over the last 30 seconds
+P90 - average latency of the slowest 10 percent of requests
+service power P = P50/P90
+if P90 > P50 * 2 (arbitrary) if P90 exceeds P50 too much ; means about 10 
+percent of requests could not be processed in time
+
+list of abnormal services
+determine which need to scalein which need to scaleout, using servicepower
+
+determine how many replicase are needed using Bayesian Optimization
+given : scaling-needed services + workload
+
+(note check references 21, 22 for machine learning approach)
+
+
+https://www.toptal.com/devops/scaling-microservices-applications
+configs : 
+* min/max number of replicas
+* upscale/downscale thresholds
+* cool down delays
+TODO go over the gaussian fc
+
+https://medium.com/finc-engineering/autoscaling-microservices-on-aws-part-1-c8488c64f6d1
+on amazon web services
+scaling policies 
+using a function (cpu + mem) ; scale in / out / do nothing
+		
