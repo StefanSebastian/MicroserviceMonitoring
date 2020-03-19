@@ -1,0 +1,19 @@
+https://netflixtechblog.com/scryer-netflixs-predictive-auto-scaling-engine-a3f8fc922270
+https://netflixtechblog.com/scryer-netflixs-predictive-auto-scaling-engine-part-2-bb9c4f9b9385
+
+-- netflix predictive scaler
+is not open source
+for days of week
+linear regression, fast fourrier transformation
+
+user traffic - requests per second
+clusterSize = rps / througput
+
+1. fft - to model a sinusoidal of the input, make prediction by moving
+one period away
+2. linear regression , by picking clusters of points from time windows
+divide by time windows = 10min ; to smooth out spikes
+
+https://netflixtechblog.com/auto-scaling-production-services-on-titus-1f3cd49f5cd7
+Titus - is now open sourced
+TODO study this boii

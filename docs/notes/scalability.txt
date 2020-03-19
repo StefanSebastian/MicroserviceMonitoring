@@ -10,7 +10,7 @@ https://learnk8s.io/blog/scaling-spring-boot-microservices
 use the prometheus metrics api
 specify a metric and some thresholds
 
-https://sci-hub.tw/https://ieeexplore.ieee.org/document/8818401
+https://ieeexplore.ieee.org/document/8818401
 does not implement the monitoring component
 -> relies on service mesh-enabled cloud environment
 Microscaler - name of the app 
@@ -49,4 +49,15 @@ https://medium.com/finc-engineering/autoscaling-microservices-on-aws-part-1-c848
 on amazon web services
 scaling policies 
 using a function (cpu + mem) ; scale in / out / do nothing
-		
+
+--------------------------- machine learning 
+https://www.researchgate.net/publication/264650187_Applying_reinforcement_learning_towards_automating_resource_allocation_and_application_scalability_in_the_cloud
+- for the amazon cloud ; takes into account geographical distribution of resources
+- uses q-learning 
+Action set : remove, add, maintain vm numbers
+rewards given by a SLA
+Reward = cost of execution
+agents working in parallel; make actions, observe the rewards, adjust etc
+timesteps of 60s ; each iteration an agent takes an action the gets the reward
+
+
