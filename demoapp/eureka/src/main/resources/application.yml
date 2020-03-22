@@ -6,3 +6,4 @@ eureka:
     fetchRegistry: false
 server:
   port: 1111
+  enableSelfPreservation: false
