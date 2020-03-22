@@ -1,0 +1,3 @@
+microservice1:taskkill /pid $pid$ /F
+microservice2:taskkill /pid $pid$ /F
+microservice3:taskkill /pid $pid$ /F
