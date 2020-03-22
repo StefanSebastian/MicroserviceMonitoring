@@ -1,4 +1,4 @@
-package microservice.scalingmanager;
+package microservice.scalingmanager.cmdrepo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class CommandsRepository {
+public class FileCommandsRepository implements CommandsRepository {
 
-    Logger log = LoggerFactory.getLogger(CommandsRepository.class);
+    private Logger log = LoggerFactory.getLogger(FileCommandsRepository.class);
 
     private static final String startupCmdsFile = "startup_commands.txt";
     private static final String shutdownCmdsFile = "shutdown_commands.txt";
@@ -23,8 +23,16 @@ public class CommandsRepository {
     private Map<String, String> startupCmds = new HashMap<>();
     private Map<String, String> shutdownCmds = new HashMap<>();
 
+    public String getStartupCmd(String microserviceName) {
+        return startupCmds.get(microserviceName);
+    }
+
+    public String getShutdownCmd(String microserviceName) {
+        return shutdownCmds.get(microserviceName);
+    }
+
     @EventListener(ApplicationReadyEvent.class)
-    public void initCommands() {
+    private void initCommands() {
         File startupCmdFile = getFileFromResources(startupCmdsFile);
         startupCmds = readFileIntoMap(startupCmdFile);
 
