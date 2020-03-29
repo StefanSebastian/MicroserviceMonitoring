@@ -1,0 +1,21 @@
+Spring Microservice - Rajes RV
+
+autoscaling = automatically scaling out instances based on the 
+resource usage to meet the SLAs by replicatign the services to 
+be scaled
+
+benefits:
+- high availability and fault tolerant
+- increases scalability
+- optimal usage and is cost saving
+- gives priority to certain services or group of services
+
+scaling during specific time periods:
+- e.g. airports
+
+predictive autoscaling
+- prediction engine will take multiple inputs such as historical inforamtion,
+current trends etc to predict possible traffic patterns
+- autoscaling is done based on these predictions
+- helps avoid hardcoded rules and time windows, instead the system can autmatically
+predict such time windows
