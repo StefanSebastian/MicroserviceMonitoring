@@ -1,0 +1,7 @@
+Agile dynamic provisioning of multi-tier Internet applications
+Bhuvan Urgaonkar, Prashant Shenoy, Abhishek Chandra, Pawan Goyal, Timothy Wood
+
+T = time unit )e.g. an hour 
+the predictor estimates the peak demand over the next T
+histogram is generated for each T using historic data 
+predict by choosing a high percentile of the histogram
