@@ -16,4 +16,4 @@ divide by time windows = 10min ; to smooth out spikes
 
 https://netflixtechblog.com/auto-scaling-production-services-on-titus-1f3cd49f5cd7
 Titus - is now open sourced
-TODO study this boii
+- uses amazon ws autoscaling

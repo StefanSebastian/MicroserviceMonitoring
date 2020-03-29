@@ -1,0 +1,27 @@
+The DevOps Handbook:: How to Create World-Class Agility, Reliability, and ...
+De Gene Kim, Jez Humble, Patrick Debois, John Willis
+
+-- the chapter on telemetry for feedback in production
+1. use means and standard deviations to detect potential problems
+e.g. set an alert when the nr of unauth login attempts per day is three
+standard dev greater than the mean ; we expect 0.3% points to trigger (on a normal
+distribution)
+advantage : no statically defined threshold value
+
+problems with non-gaussian distribution
+e.g. monitor download requests for a website
+
+techniques to detect anomalies in non-Gaussian data set: -- Scryer
+addresses some shortcomings of Amazon Auto Scaling
+- which dynamically increases and decreases AWS compute
+server counts based on workload data
+- Scryer predicts what customer demands will be based on 
+historical usage patterns and provisions the necessary capacity
+
+Scryer addressed 3 problems with AAS:
+- rapid spikes in demand : service startup times could take 10 -> 45 mins => 
+additional compute capacity was delivered too late
+- after outages AAS removed too much compute capacity
+- AAS didnt factor in known usage traffic patterns
+
+
