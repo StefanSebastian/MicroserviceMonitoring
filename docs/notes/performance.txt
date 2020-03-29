@@ -1,0 +1,7 @@
+Performance Modeling for Cloud Microservice Applications
+https://www.researchgate.net/publication/332234622_Performance_Modeling_for_Cloud_Microservice_Applications
+
+definition of metric : microservice capacity 
+= maximal rate of requests that can be served without violating SLO
+
+some examples of benchmarking tools
