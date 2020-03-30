@@ -1,0 +1,5 @@
+ConPaaS: A Platform for Hosting Elastic Cloud Applications
+
+- scales a web application in response to changes in throughput at fixed intervals of 10 minutes
+- the predictor forecasts the future service demand using standard time series analysis techniques
+  linear regression, followed by exponential smoothing

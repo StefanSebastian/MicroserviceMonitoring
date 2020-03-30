@@ -1,0 +1,12 @@
+Chameleon: A Hybrid, Proactive Auto-Scaling Mechanism on a Level-Playing Field
+
+- hybrid mechanism : proactive + reactive
+
+Reactive design:
+sARIMA + tBATS ensemble, from R 
+period = days
+
+Proactive - based on threshold 
+
+---- 
+also offers a review of state of the art and classification of autoscalers
