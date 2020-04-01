@@ -1,3 +1,7 @@
 Adaptive Resource Provisioning for Read Intensive Multi-tier Applications in the Cloud
 
-TODO
+detect bottlenecks in multi-tier applications 
+bottlenecks identification is reactive 
+scale down method is predictive
+
+db scalability

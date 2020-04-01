@@ -1,0 +1,15 @@
+- use as target : Microservice Capacity 
+nr requests that can satisfy SLO
+assumed to be benchmarked 
+
+- hybrid approach : reactive + predictive
+
+abstraction microservice = resource 
+
+research can be :
+find a robust predictive timeseries analysis method
+design a benchmark with various scenarious (find real usages maybe)
+compare with other implementations : netflix, histograms, etc 
+
+TODO find an improvement over existing approaches
+TODO find or devise a benchmark test

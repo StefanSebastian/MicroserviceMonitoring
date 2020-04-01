@@ -1,0 +1,38 @@
+RESEARCH ON AUTO-SCALING OF WEB APPLICATIONS IN CLOUD:
+SURVEY, TRENDS AND FUTURE DIRECTIONS
+
+trend = cloud ; resource for scaling up are virtually unlimited 
+
+regular monitoring ensures - Quality of Service (QoS)
+needs to fulfil Service Level Agreements (SLAs)
+
+- importance of autoscaling up/down = COST ($$)
+
+Auto-scaling should follow the MADE loop 
+- Monitoring 
+- Analysis : reactive + predictive 
+- Planning : scaling decisions 
+- Execution : scaling actions
+
+Auto-scaling techniques have the following challenges:
+- under-provisioning : not sufficient resources
+- over-provisioning : too many resources
+- oscillation - both 
+
+
+
+------------------------
+Resource Prediction Based on Double Exponential
+Smoothing in Cloud Computing
+- use double exp smoothing on time series + WMA apply
+- monitor cpu + memory
+Tests on CloudSim simulator
+
+Online Self-reconfiguration with Performance Guarantee for Energy-efficient
+Large-scale Cloud Computing Data Centers
+- prediction with Brown quadratic exponential smoothing 
+- reconfiguration using genetic algorithms based on CPU usage 
+
+Workload prediction in cloud using artificial neural network and
+adaptive differential evolution
+- use machine learning : neural networks 
