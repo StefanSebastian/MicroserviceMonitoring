@@ -1,0 +1,38 @@
+A Deep Learning Approach for VM Workload
+Prediction in the Cloud 
+
+DBN - Deep Belief Networks 
+CPU Utilization metric - of VMs
+
+----
+Ensemble Learning for Large-Scale
+Workload Prediction
+ensemble with : Weighted Majority & Simulatable Experts
+predicts usage of servers in a cloud 
+
+----
+Workload Prediction for Adaptive Power Scaling
+Using Deep Learning
+- hierarchical sparse coding and SVM 
+- predict instructions on microchips in order to 
+adjust voltage and frequency 
+
+----
+An Efficient Deep Learning Model to Predict Cloud
+Workload for Industry Informatics
+- goal : Industry Informatics
+- predicts CPU utilization 
+
+- uses stacked auto-encoder 
+- canonical polyadic decomposition : compression for high dim data
+
+--------
+
+Performance Comparison of Deep VM
+Workload Prediction Approaches
+for Cloud
+- Recurrent Neural Network (RNN) Model
+- Long Short-Term Memory (LSTM) Network Model
+- Boltzmann Machine Model
+- Convolution Neural Network (CNN) Model
+on CPU ; with comparison / metric etc 

@@ -28,11 +28,70 @@ Smoothing in Cloud Computing
 - monitor cpu + memory
 Tests on CloudSim simulator
 
+---
+
 Online Self-reconfiguration with Performance Guarantee for Energy-efficient
 Large-scale Cloud Computing Data Centers
 - prediction with Brown quadratic exponential smoothing 
 - reconfiguration using genetic algorithms based on CPU usage 
 
+---
 Workload prediction in cloud using artificial neural network and
 adaptive differential evolution
 - use machine learning : neural networks 
+
+preprocess : extract requests and aggregate into a time unit level 
+= a minute level 
+
+X is then normalized in range (0, 1)
+
+model = 3 layered neural network 
+linear + sigmoid activation functions
+
+X = [
+    x1 x2 .. xn
+    x2 x3 .. xn+1
+    ..
+    xk ..   xn+k-1
+]
+y = [
+    xn+1
+    xn+2
+    ..
+    xn+k
+]
+predict the n + 1 traffic when we know previous n points 
+
+--
+CloudInsight: Utilizing a Council of Experts to
+Predict Future Cloud Application Workloads
+ensemble of :
+- linear regresion 
+- timeseries : WMA, BDES, AR, ARMA, ARIMA 
+- machine learning : linear and gaussian SVM
+
+evaluation on real data sets : CDF charts (todo)
+
+--
+Prediction-based real-time resource provisioning for massively multiplayer
+online games
+MLP, 3 layer perceptron 
+Jordan-Elamn recurrent network
+- experiment is heavily dependent on online games env 
+
+----
+Empirical prediction models for adaptive resource provisioning in the cloud
+ECNN - Error Correction Neural Network 
+Linear Regression 
+
+Evaluation : 
+MAPE 
+PRED(25) - percentage of obs whose prediction acc falls within 25% of the actual value 
+RMSE 
+R^2
+
+data collected from TPC-W workload generator
+emulates an online bookshop
+
+
+
