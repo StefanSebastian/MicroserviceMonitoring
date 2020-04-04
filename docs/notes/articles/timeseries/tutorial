@@ -1,0 +1,44 @@
+https://towardsdatascience.com/the-complete-guide-to-time-series-analysis-and-forecasting-70d476bfe775
+
+Autocorrelation - similarity between observations as 
+a function of the time lag between them 
+
+Seasonality - periodic fluctuations 
+e.g. daily
+
+Stationarity - a ts is stationary if its 
+statistical properties do not change over time 
+constant mean + variance
+
+Modelling : 
+* moving average - the next obseration is the mean of 
+all past observations 
+* exponential smoothing - similar to moving avg but 
+a different decreasing weight is assigned to each 
+observations ; less importance to past obs 
+* double exponential smoothing - exp smoothing twice 
+- when there is a trend in ts 
+* tripe exponential smoothing - adds a seasonal 
+smoothing factor 
+* SARIMA (Seasonal autoregressive integrated 
+moving average model)
+- AR = regression of the ts onto itself 
+- MA = moving average 
+- I = order of integration
+- S = seasonality 
+
+
+------------
+https://machinelearningmastery.com/time-series-forecasting/
+
+Level. The baseline value for the series if it were a straight line.
+Trend. The optional and often linear increasing or decreasing behavior of the series over time.
+Seasonality. The optional repeating patterns or cycles of behavior over time.
+Noise. The optional variability in the observations that cannot be explained by the model.
+
+Concerns :
+1. how much data do you have available 
+2. what is the time horizon for predictions 
+3. can forecasts be updated frequently over time 
+4. at what temporal frequency are forecasts required 
+
