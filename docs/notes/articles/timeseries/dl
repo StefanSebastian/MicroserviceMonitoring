@@ -1,0 +1,51 @@
+https://towardsdatascience.com/deep-learning-for-time-series-and-why-deep-learning-a6120b147d60
+
+1. problems with traditional time series forecasting 
+traditional linear methods ; dominated by ARIMA 
+they deal with variations using trend and seasonality 
+problems :
+* they require complete data 
+* they rely on linear relationships
+* univariate data 
+* usually don't work well in long term forecast 
+
+2. MLP for ts 
+why : 
+* ability to approx arbitrary nonlinear functions 
+* ability to handle noise 
+* ability to accept multivariate inputs 
+* ability to perform multi-step forecasts 
+
+3. CNNs for time series 
+* does not require learn from lag observations
+* feature learnign  
+however cannot learn temporal dependence
+
+4. RNN 
+* temporal dependence 
+* cannot process very long sequences
+
+
+https://towardsdatascience.com/time-series-analysis-with-deep-learning-simplified-5c444315d773
+
+why dl ? ts can be highly erratic and complex 
+dl make no assumption about the underlying pattern in the data 
+
+data preprocessing : sliding window with the next 
+value after closing the predicted value 
+
+* LSTMs over RNns 
+- to use information from the past 
+* CNN-LSTMs - to solve the vanishing gradients
+* Multi-Scale Hierarchical LSTMs -- 
+
+
+https://towardsdatascience.com/how-not-to-use-machine-learning-for-time-series-forecasting-avoiding-the-pitfalls-19f9d7adf424
+
+pitfall : model that uses value at time t to predict t + 1 
+could show good accuracy (because points are close together)
+MAPE, R2 can indicate high prediction accuracy even if data is generated through 
+a random walk process and prediction is impossible 
+
+https://www.linkedin.com/pulse/how-use-machine-learning-time-series-forecasting-vegard-flovik-phd-1f/
+"correlation does not imply causation" 

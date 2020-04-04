@@ -1,0 +1,9 @@
+Time-series modeling with undecimated
+fully convolutional neural networks
+Roni Mittelman
+
+FCN are a modification of the CNN architecture that allows
+for the input and output signals to have the same dimensions
+
+UFCNN - undecimated fully convolutional neural network 
+
