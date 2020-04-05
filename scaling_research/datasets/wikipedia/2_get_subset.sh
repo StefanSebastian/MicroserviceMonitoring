@@ -3,5 +3,5 @@ do
     echo $file
     gunzip -c $file > ./temp
 
-    grep ro.wiki ./temp >> result.txt
+    grep ja.wikipedia.org ./temp >> result.txt
 done
