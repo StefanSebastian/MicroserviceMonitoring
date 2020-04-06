@@ -1,0 +1,14 @@
+<class 'pandas.core.frame.DataFrame'>
+DatetimeIndex: 111316009 entries, 2007-09-18 20:10:43 to 2007-09-30 23:15:18
+Data columns (total 1 columns):
+Count    int64
+dtypes: int64(1)
+memory usage: 1.7 GB
+-------------------------
+<class 'pandas.core.frame.DataFrame'>
+DatetimeIndex: 3494 entries, 2007-09-18 20:10:00 to 2007-09-30 23:15:00
+Freq: 5T
+Data columns (total 1 columns):
+Count    3494 non-null int64
+dtypes: int64(1)
+memory usage: 54.6 KB
