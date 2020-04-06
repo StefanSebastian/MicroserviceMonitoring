@@ -18,3 +18,11 @@ normalizer = lambda t: (t - min_d) / (max_d - min_d)
 normalized = np.array([normalizer(xi) for xi in data])
 np.savetxt('normalized.txt', normalized, delimiter=',', fmt='%f')
 
+
+file_name = 'dataset.csv'
+f = open(file_name, 'w+')
+for idx in range(0, normalized.shape[0] - feature_no - 1, 1):
+    row = normalized[idx:idx + feature_no + 1]
+    rowstr = ','.join(['%f' % num for num in row])
+    f.write(rowstr + "\n")
+f.close()
