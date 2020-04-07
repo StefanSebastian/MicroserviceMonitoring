@@ -1,0 +1,2 @@
+Simple ANN
+Baseline: -21.357765 26.706024 MAPE
