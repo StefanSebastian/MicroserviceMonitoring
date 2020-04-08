@@ -1,0 +1,5 @@
+K-Fold = 3
+
+Simple ANN
+Baseline: -21.357765 26.706024 MAPE
+-0.000205 0.000044 MSE

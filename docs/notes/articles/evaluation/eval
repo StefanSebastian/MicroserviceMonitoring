@@ -1,0 +1,17 @@
+https://medium.com/acing-ai/how-to-evaluate-regression-models-d183b4f5853d
+
+MAE - mean absolute error
+- not differentiable
+
+MSE - mean squared error 
+RMSE - root mean squared error 
+MAPE - mean absolute percentage error 
+
+
+---------
+Cloudinsight -> RMSE 
+Workload pred with adaptive ann -> RMSE
+Resource Prediction Based on Double Exponential
+Smoothing in Cloud Computing -> SSE
+Empirical prediction models for adaptive resource provisioning in the cloud
+ECNN - Error Correction Neural Network -> MAPE, R2, RMSE
