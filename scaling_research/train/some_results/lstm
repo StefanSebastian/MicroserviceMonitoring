@@ -10,3 +10,20 @@ val_mse: 435056000.0000 - val_mae: 16987.8965 - val_mape: 42.2821
 
 -------- 10 value window 
 val_mse: 434908512.0000 - val_mae: 16897.5293 - val_mape: 41.3305
+
+---------------------
+
+model = Sequential()
+model.add(LSTM(2000, input_shape=(X_train.shape[1], X_train.shape[2])))
+model.add(Dropout(0.2))
+model.add(Dense(1))
+model.compile(loss='mse', optimizer='adam',  metrics=['mse', 'mae', 'mape'])
+ 
+
+history = model.fit(X_train, y_train, epochs=100, batch_size=5, validation_data=(X_test, y_test), 
+                    callbacks=[EarlyStopping(monitor='val_loss', patience=10)], verbose=1, shuffle=False)
+
+model.summary()
+
+val_loss: 16042486.7710 -
+val_mse: 16042485.0000 - val_mae: 2084.3157 - val_mape: 4.9908

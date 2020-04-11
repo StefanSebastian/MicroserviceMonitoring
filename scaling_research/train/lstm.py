@@ -28,7 +28,7 @@ X_train = np.reshape(X_train, (X_train.shape[0], 1, X_train.shape[1]))
 X_test = np.reshape(X_test, (X_test.shape[0], 1, X_test.shape[1]))
 
 model = Sequential()
-model.add(LSTM(300, input_shape=(X_train.shape[1], X_train.shape[2])))
+model.add(LSTM(2000, input_shape=(X_train.shape[1], X_train.shape[2])))
 model.add(Dropout(0.2))
 model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam',  metrics=['mse', 'mae', 'mape'])
