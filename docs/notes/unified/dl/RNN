@@ -1,0 +1,25 @@
+https://pathmind.com/wiki/lstm
+
+- designed to recognize patterns in sequences of data
+such as numerical time series data 
+- a feedforward network has no notion of order in time, 
+and the only input it considers is the current example it
+ has been exposed to
+-Recurrent networks, on the other hand, take as 
+their input not just the current input example they see, 
+but also what they have perceived previously in time
+- the decision at time step t-1 affects the decision 
+at time step t
+
+- problem vanishing gradient 
+due to many ancestors being considered 
+the multiplication could make the gradient become
+so small that it's approximated to 0
+
+LSTM - Long short term memory = variation of RNN
+
+https://towardsdatascience.com/understanding-lstm-and-its-quick-implementation-in-keras-for-sentiment-analysis-af410fd85b47
+
+
+https://machinelearningmastery.com/time-series-forecasting-long-short-term-memory-network-python/
+- data differentiation ?
