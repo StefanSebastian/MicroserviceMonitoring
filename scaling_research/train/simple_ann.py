@@ -21,11 +21,11 @@ def baseline_model():
 	model.add(Dense(feature_no, input_dim=feature_no, kernel_initializer='normal', activation='relu'))
 	model.add(Dense(1, kernel_initializer='normal'))
 	# Compile model
-	model.compile(loss=losses.mean_absolute_percentage_error, optimizer='adam')
+	model.compile(loss=losses.mse, optimizer='adam', metrics=['mse', 'mae', 'mape'])
 	return model
 
 # evaluate model
 estimator = KerasRegressor(build_fn=baseline_model, epochs=100, batch_size=5)
 kfold = KFold(n_splits=3)
 results = cross_val_score(estimator, X, Y, cv=kfold)
-print("Baseline: %f %f MAPE" % (results.mean(), results.std()))
+print("Baseline: %f %f " % (results.mean(), results.std()))

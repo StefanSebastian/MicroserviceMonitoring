@@ -22,7 +22,13 @@ np.savetxt('normalized.txt', normalized, delimiter=',', fmt='%f')
 file_name = 'dataset.csv'
 f = open(file_name, 'w+')
 for idx in range(0, normalized.shape[0] - feature_no - 1, 1):
-    row = normalized[idx:idx + feature_no + 1]
+    # X
+    row = normalized[idx:idx + feature_no]
     rowstr = ','.join(['%f' % num for num in row])
+    
+    # Y
+    y = data[idx + feature_no]
+    rowstr = rowstr + "," + str(y)
+    
     f.write(rowstr + "\n")
 f.close()
