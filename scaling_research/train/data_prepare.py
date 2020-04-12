@@ -1,13 +1,5 @@
 import pandas as pd
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.wrappers.scikit_learn import KerasRegressor
-from keras import losses
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import KFold
 import numpy as np
-from pandas import DataFrame
-from pandas import concat
 
 from train_config import data_file, feature_no
 
@@ -32,8 +24,7 @@ def to_supervised(data, feature_no=10):
         res[idx,:] = np.append(x_row, y_row)
     return res
 
-grouped = read(data_file)
-dataset = to_supervised(grouped, feature_no)
-
-print(dataset)
-
+def get_dataset():
+    grouped = read(data_file)
+    dataset = to_supervised(grouped, feature_no)
+    return dataset
