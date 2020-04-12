@@ -28,3 +28,9 @@ def get_dataset():
     grouped = read(data_file)
     dataset = to_supervised(grouped, feature_no)
     return dataset
+
+def get_split_dataset():
+    dataset = get_dataset()
+    X = dataset[:,0:feature_no]
+    Y = dataset[:,feature_no]
+    return X, Y
