@@ -1,0 +1,14 @@
+
+X_train = X_train.reshape((X_train.shape[0], 5, 2, 1))
+X_test = X_test.reshape((X_test.shape[0], 5, 2, 1))
+
+model = Sequential()
+model.add(TimeDistributed(Conv1D(filters=64, kernel_size=1, activation='relu'), input_shape=(None, 2, 1)))
+model.add(TimeDistributed(MaxPooling1D(pool_size=2)))
+model.add(TimeDistributed(Flatten()))
+model.add(LSTM(50, activation='relu'))
+model.add(Dense(1))
+model.compile(optimizer='adam', loss='mse',  metrics=['mse', 'mae', 'mape'])
+
+mse: 28059608.0000 - mae: 4200.7036 - mape: 16.5639 - val_loss: 32412589.0854 - val_mse: 32412592.0000 - val_mae: 4574.1445 - val_mape: 14.3050
+very fast 

@@ -11,6 +11,8 @@ val_mse: 435056000.0000 - val_mae: 16987.8965 - val_mape: 42.2821
 -------- 10 value window 
 val_mse: 434908512.0000 - val_mae: 16897.5293 - val_mape: 41.3305
 
+did take a couple min maybe ? todo retest
+
 ---------------------
 
 model = Sequential()
@@ -27,3 +29,5 @@ model.summary()
 
 val_loss: 16042486.7710 -
 val_mse: 16042485.0000 - val_mae: 2084.3157 - val_mape: 4.9908
+
+good result but takes hours to train
