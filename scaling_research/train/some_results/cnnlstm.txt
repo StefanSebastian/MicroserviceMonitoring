@@ -12,3 +12,13 @@ model.compile(optimizer='adam', loss='mse',  metrics=['mse', 'mae', 'mape'])
 
 mse: 28059608.0000 - mae: 4200.7036 - mape: 16.5639 - val_loss: 32412589.0854 - val_mse: 32412592.0000 - val_mae: 4574.1445 - val_mape: 14.3050
 very fast 
+
+-------------------
+500 lstm units, 100 epochs 
+mse: 17180166.0000 - mae: 3247.7561 - mape: 13.2470 - val_loss: 23269221.1767 - val_mse: 23269212.0000 - val_mae: 3738.8848 - val_mape: 11.8408
+--- 1369.3511083126068 seconds ---
+
+-----------------------
+50 lstm units, 200 epochs
+loss: 15687528.6999 - mse: 15687527.0000 - mae: 2935.8013 - mape: 10.6956 - val_loss: 12751308.3116 - val_mse: 12751310.0000 - val_mae: 2609.3850 - val_mape: 8.9010
+--- 314.2701599597931 seconds ---

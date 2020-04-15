@@ -27,7 +27,11 @@ model.add(LSTM(50, activation='relu'))
 model.add(Dense(1))
 model.compile(optimizer='adam', loss='mse',  metrics=['mse', 'mae', 'mape'])
 
-history = model.fit(X_train, y_train, epochs=100, batch_size=5, validation_data=(X_test, y_test), 
+
+import time
+start_time = time.time()
+history = model.fit(X_train, y_train, epochs=200, batch_size=5, validation_data=(X_test, y_test), 
                     callbacks=[EarlyStopping(monitor='val_loss', patience=10)], verbose=1, shuffle=False)
+print("--- %s seconds ---" % (time.time() - start_time))
 
 model.summary()
