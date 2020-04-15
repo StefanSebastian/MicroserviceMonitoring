@@ -10,6 +10,8 @@ def read(data_file):
 def normalize(data):
     min_d = np.amin(data)
     max_d = np.amax(data)
+    print(min_d)
+    print(max_d)
     normalizer = lambda t: (t - min_d) / (max_d - min_d)
     normalized = np.array([normalizer(xi) for xi in data])
     return normalized
