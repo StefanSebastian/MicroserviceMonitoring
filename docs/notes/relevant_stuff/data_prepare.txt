@@ -1,0 +1,16 @@
+--- convert problem into supervised one 
+
+Workload prediction in cloud using artificial neural network and
+adaptive differential evolution - Jitendra Kumar *, Ashutosh Kumar Singh
+
+https://machinelearningmastery.com/convert-time-series-supervised-learning-problem-python/
+
+--- split train/validation/test
+https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7
+https://machinelearningmastery.com/difference-test-validation-datasets/
+train + validation for tuning hyperparameters - with kfold cross validation
+test - final evaluation
+
+----- test + charts 
+https://machinelearningmastery.com/time-series-forecasting-long-short-term-memory-network-python/
+
