@@ -57,6 +57,15 @@ def write_summary(rep_folder, perf_rep):
     f.write(perf_rep)
     f.close()
 
+def store_model(rep_folder, model):
+    # serialize model
+    model_json = model.to_json()
+    with open(rep_folder + "/model.json", "w") as json_file:
+        json_file.write(model_json)
+    # serialize weights to HDF5
+    model.save_weights(rep_folder + "/model.h5")
+    print("Saved model to disk")
+
 if (__name__ == '__main__'):
     # create report folder 
     rep_folder = create_report_folder()
@@ -90,6 +99,8 @@ if (__name__ == '__main__'):
     write_summary(rep_folder, perf_rep)
     copyfile("ml/config.py", rep_folder + "/config.py")
 
+    # store model 
+    store_model(rep_folder, model)
 
 
 
