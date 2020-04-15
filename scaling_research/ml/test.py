@@ -53,9 +53,10 @@ def create_report_folder():
         os.makedirs(dest)
     return dest
 
-def write_summary(rep_folder, perf_rep):
+def write_summary(rep_folder, perf_rep, train_time):
     f = open(rep_folder + "/report.txt", "w")
     f.write(perf_rep)
+    f.write("\nTrain time(s): %.3f" % train_time)
     f.close()
 
 def store_model(rep_folder, model):
@@ -94,7 +95,10 @@ if (__name__ == '__main__'):
     # fit model
     model = model_obj.get_model()
     plot_model(model, to_file=rep_folder + '/model.png')
+    start_time = time.time()
     history = model.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size)
+    train_time = time.time() - start_time
+    print("--- %s seconds for training ---" % (train_time))
 
     # plot history 
     plot_train_history(history, rep_folder)
@@ -107,7 +111,7 @@ if (__name__ == '__main__'):
     plot_predictions(Y_test, y_predicted, rep_folder)
 
     # store reports in file 
-    write_summary(rep_folder, perf_rep)
+    write_summary(rep_folder, perf_rep, train_time)
     copyfile("ml/config.py", rep_folder + "/config.py")
 
     # store model 
