@@ -1,9 +1,10 @@
-data_file = 'datasets/wikipedia/raw_jp/30min/grouped.txt'
+data_file = 'datasets/wikipedia/raw_jp/5min/grouped.txt'
 train_test_split = 0.9
 
-feature_no = 12
-cnn_seq = 4
-cnn_steps_per_seq = 3
+feature_no = 24
+cnn_seq = 6
+cnn_steps_per_seq = 4
+lstm_units = 50
 
 epochs = 100
 batch_size = 5
