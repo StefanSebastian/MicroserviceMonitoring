@@ -110,6 +110,7 @@ if (__name__ == '__main__'):
 
     # plot history 
     plot_train_history(history, rep_folder)
+    #model = load_model("reports/1587045383")
 
     # make predictions
     y_predicted = model.predict(X_test)

@@ -3,14 +3,15 @@ from keras.layers import LSTM
 from keras.layers import Dense
 from keras.layers import Flatten
 from keras.layers import TimeDistributed
+from keras.layers import Dropout
 from keras.layers.convolutional import Conv1D
 from keras.layers.convolutional import MaxPooling1D
 
-from config import cnn_seq, cnn_steps_per_seq, lstm_units
+from config import cnn_seq, lstm_units, feature_no
 
 class CNN_LSTM:
     # by default take from config
-    def __init__(self, cnn_seq=cnn_seq, cnn_steps_per_seq=cnn_steps_per_seq, lstm_units=lstm_units):
+    def __init__(self, cnn_seq=cnn_seq, cnn_steps_per_seq=int(feature_no / cnn_seq), lstm_units=lstm_units):
         super().__init__()
         self.cnn_seq = cnn_seq
         self.cnn_steps_per_seq = cnn_steps_per_seq
@@ -22,6 +23,7 @@ class CNN_LSTM:
         model.add(TimeDistributed(MaxPooling1D(pool_size=2)))
         model.add(TimeDistributed(Flatten()))
         model.add(LSTM(self.lstm_units, activation='relu'))
+        model.add(Dropout(0.2))
         model.add(Dense(1))
         model.compile(optimizer='adam', loss='mse',  metrics=['mse', 'mae', 'mape'])
         return model
@@ -29,3 +31,16 @@ class CNN_LSTM:
     def transform_data(self, data):
         return data.reshape((data.shape[0], self.cnn_seq, self.cnn_steps_per_seq, 1))
 
+class BaselineANN:
+    def __init__(self):
+        super().__init__()
+
+    def get_model(self):
+        model = Sequential()
+        model.add(Dense(feature_no, input_dim=feature_no, kernel_initializer='normal', activation='relu'))
+        model.add(Dense(1, kernel_initializer='normal'))
+        model.compile(loss='mse', optimizer='adam', metrics=['mse', 'mae', 'mape'])
+        return model
+
+    def transform_data(self, data):
+        return data

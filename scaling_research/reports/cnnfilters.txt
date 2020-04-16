@@ -1,0 +1,12 @@
+train_test_split = 0.9
+
+feature_no = 9
+cnn_seq = 3
+lstm_units = 200
+
+epochs = 100
+batch_size = 8
+
+128 : MSE: 15869005.792, MAE: 3139.254, MAPE: 10.546
+64 : MSE: 5502701.280, MAE: 1651.902, MAPE: 5.542
+16 : MSE: 11017581.888, MAE: 2660.893, MAPE: 9.687 

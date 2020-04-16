@@ -1,3 +1,10 @@
 https://machinelearningmastery.com/grid-search-hyperparameters-deep-learning-models-python-keras/
 
 https://towardsdatascience.com/hyperparameter-tuning-explained-d0ebb2ba1d35
+
+
+On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima
+Practical Recommendations for Gradient-Based Training of Deep Architectures
+choose batch size multiple of 2 (to fit in GPU)
+batch size too large accuracy decreases
+batch size too small, computation time is higher
