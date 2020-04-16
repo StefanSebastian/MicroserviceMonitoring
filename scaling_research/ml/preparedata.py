@@ -14,9 +14,22 @@ def get_data():
     sv_train = to_supervised(train, norm_train, feature_no)
     sv_test = to_supervised(test, norm_test, feature_no)
     # extract target variable
-    X_train, Y_train = split_target_var(sv_train)
-    X_test, Y_test = split_target_var(sv_test)
+    X_train, Y_train = split_target_var(sv_train, feature_no)
+    X_test, Y_test = split_target_var(sv_test, feature_no)
 
+    return X_train, Y_train, X_test, Y_test
+
+def get_sanity_check_data():
+    # read ts from file ; number of requests per time window format
+    data = read(data_file)
+    # split into train and test
+    train, test = split(data)
+    # transform dataset into supervised problem
+    sv_train = to_supervised(train, train, 1)
+    sv_test = to_supervised(test, test, 1)
+    # extract target variable
+    X_train, Y_train = split_target_var(sv_train, 1)
+    X_test, Y_test = split_target_var(sv_test, 1)
     return X_train, Y_train, X_test, Y_test
 
 def read(data_file):
@@ -52,7 +65,7 @@ def to_supervised(data, normalized, feature_no=10):
     print("New shape: " + str(res.shape))
     return res
 
-def split_target_var(data):
+def split_target_var(data, feature_no):
     X = data[:,0:feature_no]
     Y = data[:,feature_no]
     return X, Y

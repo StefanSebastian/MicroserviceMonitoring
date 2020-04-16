@@ -1,0 +1,4 @@
+Baseline :
+MSE: 1029904.741, MAE: 718.149, MAPE: 2.505
+
+pred for t+1 = t

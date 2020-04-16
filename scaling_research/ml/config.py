@@ -1,4 +1,4 @@
-data_file = 'datasets/wikipedia/raw_jp/grouped.txt'
+data_file = 'datasets/wikipedia/raw_jp/30min/grouped.txt'
 train_test_split = 0.9
 
 feature_no = 12
