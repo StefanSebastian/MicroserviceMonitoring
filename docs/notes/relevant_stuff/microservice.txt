@@ -1,0 +1,45 @@
+I. motivation is to adapt workload prediciton for microservices domain 
+
+1. - use as target : Microservice Capacity 
+nr requests that can satisfy SLO
+assumed to be benchmarked 
+
+Performance Modeling for Cloud Microservice Applications
+https://www.researchgate.net/publication/332234622_Performance_Modeling_for_Cloud_Microservice_Applications
+
+2. use a time-window of at least a couple of minutes to satisfy real world production envs 
+https://netflixtechblog.com/scryer-netflixs-predictive-auto-scaling-engine-a3f8fc922270
+https://netflixtechblog.com/scryer-netflixs-predictive-auto-scaling-engine-part-2-bb9c4f9b9385
+Netflix approach 
+- uses classic methods
+
+II. most scaling is reactive (TODO check if they added feature in AWS)
+Scryer addressed 3 problems with AAS:
+- rapid spikes in demand : service startup times could take 10 -> 45 mins => 
+additional compute capacity was delivered too late
+- after outages AAS removed too much compute capacity
+- AAS didnt factor in known usage traffic patterns
+
+
+------- Future intentions :
+Spring Microservice - Rajes RV
+
+autoscaling = automatically scaling out instances based on the 
+resource usage to meet the SLAs by replicatign the services to 
+be scaled
+
+benefits:
+- high availability and fault tolerant
+- increases scalability
+- optimal usage and is cost saving
+- gives priority to certain services or group of services
+
+scaling during specific time periods:
+- e.g. airports
+
+predictive autoscaling
+- prediction engine will take multiple inputs such as historical inforamtion,
+current trends etc to predict possible traffic patterns
+- autoscaling is done based on these predictions
+- helps avoid hardcoded rules and time windows, instead the system can autmatically
+predict such time windows
