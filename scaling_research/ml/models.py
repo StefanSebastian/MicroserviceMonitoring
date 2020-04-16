@@ -44,3 +44,19 @@ class BaselineANN:
 
     def transform_data(self, data):
         return data
+
+class BaselineLSTM:
+    def __init__(self, lstm_units=lstm_units):
+        super().__init__()
+        self.lstm_units = lstm_units
+
+    def get_model(self):
+        model = Sequential()
+        model.add(LSTM(self.lstm_units, input_shape=(1, feature_no)))
+        model.add(Dropout(0.2))
+        model.add(Dense(1))
+        model.compile(loss='mse', optimizer='adam',  metrics=['mse', 'mae', 'mape'])
+        return model 
+        
+    def transform_data(self, data):
+        return data.reshape((data.shape[0], 1, data.shape[1]))

@@ -1,0 +1,13 @@
+data_file = 'datasets/wikipedia/raw_jp/5min/grouped.txt'
+train_test_split = 0.9
+
+feature_no = 9
+cnn_seq = 3
+lstm_units = 200
+
+epochs = 100
+batch_size = 8
+
+ANN : MSE: 7173524.402, MAE: 2137.248, MAPE: 9.427
+CNN-LSTM: MSE: 5502701.280, MAE: 1651.902, MAPE: 5.542
+LSTM: MSE: 957359955.527, MAE: 25537.667, MAPE: 70.518
