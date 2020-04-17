@@ -56,11 +56,11 @@ def normalize(train, test):
 
 def to_supervised(data, normalized, feature_no=10):
     print("Converting to supervised dataset, with no features " + str(feature_no))
-    dataset_size = data.shape[0] - feature_no - 1
+    dataset_size = data.shape[0] - feature_no - 2
     res = np.zeros((dataset_size, feature_no + 1))
     for idx in range(0, dataset_size, 1):
         x_row = normalized[idx:idx + feature_no]
-        y_row = data[idx + feature_no]
+        y_row = data[idx + feature_no + 1]
         res[idx,:] = np.append(x_row, y_row)
     print("New shape: " + str(res.shape))
     return res
@@ -87,4 +87,5 @@ class MinMaxScaler:
         return normalized
 
 if (__name__ == '__main__'):
-    get_data()
+    X_train, Y_train, X_test, Y_test = get_data()
+    print(X_train, Y_train, X_test, Y_test)
