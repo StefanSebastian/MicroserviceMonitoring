@@ -7,7 +7,7 @@ from keras.layers import Dropout
 from keras.layers.convolutional import Conv1D
 from keras.layers.convolutional import MaxPooling1D
 
-from config import cnn_seq, lstm_units, feature_no
+from config import cnn_seq, lstm_units, feature_no, dense_units
 
 class CNN_LSTM:
     # by default take from config
@@ -45,7 +45,7 @@ class BaselineANN:
     def transform_data(self, data):
         return data
 
-class BaselineLSTM:
+class LSTM:
     def __init__(self, lstm_units=lstm_units):
         super().__init__()
         self.lstm_units = lstm_units
@@ -60,3 +60,21 @@ class BaselineLSTM:
         
     def transform_data(self, data):
         return data.reshape((data.shape[0], 1, data.shape[1]))
+
+class CNN:
+    def __init__(self, dense_units=dense_units):
+        super().__init__()
+        self.dense_units = dense_units
+    
+    def get_model(self):
+        model = Sequential()
+        model.add(Conv1D(filters=64, kernel_size=2, activation='relu', input_shape=(feature_no, 1)))
+        model.add(MaxPooling1D(pool_size=2))
+        model.add(Flatten())
+        model.add(Dense(self.dense_units, activation='relu'))
+        model.add(Dense(1))
+        model.compile(optimizer='adam', loss='mse',  metrics=['mse', 'mae', 'mape'])
+        return model
+
+    def transform_data(self, data):
+        return data.reshape((data.shape[0], data.shape[1], 1))

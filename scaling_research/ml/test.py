@@ -13,7 +13,7 @@ from keras.models import model_from_json
 
 from preparedata import get_data
 from config import epochs, batch_size, report_dir
-from models import CNN_LSTM, BaselineANN, BaselineLSTM
+from models import CNN_LSTM, BaselineANN, LSTM, CNN
 
 def plot_train_history(history, rep_folder):
     plt.clf()
@@ -94,8 +94,8 @@ if (__name__ == '__main__'):
     X_train, Y_train, X_test, Y_test = get_data()
 
     # select model 
-    model_obj = CNN_LSTM()
-    #model_obj = BaselineLSTM()
+    #model_obj = CNN_LSTM()
+    model_obj = CNN()
 
     # transform input data
     X_train = model_obj.transform_data(X_train)

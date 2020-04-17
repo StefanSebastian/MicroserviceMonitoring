@@ -3,16 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt 
 import seaborn as sns 
 
-from prep_config import ts_file
+from prep_config import explore_file
 
-df = pd.read_csv(ts_file, header=None, names=["Ts"])
-df["Ts"] = pd.to_datetime(df["Ts"], unit='s')
-df["Count"] = 1
-df.set_index("Ts", inplace=True)
+df = pd.read_csv(explore_file, header=None, names=["Reqs"])
 df.info()
-
-print("-------------------------")
-gdf = df.groupby(pd.Grouper(freq='5min')).sum()
-gdf.info()
-gdf.plot()
+df.plot()
 plt.show()
