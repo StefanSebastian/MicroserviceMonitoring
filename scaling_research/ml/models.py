@@ -31,15 +31,16 @@ class CNN_LSTM:
     def transform_data(self, data):
         return data.reshape((data.shape[0], self.cnn_seq, self.cnn_steps_per_seq, 1))
 
-class BaselineANN:
-    def __init__(self):
+class MLP:
+    def __init__(self, dense_units=dense_units):
         super().__init__()
+        self.dense_units = dense_units
 
     def get_model(self):
         model = Sequential()
-        model.add(Dense(feature_no, input_dim=feature_no, kernel_initializer='normal', activation='relu'))
-        model.add(Dense(1, kernel_initializer='normal'))
-        model.compile(loss='mse', optimizer='adam', metrics=['mse', 'mae', 'mape'])
+        model.add(Dense(self.dense_units, activation='relu', input_dim=feature_no))
+        model.add(Dense(1))
+        model.compile(optimizer='adam', loss='mse', metrics=['mse', 'mae', 'mape'])
         return model
 
     def transform_data(self, data):

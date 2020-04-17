@@ -13,7 +13,7 @@ from keras.models import model_from_json
 
 from preparedata import get_data
 from config import epochs, batch_size, report_dir
-from models import CNN_LSTM, BaselineANN, LSTM, CNN
+from models import CNN_LSTM, MLP, LSTM, CNN
 
 def plot_train_history(history, rep_folder):
     plt.clf()
