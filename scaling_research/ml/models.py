@@ -79,3 +79,23 @@ class CNN:
 
     def transform_data(self, data):
         return data.reshape((data.shape[0], data.shape[1], 1))
+
+class DeeperCNN:
+    def __init__(self, dense_units=dense_units):
+        super().__init__()
+        self.dense_units = dense_units
+    
+    def get_model(self):
+        model = Sequential()
+        model.add(Conv1D(filters=64, kernel_size=2, activation='relu', input_shape=(feature_no, 1)))
+        model.add(MaxPooling1D(pool_size=2))
+        model.add(Flatten())
+        model.add(Dense(50, activation='relu'))
+        model.add(Dense(25, activation='relu'))
+        model.add(Dense(10, activation='relu'))
+        model.add(Dense(1))
+        model.compile(optimizer='adam', loss='mse',  metrics=['mse', 'mae', 'mape'])
+        return model
+
+    def transform_data(self, data):
+        return data.reshape((data.shape[0], data.shape[1], 1))
