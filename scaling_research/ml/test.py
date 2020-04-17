@@ -126,8 +126,3 @@ if (__name__ == '__main__'):
 
     # store model 
     store_model(rep_folder, model)
-
-
-
-
-
