@@ -1,0 +1,21 @@
+d - if the series needs differentiating
+
+(-6.512721660366025, 1.0902496274664773e-08, 24, 1722, {'1%': -3.4341531793003095, '5%': -2.86321989098246, '10%': -2.567664327086377}, 31845.766577393995)
+ADF Statistic: -6.512722
+p-value: 0.000000
+
+p-value <= 0.05: Reject the null hypothesis (H0), the data does not have a unit root and is stationary.
+
+therefore we can assume d = 0
+
+p - autoregression intuition
+using pacf plot 
+we see that significance region is confidently passed at 1
+sharp decline aftewards
+
+q - moving average intuition
+from acf plot
+- around 20 to keep above significance line
+
+
+MSE: 1022330580.251, MAE: 27795.256, MAPE: 71.966
