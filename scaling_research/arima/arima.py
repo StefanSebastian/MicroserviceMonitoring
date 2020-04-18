@@ -45,7 +45,7 @@ test = test.values
 
 def fit_model(history):
     start_time = time.time()
-    model = ARIMA(history, order=(1,0,10))
+    model = ARIMA(history, order=(1,0,5))
     model_fit = model.fit(disp=0)
     #print(model_fit.summary())
     train_time = time.time() - start_time
@@ -76,5 +76,5 @@ def plot_predictions(Y_test, y_predicted):
     plt.xlabel("Time window")
     plt.ylabel("Workload")
     plt.legend((test_ln, predicted_ln), ("Actual", "Predicted"))
-    plt.show()
+    plt.savefig("arima/plot")
 plot_predictions(test, predictions)

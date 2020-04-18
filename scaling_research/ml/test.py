@@ -96,8 +96,8 @@ if (__name__ == '__main__'):
     # select model 
     #model_obj = CNN_LSTM()
     #model_obj = CNN()
-    #model_obj = MLP()
-    model_obj = DeeperCNN()
+    model_obj = MLP()
+    #model_obj = DeeperCNN()
 
     # transform input data
     X_train = model_obj.transform_data(X_train)
