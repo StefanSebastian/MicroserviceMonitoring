@@ -40,25 +40,34 @@ def show_acf(df):
 #show_acf(series)
 
 train, test = np.split(series, [int(test_split*len(series))])
+train = train.values 
+test = test.values 
 
-
-def fit_model():
+def fit_model(history):
     start_time = time.time()
-    model = ARIMA(train, order=(1,0,20))
-    model_fit = model.fit()
-    print(model_fit.summary())
+    model = ARIMA(history, order=(1,0,10))
+    model_fit = model.fit(disp=0)
+    #print(model_fit.summary())
     train_time = time.time() - start_time
     print("--- %s seconds for training ---" % (train_time))
-    model_fit.save('arima/model.pkl')
+    return model_fit 
 
-# load model
-loaded = ARIMAResults.load('arima/model.pkl')
-test = test["Count"].values
-fc, _, _ = loaded.forecast(len(test)) 
+predictions = list()
+history = [x for x in train]
+for t in range(len(test) - 1):
+    print("%d out of %d" % (t, len(test) - 1))
+    # train on history
+    model_fit = fit_model(history)
+    # forecast next value
+    output = model_fit.forecast(steps=2)
+    yhat = output[0][1]
+    predictions.append(yhat)
+    # attach actual value to history
+    history.append(test[t])
 
-
+test = test[1:] # account for missing time window
 from perf_report import report_performance
-report_performance(test, fc)
+report_performance(test, predictions)
 
 def plot_predictions(Y_test, y_predicted):
     plt.clf()
@@ -68,4 +77,4 @@ def plot_predictions(Y_test, y_predicted):
     plt.ylabel("Workload")
     plt.legend((test_ln, predicted_ln), ("Actual", "Predicted"))
     plt.show()
-plot_predictions(test, fc)
+plot_predictions(test, predictions)
