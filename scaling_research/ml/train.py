@@ -7,19 +7,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from preparedata import get_data
-from models import CNN_LSTM
+from models import BaselineMLP
 from config import epochs, batch_size
 
 X_train, Y_train, _, _ = get_data()
 
-model_obj = CNN_LSTM()
+model_obj = BaselineMLP()
 X_train = model_obj.transform_data(X_train)
 keras_model = KerasRegressor(build_fn=model_obj.get_model)
 
 start_time = time.time()
 # define the grid search parameters
-batch_size = [100, 250, 500]
-epochs = [5, 6]
+batch_size = [4, 8, 16, 32]
+epochs = [50, 100, 250]
 
 param_grid = dict(batch_size=batch_size, epochs=epochs)
 
@@ -52,7 +52,7 @@ def plot_grid_search(cv_results, grid_param_1, grid_param_2, name_param_1, name_
 
     ax.set_title("Grid Search Scores", fontsize=20, fontweight='bold')
     ax.set_xlabel(name_param_1, fontsize=16)
-    ax.set_ylabel('CV Average Score', fontsize=16)
+    ax.set_ylabel('Average MSE', fontsize=16)
     ax.legend(loc="best", fontsize=15)
     ax.grid('on')
     plt.show()

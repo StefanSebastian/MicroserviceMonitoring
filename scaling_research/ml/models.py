@@ -51,6 +51,22 @@ class MLP:
     def transform_data(self, data):
         return data
 
+class BaselineMLP:
+    def __init__(self, dense_units=dense_units):
+        super().__init__()
+        self.dense_units = dense_units
+
+    def get_model(self):
+        model = Sequential()
+        model.add(Dense(150, activation='relu', input_dim=feature_no))
+        model.add(Dense(100))
+        model.add(Dense(1))
+        model.compile(optimizer='adam', loss='mse', metrics=['mse', 'mae', 'mape'])
+        return model
+
+    def transform_data(self, data):
+        return data
+
 class LSTM:
     def __init__(self, lstm_units=lstm_units):
         super().__init__()
