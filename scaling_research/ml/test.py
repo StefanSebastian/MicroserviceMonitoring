@@ -13,7 +13,7 @@ from keras.models import model_from_json
 
 from preparedata import get_data
 from config import epochs, batch_size, report_dir
-from models import CNN_LSTM, MLP, LSTM, CNN, DeeperCNN
+from models import CNN_LSTM, MLP, LSTM, CNN, DeeperCNN, BaselineMLP
 
 def plot_train_history(history, rep_folder):
     plt.clf()
@@ -96,8 +96,9 @@ if (__name__ == '__main__'):
     # select model 
     #model_obj = CNN_LSTM()
     #model_obj = CNN()
-    model_obj = MLP()
+    #model_obj = MLP()
     #model_obj = DeeperCNN()
+    model_obj = BaselineMLP()
 
     # transform input data
     X_train = model_obj.transform_data(X_train)
@@ -105,7 +106,7 @@ if (__name__ == '__main__'):
 
     # fit model
     model = model_obj.get_model()
-    plot_model(model, to_file=rep_folder + '/model.png')
+    plot_model(model, to_file=rep_folder + '/model.png', show_shapes=True)
     start_time = time.time()
     history = model.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size)
     train_time = time.time() - start_time
