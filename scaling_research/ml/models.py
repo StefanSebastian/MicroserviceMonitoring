@@ -36,16 +36,16 @@ class MLP:
         super().__init__()
         self.dense_units = dense_units
 
-    def get_model(self):
+    def get_model(self, optimizer="adadelta", activation="relu"):
         model = Sequential()
-        model.add(Dense(150, activation='relu', input_dim=feature_no))
-        model.add(Dense(50))
-        model.add(Dense(50))
-        model.add(Dense(25))
-        model.add(Dense(25))
-        model.add(Dense(10))
+        model.add(Dense(150, activation, input_dim=feature_no))
+        model.add(Dense(50, activation))
+        model.add(Dense(50, activation))
+        model.add(Dense(25, activation))
+        model.add(Dense(25, activation))
+        model.add(Dense(10, activation))
         model.add(Dense(1))
-        model.compile(optimizer='adam', loss='mse', metrics=['mse', 'mae', 'mape'])
+        model.compile(optimizer=optimizer, loss='mse', metrics=['mse', 'mae', 'mape'])
         return model
 
     def transform_data(self, data):
@@ -56,12 +56,27 @@ class BaselineMLP:
         super().__init__()
         self.dense_units = dense_units
 
-    def get_model(self):
+    def get_model(self, optimizer="adadelta", activation="relu"):
         model = Sequential()
-        model.add(Dense(150, activation='relu', input_dim=feature_no))
-        model.add(Dense(100))
+        model.add(Dense(150, activation=activation, input_dim=feature_no))
+        model.add(Dense(100, activation=activation))
         model.add(Dense(1))
-        model.compile(optimizer='adam', loss='mse', metrics=['mse', 'mae', 'mape'])
+        model.compile(optimizer=optimizer, loss='mse', metrics=['mse', 'mae', 'mape'])
+        return model
+
+    def transform_data(self, data):
+        return data
+
+class VariableMLP:
+    def __init__(self):
+        super().__init__()
+
+    def get_model(self, optimizer="adadelta", activation="relu", layers=(100,150)):
+        model = Sequential()
+        for size in layers:
+            model.add(Dense(size))
+        model.add(Dense(1))
+        model.compile(optimizer=optimizer, loss='mse', metrics=['mse', 'mae', 'mape'])
         return model
 
     def transform_data(self, data):

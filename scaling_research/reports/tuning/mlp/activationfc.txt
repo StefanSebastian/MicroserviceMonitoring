@@ -1,0 +1,9 @@
+Best: -19571788.407985 using {'activation': 'relu', 'batch_size': 8, 'epochs': 100}
+-4875804739.406558 (225550845.887195) with: {'activation': 'softmax', 'batch_size': 8, 'epochs': 100}
+-20314197.128252 (3515510.240613) with: {'activation': 'softplus', 'batch_size': 8, 'epochs': 100}
+-4034049993.191782 (206573705.233292) with: {'activation': 'softsign', 'batch_size': 8, 'epochs': 100}
+-19571788.407985 (3139867.544099) with: {'activation': 'relu', 'batch_size': 8, 'epochs': 100}
+-4175933232.044314 (214993464.805943) with: {'activation': 'tanh', 'batch_size': 8, 'epochs': 100}
+-3055609656.033742 (195436185.770978) with: {'activation': 'sigmoid', 'batch_size': 8, 'epochs': 100}
+-4584848514.738154 (216786308.421556) with: {'activation': 'hard_sigmoid', 'batch_size': 8, 'epochs': 100}
+-20661311.356256 (3845006.383268) with: {'activation': 'linear', 'batch_size': 8, 'epochs': 100}
