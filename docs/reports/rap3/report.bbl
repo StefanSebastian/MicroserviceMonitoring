@@ -1,0 +1,26 @@
+\begin{thebibliography}{1}
+
+\bibitem{sliding_window}
+Gianluca Bontempi, Souhaib Ben~Taieb, and Yann-A{\"e}l Le~Borgne.
+\newblock {\em Machine Learning Strategies for Time Series Forecasting}, pages
+  62--77.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2013.
+
+\bibitem{scryer}
+Neeraj~Joshi Daniel~Jacobson, Danny~Yuan.
+\newblock Scryer: Netflix’s predictive auto scaling engine, November 2013.
+\newblock [Online; posted 05-November-2013].
+
+\bibitem{msc}
+Anshul Jindal, Vladimir Podolskiy, and Michael Gerndt.
+\newblock Performance modeling for cloud microservice applications.
+\newblock pages 25--32, 04 2019.
+
+\bibitem{CloudInsight}
+I.~K. {Kim}, W.~{Wang}, Y.~{Qi}, and M.~{Humphrey}.
+\newblock Cloudinsight: Utilizing a council of experts to predict future cloud
+  application workloads.
+\newblock In {\em 2018 IEEE 11th International Conference on Cloud Computing
+  (CLOUD)}, pages 41--48, 2018.
+
+\end{thebibliography}
