@@ -12,7 +12,7 @@ from shutil import copyfile
 from keras.models import model_from_json
 
 from preparedata import get_data
-from config import epochs, batch_size, report_dir
+from config import epochs, batch_size, report_dir, test_iterations
 from models import CNN_LSTM, MLP, LSTM, CNN, DeeperCNN, BaselineMLP
 
 def plot_train_history(history, rep_folder):
@@ -86,7 +86,7 @@ def load_model(model_dir):
     print("Loaded model from disk")
     return loaded_model
 
-if (__name__ == '__main__'):
+def run_test():
     # create report folder 
     rep_folder = create_report_folder()
 
@@ -96,9 +96,9 @@ if (__name__ == '__main__'):
     # select model 
     #model_obj = CNN_LSTM()
     #model_obj = CNN()
-    #model_obj = MLP()
+    model_obj = MLP()
     #model_obj = DeeperCNN()
-    model_obj = BaselineMLP()
+    #model_obj = BaselineMLP()
 
     # transform input data
     X_train = model_obj.transform_data(X_train)
@@ -129,3 +129,13 @@ if (__name__ == '__main__'):
 
     # store model 
     store_model(rep_folder, model)
+
+    return rep_folder + " " + perf_rep
+
+if (__name__ == '__main__'):
+    perf_reps = []
+    for i in range(test_iterations):
+        perf_reps.append(run_test())
+    
+    for perf_rep in perf_reps:
+        print(perf_rep)

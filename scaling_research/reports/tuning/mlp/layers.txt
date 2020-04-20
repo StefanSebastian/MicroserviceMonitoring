@@ -59,6 +59,7 @@ Best: -17044955.644121 using {'batch_size': 8, 'epochs': 100, 'layers': (100, 50
 -17216134.931364 (4521612.465067) with: {'batch_size': 8, 'epochs': 100, 'layers': (150, 50, 50, 50, 50, 10)}
 -17928160.601382 (4094860.850029) with: {'batch_size': 8, 'epochs': 100, 'layers': (100, 20, 20, 20, 10)}
 -21365062.474137 (5297697.191144) with: {'batch_size': 8, 'epochs': 100, 'layers': (100, 50, 50, 20, 10)}
+
 n=16
 Best: -18116299.706403 using {'batch_size': 8, 'epochs': 100, 'layers': (10, 20, 30, 40, 50)}
 -20609359.763594 (2731541.984632) with: {'batch_size': 8, 'epochs': 100, 'layers': (150, 100)}
@@ -89,3 +90,5 @@ Best: -18116299.706403 using {'batch_size': 8, 'epochs': 100, 'layers': (10, 20,
 -20516191.406853 (4511290.662403) with: {'batch_size': 8, 'epochs': 100, 'layers': (150, 50, 50, 50, 50, 10)}
 -18466524.174871 (4135806.119522) with: {'batch_size': 8, 'epochs': 100, 'layers': (100, 20, 20, 20, 10)}
 -22056564.740026 (4835888.519264) with: {'batch_size': 8, 'epochs': 100, 'layers': (100, 50, 50, 20, 10)}
+
+Conclusion from the above: n=8 and around 5 layers seem optimal

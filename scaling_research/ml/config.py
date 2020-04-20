@@ -10,3 +10,4 @@ epochs = 100
 batch_size = 8
 
 report_dir = "reports/"
+test_iterations = 100
