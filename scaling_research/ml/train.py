@@ -8,12 +8,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from preparedata import get_data
-from models import BaselineMLP, VariableMLP
+from models import VariableMLP, CNN, DeeperCNN
 from config import epochs, batch_size
 
 X_train, Y_train, _, _ = get_data()
 
-model_obj = VariableMLP()
+model_obj = DeeperCNN()
 X_train = model_obj.transform_data(X_train)
 keras_model = KerasRegressor(build_fn=model_obj.get_model)
 
@@ -36,7 +36,8 @@ def optimizer_grid():
     return param_grid
 
 def layers_grid():
-    layers = [(100, 50, 25, 20, 10), (100, 10, 10, 10, 10), (100, 50, 50, 50, 10), (150, 150, 150, 20, 10), (100, 5, 5, 20, 10), (50, 50, 25, 25, 10)]
+    #layers = [(100, 50, 25, 20, 10), (100, 10, 10, 10, 10), (100, 50, 50, 50, 10), (150, 150, 150, 20, 10), (100, 5, 5, 20, 10), (50, 50, 25, 25, 10)]
+    layers = [(300,50),(250,75),(175,25)]
     param_grid = dict(layers=layers, epochs=[100], batch_size=[8])
     return param_grid
 

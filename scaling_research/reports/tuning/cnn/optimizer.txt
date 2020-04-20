@@ -1,0 +1,7 @@
+Best: -39433276.641570 using {'batch_size': 8, 'epochs': 100, 'optimizer': 'Adadelta'}
+-45070059.520109 (5191165.313420) with: {'batch_size': 8, 'epochs': 100, 'optimizer': 'RMSprop'}
+-284305897.370013 (35631190.436281) with: {'batch_size': 8, 'epochs': 100, 'optimizer': 'Adagrad'}
+-39433276.641570 (4249137.564458) with: {'batch_size': 8, 'epochs': 100, 'optimizer': 'Adadelta'}
+-45434222.619369 (5273392.223972) with: {'batch_size': 8, 'epochs': 100, 'optimizer': 'Adam'}
+-67999192.193050 (8665453.065904) with: {'batch_size': 8, 'epochs': 100, 'optimizer': 'Adamax'}
+-41236119.288771 (4927332.519000) with: {'batch_size': 8, 'epochs': 100, 'optimizer': 'Nadam'}

@@ -1,5 +1,6 @@
 import pickle
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
+import numpy as np
 
 infile = open("ml/gsresults",'rb')
 gs_res = pickle.load(infile)
@@ -36,5 +37,7 @@ def plot_grid_search(cv_results, grid_param_1, grid_param_2, name_param_1, name_
     ax.legend(loc="best", fontsize=15)
     ax.grid('on')
     plt.show()
- 
-# plot_grid_search(grid_result.cv_results_, batch_size, epochs, 'Batch size', 'Epochs')
+
+batch_size = [4, 8, 16, 32]
+epochs = [50, 100, 250]
+plot_grid_search(gs_res, batch_size, epochs, 'Batch size', 'Epochs')
