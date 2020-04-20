@@ -42,7 +42,7 @@ def split(data):
     print("Ratio of " + str(train_test_split))
     cutoff = int(train_test_split * len(data))
     train = data[:cutoff]
-    test = data[cutoff:]
+    test = data[cutoff - feature_no:] # add buffer
     print("Train size : " + str(len(train)))
     print("Test size: " + str(len(test)))
     return train, test

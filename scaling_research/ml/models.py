@@ -102,7 +102,7 @@ class DeeperCNN:
     def __init__(self):
         super().__init__()
     
-    def get_model(self, optimizer='adadelta', activation='softplus', layers=(500,25)):
+    def get_model(self, optimizer='adadelta', activation='softplus', layers=(10,10,10)):
         model = Sequential()
         model.add(Conv1D(filters=64, kernel_size=2, activation='relu', input_shape=(feature_no, 1)))
         model.add(MaxPooling1D(pool_size=2))
