@@ -7,25 +7,23 @@ from keras.layers import Dropout
 from keras.layers.convolutional import Conv1D
 from keras.layers.convolutional import MaxPooling1D
 
-from config import cnn_seq, lstm_units, feature_no, dense_units
+from config import cnn_seq, feature_no, dense_units
 
 class CNN_LSTM:
     # by default take from config
-    def __init__(self, cnn_seq=cnn_seq, cnn_steps_per_seq=int(feature_no / cnn_seq), lstm_units=lstm_units):
+    def __init__(self, cnn_seq=cnn_seq, cnn_steps_per_seq=int(feature_no / cnn_seq)):
         super().__init__()
         self.cnn_seq = cnn_seq
         self.cnn_steps_per_seq = cnn_steps_per_seq
-        self.lstm_units = lstm_units
 
-    def get_model(self):
+    def get_model(self, optimizer='adam', activation='linear', lstm_units=150):
         model = Sequential()
-        model.add(TimeDistributed(Conv1D(filters=64, kernel_size=1, activation='relu'), input_shape=(None, self.cnn_steps_per_seq, 1)))
+        model.add(TimeDistributed(Conv1D(filters=16, kernel_size=1, activation=activation), input_shape=(None, self.cnn_steps_per_seq, 1)))
         model.add(TimeDistributed(MaxPooling1D(pool_size=2)))
         model.add(TimeDistributed(Flatten()))
-        model.add(LSTM(self.lstm_units, activation='relu'))
-        model.add(Dropout(0.2))
+        model.add(LSTM(lstm_units, activation=activation))
         model.add(Dense(1))
-        model.compile(optimizer='adam', loss='mse',  metrics=['mse', 'mae', 'mape'])
+        model.compile(optimizer=optimizer, loss='mse',  metrics=['mse', 'mae', 'mape'])
         return model
 
     def transform_data(self, data):
@@ -65,14 +63,10 @@ class VariableMLP:
     def transform_data(self, data):
         return data
 
-class LSTM:
-    def __init__(self, lstm_units=lstm_units):
-        super().__init__()
-        self.lstm_units = lstm_units
-
+class BaseLSTM:
     def get_model(self):
         model = Sequential()
-        model.add(LSTM(self.lstm_units, input_shape=(1, feature_no)))
+        model.add(LSTM(150, input_shape=(1, feature_no)))
         model.add(Dropout(0.2))
         model.add(Dense(1))
         model.compile(loss='mse', optimizer='adam',  metrics=['mse', 'mae', 'mape'])
@@ -102,7 +96,7 @@ class DeeperCNN:
     def __init__(self):
         super().__init__()
     
-    def get_model(self, optimizer='adadelta', activation='softplus', layers=(10,10,10)):
+    def get_model(self, optimizer='adadelta', activation='softplus', layers=(100,20,10,5)):
         model = Sequential()
         model.add(Conv1D(filters=64, kernel_size=2, activation='relu', input_shape=(feature_no, 1)))
         model.add(MaxPooling1D(pool_size=2))

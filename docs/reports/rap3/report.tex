@@ -13,8 +13,11 @@
 \author{Stefan Sebastian}
 
 \begin{document}
-  \maketitle
   \pagenumbering{gobble}
+  \maketitle
+  
+  \newpage
+  \tableofcontents
   \newpage 
   \pagenumbering{arabic}
 
@@ -86,7 +89,6 @@
   in the last measured window. The prediction is ploted in figure \ref{fig:baseline_pred}
   and achieves MSE: 20234787.901, MAE: 3572.657, MAPE: 7.072.
 
-
   \begin{figure}
     \centering
     \begin{subfigure}[b]{0.48\linewidth}
@@ -134,6 +136,7 @@
   \end{figure}
 
   \subsection{Deep learning models}
+
   \subsubsection{MLP}
   After some manual experiments started with a MLP with 2 hidden layers (150, 100 neurons) and sliding window
   size of 24 (input size). 
@@ -161,7 +164,7 @@
   and content of hidden layers, of around 90 combinations. Some of the best performing are presented 
   in table \ref{tab:layers}.
 
-  \begin{table}[!htb]
+  \begin{table}
     \caption{Selecting optimizer and activation. Scores are averaged MSE.}
     \begin{minipage}{.5\linewidth}
       \caption*{Optimizer}
@@ -190,7 +193,7 @@
     \end{minipage}
   \end{table}
 
-  \begin{table}[h!]
+  \begin{table}
     \begin{center}
       \caption{MLP layers and size tuning}
       \label{tab:layers}
@@ -210,6 +213,80 @@
     \end{center}
   \end{table}
 
+  \subsubsection{CNN}
+  Firstly, a baseline model was selected through manual experimentation. This had the following structure:
+  intput of size 20, a 1d convolutional layer, a maxpooling layer, a flatten layer, a dense layer of size 150 
+  and the output layer. The same batch size, epoch no grid search was performed and it yielded similar results 
+  to \ref{fig:epoch_batch}. This was followed by iterating the same optimizers and activation function in 
+  order to select Adadelta and softplus. 
+
+  \begin{table}
+    \begin{center}
+      \caption{CNN layers and size tuning}
+      \label{tab:layers_cnn}
+      \begin{tabular}{c|c|c}
+        \textbf{Sliding window} & \textbf{Layers} & \textbf{MSE}\\
+        \hline
+        8 & (25, 10, 5) & 35385451\\
+        64 & (100, 20, 10, 5) & 35012864\\
+        128 & (100, 20, 10, 5) & 21086942\\
+        128 & (300, 50) & 22287266\\
+        128 & (10, 10, 10) & 23441869\\
+        256 & (100,20,10,5) & 23783826\\
+      \end{tabular}
+    \end{center}
+  \end{table}
+
+  The main idea behind using a CNN model for this task is to pass a larger history window as input. 
+  CNN layers build different filter that learn certain characteristics of the input data. They are well 
+  suited for data which has a spatial relationship(like timeseries)\cite{cnn}.
+
+  \subsubsection{CNN-LSTM Hybrid}
+  This model was applied on a range of timeseries tasks by Lin et al.\cite{cnn_lstm}.
+  It relies on LSTM to find long range dependencies and historical trends and on CNN 
+  to extract important features from raw timeseries data. The starting values for 
+  some parameters were influenced by this research: 32 cnn filters, 1 lstm layer with 
+  a couple hundred units.
+
+  \begin{table}
+    \begin{center}
+      \caption{CNN-LSTM layers and size tuning}
+      \label{tab:layers_cnn_lstm}
+      \begin{tabular}{c|c|c}
+        \textbf{Sliding window} & \textbf{LSTM layers} & \textbf{MSE}\\
+        \hline
+        144 & (20, 10, 5) & 51700082\\
+        todo & todo & todo\\
+      \end{tabular}
+    \end{center}
+  \end{table}
+
+
+  \subsection{Experiment Results}
+
+  Each of the most promising models were then trained again on all training data,
+  for a larger number of epochs and repeated multiple times to account for the 
+  random weight initialization. The best results were then compared to baselines
+  and to eachother as seen in table \ref{tab:final_eval}.
+
+  \begin{table}[h]
+    \begin{center}
+      \caption{Final results}
+      \label{tab:final_eval}
+      \begin{tabular}{c|c|c|c|c|c}
+        \textbf{Dataset} & \textbf{Naive} & \textbf{ARIMA} & \textbf{MLP} & \textbf{CNN} & \textbf{CNN-LSTM} \\
+        \hline
+        Jp10 & 20234787 & 15289199 & 8757506 & 12766376 & todo \\
+        Jp5 & 87806378 & todo & todo & todo & todo \\
+        De10 & todo & todo & todo & todo & todo \\
+        De15 & todo & todo & todo & todo & todo \\
+      \end{tabular}
+    \end{center}
+  \end{table}
+
+  TODO t=5,10,15
+  TODO german wiki 5,10,15
+  TODO compare with cloudinsight article
 
   \newpage
   \bibliography{bibliography}{}

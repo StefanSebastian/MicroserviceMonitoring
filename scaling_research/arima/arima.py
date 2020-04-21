@@ -15,8 +15,10 @@ def transform_series():
     df["Count"] = 1
     df.set_index("Ts", inplace=True)
     series = df.groupby(pd.Grouper(freq=window_size)).sum()
-
-series = pd.read_pickle("arima/pickled_series")
+    series.to_pickle("arima/pickled_series_jp15")
+#transform_series()
+series = pd.read_pickle("arima/pickled_series_jp15")
+print(series)
 
 def check_stationary(df):
     from statsmodels.tsa.stattools import adfuller
@@ -45,7 +47,7 @@ test = test.values
 
 def fit_model(history):
     start_time = time.time()
-    model = ARIMA(history, order=(1,0,5))
+    model = ARIMA(history, order=(1,0,15))
     model_fit = model.fit(disp=0)
     #print(model_fit.summary())
     train_time = time.time() - start_time
@@ -67,6 +69,8 @@ for t in range(len(test) - 1):
 
 test = test[1:] # account for missing time window
 from perf_report import report_performance
+test = test[:len(test)-1]
+predictions = predictions[:len(predictions)-1]
 report_performance(test, predictions)
 
 def plot_predictions(Y_test, y_predicted):

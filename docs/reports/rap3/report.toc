@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}State of the art}{1}%
+\contentsline {section}{\numberline {2}Approach}{1}%
+\contentsline {section}{\numberline {3}Evaluation of the approach}{2}%
+\contentsline {subsection}{\numberline {3.1}Validation and tuning}{2}%
+\contentsline {subsection}{\numberline {3.2}Performance metrics}{2}%
+\contentsline {subsection}{\numberline {3.3}Baseline}{2}%
+\contentsline {subsubsection}{\numberline {3.3.1}Naive baseline}{2}%
+\contentsline {subsubsection}{\numberline {3.3.2}ARIMA}{3}%
+\contentsline {subsection}{\numberline {3.4}Deep learning models}{3}%
+\contentsline {subsubsection}{\numberline {3.4.1}MLP}{3}%
+\contentsline {subsubsection}{\numberline {3.4.2}CNN}{5}%
+\contentsline {subsubsection}{\numberline {3.4.3}CNN-LSTM Hybrid}{5}%
+\contentsline {subsection}{\numberline {3.5}Experiment Results}{6}%

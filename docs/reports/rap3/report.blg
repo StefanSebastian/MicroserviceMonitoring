@@ -6,45 +6,46 @@ Database file #1: bibliography.bib
 Warning--can't use both author and editor fields in sliding_window
 Warning--empty booktitle in msc
 Warning--empty journal in batch_size
-You've used 9 entries,
+Warning--empty journal in cnn_lstm
+You've used 11 entries,
             2118 wiz_defined-function locations,
-            562 strings with 5753 characters,
-and the built_in function-call counts, 3268 in all, are:
-= -- 307
-> -- 161
-< -- 3
-+ -- 64
-- -- 54
-* -- 234
-:= -- 532
-add.period$ -- 27
-call.type$ -- 9
-change.case$ -- 53
+            575 strings with 5957 characters,
+and the built_in function-call counts, 4094 in all, are:
+= -- 390
+> -- 197
+< -- 4
++ -- 78
+- -- 66
+* -- 291
+:= -- 661
+add.period$ -- 33
+call.type$ -- 11
+change.case$ -- 65
 chr.to.int$ -- 0
-cite$ -- 12
-duplicate$ -- 123
-empty$ -- 256
-format.name$ -- 54
-if$ -- 692
+cite$ -- 15
+duplicate$ -- 156
+empty$ -- 316
+format.name$ -- 66
+if$ -- 873
 int.to.chr$ -- 0
-int.to.str$ -- 9
-missing$ -- 10
-newline$ -- 48
-num.names$ -- 18
-pop$ -- 67
+int.to.str$ -- 11
+missing$ -- 12
+newline$ -- 58
+num.names$ -- 22
+pop$ -- 79
 preamble$ -- 1
-purify$ -- 45
+purify$ -- 55
 quote$ -- 0
-skip$ -- 93
+skip$ -- 121
 stack$ -- 0
-substring$ -- 189
-swap$ -- 31
-text.length$ -- 3
+substring$ -- 253
+swap$ -- 43
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 32
-warning$ -- 3
-while$ -- 29
-width$ -- 10
-write$ -- 99
-(There were 3 warnings)
+type$ -- 40
+warning$ -- 4
+while$ -- 36
+width$ -- 13
+write$ -- 120
+(There were 4 warnings)

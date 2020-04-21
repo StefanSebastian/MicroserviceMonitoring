@@ -1,0 +1,25 @@
+initially
+one conv layer one lstm layer 
+64 conv filters, 250 lstm units
+
+128 in
+MSE: 163843923.351, MAE: 8840.070, MAPE: 14.525
+
+16 in
+MSE: 149218565.796, MAE: 7698.873, MAPE: 10.949
+
+9 in
+MSE: 83178609.097, MAE: 6470.250, MAPE: 9.976
+
+9 in no dropout
+MSE: 59283791.921, MAE: 5662.409, MAPE: 9.882
+
+9 in no dropout 16 filters cnn
+MSE: 66668979.180, MAE: 5527.698, MAPE: 8.924
+
+20 lstm units
+MSE: 77497883.246, MAE: 6208.609, MAPE: 10.486
+50 lstm units
+MSE: 77497883.246, MAE: 6208.609, MAPE: 10.486
+1000 lstm units
+MSE: 77416784.342, MAE: 6126.987, MAPE: 9.259

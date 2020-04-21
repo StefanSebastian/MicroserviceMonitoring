@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from preparedata import get_data
-from models import VariableMLP, CNN, DeeperCNN
+from models import VariableMLP, CNN, DeeperCNN, CNN_LSTM
 from config import epochs, batch_size
 
 X_train, Y_train, _, _ = get_data()
@@ -37,8 +37,14 @@ def optimizer_grid():
 
 def layers_grid():
     #layers = [(100, 50, 25, 20, 10), (100, 10, 10, 10, 10), (100, 50, 50, 50, 10), (150, 150, 150, 20, 10), (100, 5, 5, 20, 10), (50, 50, 25, 25, 10)]
-    layers = [(300,50),(250,75),(175,25),(10, 10, 10),(100, 50, 50, 20),(25, 10, 5),(100,20,10,5)]
+    #layers = [(300,50),(250,75),(175,25),(10, 10, 10),(100, 50, 50, 20),(25, 10, 5),(100,20,10,5)]
+    layers = [(100,20,10,5)]
     param_grid = dict(layers=layers, epochs=[100], batch_size=[8])
+    return param_grid
+
+def lstm_units_grid():
+    lstm_units = [5, 25, 50, 150, 500]
+    param_grid = dict(lstm_units=lstm_units, epochs=[100], batch_size=[8])
     return param_grid
 
 param_grid = layers_grid()

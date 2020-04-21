@@ -1,0 +1,6 @@
+Best: -62630270.401416 using {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
+-218720733.737446 (48343108.453653) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 5}
+-168050422.891864 (68521781.264415) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 25}
+-74128490.118328 (15340003.156673) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 50}
+-62630270.401416 (4195514.215984) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
+-65994812.276309 (18952774.674925) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
