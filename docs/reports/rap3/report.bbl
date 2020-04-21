@@ -6,10 +6,21 @@ Gianluca Bontempi, Souhaib Ben~Taieb, and Yann-A{\"e}l Le~Borgne.
   62--77.
 \newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2013.
 
+\bibitem{Dickey-Fuller}
+Yin-Wong Cheung and Kon~S Lai.
+\newblock Lag order and critical values of the augmented dickey--fuller test.
+\newblock {\em Journal of Business \& Economic Statistics}, 13(3):277--280,
+  1995.
+
 \bibitem{scryer}
 Neeraj~Joshi Daniel~Jacobson, Danny~Yuan.
 \newblock Scryer: Netflix’s predictive auto scaling engine, November 2013.
 \newblock [Online; posted 05-November-2013].
+
+\bibitem{arima}
+S.~L. Ho and M.~Xie.
+\newblock The use of arima models for reliability forecasting and analysis.
+\newblock {\em Comput. Ind. Eng.}, 35(1–2):213–216, October 1998.
 
 \bibitem{msc}
 Anshul Jindal, Vladimir Podolskiy, and Michael Gerndt.
@@ -22,5 +33,10 @@ I.~K. {Kim}, W.~{Wang}, Y.~{Qi}, and M.~{Humphrey}.
   application workloads.
 \newblock In {\em 2018 IEEE 11th International Conference on Cloud Computing
   (CLOUD)}, pages 41--48, 2018.
+
+\bibitem{kfold}
+Stuart Russell and Peter Norvig.
+\newblock {\em Artificial Intelligence: A Modern Approach}.
+\newblock Prentice Hall Press, USA, 3rd edition, 2009.
 
 \end{thebibliography}
