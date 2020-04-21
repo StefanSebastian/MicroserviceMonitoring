@@ -5,45 +5,46 @@ The style file: plain.bst
 Database file #1: bibliography.bib
 Warning--can't use both author and editor fields in sliding_window
 Warning--empty booktitle in msc
-You've used 7 entries,
+Warning--empty journal in batch_size
+You've used 9 entries,
             2118 wiz_defined-function locations,
-            549 strings with 5336 characters,
-and the built_in function-call counts, 2500 in all, are:
-= -- 239
-> -- 105
+            562 strings with 5753 characters,
+and the built_in function-call counts, 3268 in all, are:
+= -- 307
+> -- 161
 < -- 3
-+ -- 42
-- -- 34
-* -- 167
-:= -- 396
-add.period$ -- 21
-call.type$ -- 7
-change.case$ -- 37
++ -- 64
+- -- 54
+* -- 234
+:= -- 532
+add.period$ -- 27
+call.type$ -- 9
+change.case$ -- 53
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 102
-empty$ -- 210
-format.name$ -- 34
-if$ -- 543
+cite$ -- 12
+duplicate$ -- 123
+empty$ -- 256
+format.name$ -- 54
+if$ -- 692
 int.to.chr$ -- 0
-int.to.str$ -- 7
-missing$ -- 8
-newline$ -- 38
-num.names$ -- 14
-pop$ -- 51
+int.to.str$ -- 9
+missing$ -- 10
+newline$ -- 48
+num.names$ -- 18
+pop$ -- 67
 preamble$ -- 1
-purify$ -- 31
+purify$ -- 45
 quote$ -- 0
-skip$ -- 79
+skip$ -- 93
 stack$ -- 0
-substring$ -- 152
-swap$ -- 30
+substring$ -- 189
+swap$ -- 31
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 24
-warning$ -- 2
-while$ -- 24
-width$ -- 8
-write$ -- 79
-(There were 2 warnings)
+type$ -- 32
+warning$ -- 3
+while$ -- 29
+width$ -- 10
+write$ -- 99
+(There were 3 warnings)

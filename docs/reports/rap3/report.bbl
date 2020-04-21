@@ -27,6 +27,13 @@ Anshul Jindal, Vladimir Podolskiy, and Michael Gerndt.
 \newblock Performance modeling for cloud microservice applications.
 \newblock pages 25--32, 04 2019.
 
+\bibitem{batch_size}
+Nitish Keskar, Dheevatsa Mudigere, Jorge Nocedal, Mikhail Smelyanskiy, and Ping
+  Tang.
+\newblock On large-batch training for deep learning: Generalization gap and
+  sharp minima.
+\newblock 09 2016.
+
 \bibitem{CloudInsight}
 I.~K. {Kim}, W.~{Wang}, Y.~{Qi}, and M.~{Humphrey}.
 \newblock Cloudinsight: Utilizing a council of experts to predict future cloud
@@ -38,5 +45,11 @@ I.~K. {Kim}, W.~{Wang}, Y.~{Qi}, and M.~{Humphrey}.
 Stuart Russell and Peter Norvig.
 \newblock {\em Artificial Intelligence: A Modern Approach}.
 \newblock Prentice Hall Press, USA, 3rd edition, 2009.
+
+\bibitem{dropout}
+Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan
+  Salakhutdinov.
+\newblock Dropout: A simple way to prevent neural networks from overfitting.
+\newblock {\em Journal of Machine Learning Research}, 15(56):1929--1958, 2014.
 
 \end{thebibliography}

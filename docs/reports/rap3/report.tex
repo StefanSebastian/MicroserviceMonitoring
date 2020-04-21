@@ -2,6 +2,7 @@
 \usepackage{cite}
 \usepackage{graphicx}
 \usepackage{subcaption}
+\usepackage{caption}
 
 \linespread{1.25} % the equivalent of 1.5 line spacing from msword
 \usepackage[a4paper, left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry} % margins
@@ -77,6 +78,8 @@
   \subsection{Performance metrics}
   TODO detail mse, mape, mae
 
+
+  \subsection{Baseline}
   \subsubsection{Naive baseline}
   A naive baseline is set, to get an idea if the models are useful at all. The 
   naive predictor simply states that traffic in window t+2 will be the same as 
@@ -129,6 +132,83 @@
     \caption{ARIMA params}
     \label{fig:arima_params}
   \end{figure}
+
+  \subsection{Deep learning models}
+  \subsubsection{MLP}
+  After some manual experiments started with a MLP with 2 hidden layers (150, 100 neurons) and sliding window
+  size of 24 (input size). 
+
+  To find an optimal combination of batch size and epoch no a 2d grid search was performed \ref{fig:epoch_batch}.
+  Batch size should ideally be a power of 2 for extra perfromance on GPU architectures, as some 
+  experiments were ran on Google Colab. Lower batch size is more accurate but training is slower\cite{batch_size}.
+  As expected the best MSE is obtained for the lowest batch size(4) however it does not drop significantly
+  at 8, regardless of epochs no. The selection of epoch no is again a tradeoff between speed and accuracy. 
+  We see a smaller no of epochs(50) performs poorly, while the difference between 100 and 250 is not that great,
+  meaning that we can get a good approximation of a model using a batch size of 100.
+
+  \begin{figure}
+    \includegraphics[width=\linewidth]{resources/mlp/epochs_batch.png}
+    \caption{2d grid search for epoch no and batch size}
+    \label{fig:epoch_batch}
+  \end{figure}
+
+  Some experiments were done with adding Dropout layers on different values (0.2, 0.1, 0.05) however it did 
+  not improve performance. These are generally used to prevent overfitting, when the network is too big, the 
+  data is scarce or training is done for too long\cite{dropout}, which was not the case for this experiment.
+
+  Various optimizer and activation functions were tested. The Adadelta optimizer and the 
+  relu activation were selected. A comprehensive grid search was performed for sliding window size and number 
+  and content of hidden layers, of around 90 combinations. Some of the best performing are presented 
+  in table \ref{tab:layers}.
+
+  \begin{table}[!htb]
+    \caption{Selecting optimizer and activation. Scores are averaged MSE.}
+    \begin{minipage}{.5\linewidth}
+      \caption*{Optimizer}
+      \centering
+        \begin{tabular}{ll}
+            RMSprop & 24734800\\
+            Adadelta & 19291753\\
+            Adagrad & 190604349\\
+            Adam & 25828119\\
+            Adamax & 29578706\\
+            Nadam & 20400557
+        \end{tabular}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+        \caption*{Activation function}
+        \begin{tabular}{ll}
+            softmax & 4875804739\\
+            softplus & 20314197\\
+            softsign & 4034049993\\
+            relu & 19571788\\
+            tanh & 4175933232\\
+            sigmoid & 3055609656\\
+            linear & 20661311
+        \end{tabular}
+    \end{minipage}
+  \end{table}
+
+  \begin{table}[h!]
+    \begin{center}
+      \caption{MLP layers and size tuning}
+      \label{tab:layers}
+      \begin{tabular}{c|c|c}
+        \textbf{Sliding window} & \textbf{Layers} & \textbf{MSE}\\
+        \hline
+        4 & (100, 50, 25, 20, 10) & 18889414\\
+        4 & (10, 10, 10, 10, 10, 10) & 18935098\\
+        4 & (100, 50, 50, 20, 10) & 18847516\\
+        8 & (100, 50, 25, 20, 10) & 17044955\\
+        8 & (150, 50, 50, 50, 50, 10) & 17216134\\
+        8 & (50, 50, 50, 50) & 18394493\\
+        16 & (10, 20, 30, 40, 50) & 18116299\\
+        16 & (100, 20, 20, 20, 10) & 18466524\\
+        16 & (10, 10, 10, 10, 10, 10, 10) & 18311036\\
+      \end{tabular}
+    \end{center}
+  \end{table}
 
 
   \newpage
