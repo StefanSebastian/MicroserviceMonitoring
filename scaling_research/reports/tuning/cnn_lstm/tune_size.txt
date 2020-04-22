@@ -8,3 +8,5 @@ Best: -181333955.110093 using {'batch_size': 8, 'epochs': 100, 'lstm_units': 150
 -1731899424656677333905702912.000000 (2449275655015633162881466368.000000) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 750}
 
 - exploding gradients
+
+added gradient clipping 

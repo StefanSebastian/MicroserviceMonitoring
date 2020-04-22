@@ -13,7 +13,7 @@ from config import epochs, batch_size
 
 X_train, Y_train, _, _ = get_data()
 
-model_obj = DeeperCNN()
+model_obj = CNN_LSTM()
 X_train = model_obj.transform_data(X_train)
 keras_model = KerasRegressor(build_fn=model_obj.get_model)
 
@@ -43,11 +43,11 @@ def layers_grid():
     return param_grid
 
 def lstm_units_grid():
-    lstm_units = [5, 25, 50, 150, 500]
+    lstm_units = [150, 500, 750]
     param_grid = dict(lstm_units=lstm_units, epochs=[100], batch_size=[8])
     return param_grid
 
-param_grid = layers_grid()
+param_grid = lstm_units_grid()
 grid = GridSearchCV(estimator=keras_model, param_grid=param_grid, n_jobs=-1, cv=3)
 grid_result = grid.fit(X_train, Y_train)
 

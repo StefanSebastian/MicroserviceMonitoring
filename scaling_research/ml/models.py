@@ -6,6 +6,7 @@ from keras.layers import TimeDistributed
 from keras.layers import Dropout
 from keras.layers.convolutional import Conv1D
 from keras.layers.convolutional import MaxPooling1D
+from keras import optimizers
 
 from config import cnn_seq, feature_no, dense_units
 
@@ -16,14 +17,15 @@ class CNN_LSTM:
         self.cnn_seq = cnn_seq
         self.cnn_steps_per_seq = cnn_steps_per_seq
 
-    def get_model(self, optimizer='adam', activation='linear', lstm_units=150):
+    def get_model(self, lstm_units=500):
         model = Sequential()
-        model.add(TimeDistributed(Conv1D(filters=16, kernel_size=1, activation=activation), input_shape=(None, self.cnn_steps_per_seq, 1)))
+        model.add(TimeDistributed(Conv1D(filters=32, kernel_size=1, activation='relu'), input_shape=(None, self.cnn_steps_per_seq, 1)))
         model.add(TimeDistributed(MaxPooling1D(pool_size=2)))
         model.add(TimeDistributed(Flatten()))
-        model.add(LSTM(lstm_units, activation=activation))
+        model.add(LSTM(lstm_units, activation='relu'))
         model.add(Dense(1))
-        model.compile(optimizer=optimizer, loss='mse',  metrics=['mse', 'mae', 'mape'])
+        ada_dlt = optimizers.Adadelta(clipnorm=1.)
+        model.compile(optimizer=ada_dlt, loss='mse',  metrics=['mse', 'mae', 'mape'])
         return model
 
     def transform_data(self, data):
