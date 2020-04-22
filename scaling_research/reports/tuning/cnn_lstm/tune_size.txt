@@ -1,0 +1,10 @@
+--- 8653.796469688416 seconds --
+feature_no = 300
+cnn_seq = 15
+1 cnn, 1 lstm
+Best: -181333955.110093 using {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
+-181333955.110093 (82498658.663540) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
+-111546396106938.484375 (157748376119856.468750) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+-1731899424656677333905702912.000000 (2449275655015633162881466368.000000) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 750}
+
+- exploding gradients
