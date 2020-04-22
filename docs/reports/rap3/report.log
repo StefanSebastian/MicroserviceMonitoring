@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.4.20)  22 APR 2020 19:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.4.20)  22 APR 2020 20:33
 entering extended mode
 **c:/Users/Sebi/study/master/microservMonitor/MicroserviceMonitoring/docs/reports/rap3/report.tex
 (c:/Users/Sebi/study/master/microservMonitor/MicroserviceMonitoring/docs/reports/rap3/report.tex
@@ -179,11 +179,11 @@ File: resources/baseline/naive_predictions_10.png Graphic file (type png)
 <use resources/baseline/naive_predictions_10.png>
 Package pdftex.def Info: resources/baseline/naive_predictions_10.png  used on input line 95.
 (pdftex.def)             Requested size: 218.51521pt x 163.88805pt.
-<resources/baseline/arima_10.png, id=16, 462.528pt x 346.896pt>
+<resources/baseline/arima_10.png, id=16, 385.44pt x 289.08pt>
 File: resources/baseline/arima_10.png Graphic file (type png)
 <use resources/baseline/arima_10.png>
 Package pdftex.def Info: resources/baseline/arima_10.png  used on input line 99.
-(pdftex.def)             Requested size: 218.51521pt x 163.88805pt.
+(pdftex.def)             Requested size: 218.51521pt x 163.88628pt.
  [2 <c:/Users/Sebi/study/master/microservMonitor/MicroserviceMonitoring/docs/reports/rap3/resources/baseline/naive_predictions_10.png> <c:/Users/Sebi/study/master/microservMonitor/MicroserviceMonitoring/docs/reports/rap3/resources/baseline/arima_10.png>]
 <resources/baseline/arima_10_acf.png, id=23, 462.528pt x 346.896pt>
 File: resources/baseline/arima_10_acf.png Graphic file (type png)
@@ -211,7 +211,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  48i,9n,46p,362b,445s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Sebi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Sebi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Sebi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Sebi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Sebi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on c:\Users\Sebi\study\master\microservMonitor\MicroserviceMonitoring\docs\reports\rap3\report.pdf (9 pages, 247335 bytes).
+Output written on c:\Users\Sebi\study\master\microservMonitor\MicroserviceMonitoring\docs\reports\rap3\report.pdf (9 pages, 247011 bytes).
 PDF statistics:
  63 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
