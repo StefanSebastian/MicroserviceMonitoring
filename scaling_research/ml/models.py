@@ -31,6 +31,23 @@ class CNN_LSTM:
     def transform_data(self, data):
         return data.reshape((data.shape[0], self.cnn_seq, self.cnn_steps_per_seq, 1))
 
+class CNN_LSTMv2:
+    # by default take from config
+    def __init__(self):
+        super().__init__()
+        
+    def get_model(self, lstm_units=500):
+        model = Sequential()
+        model.add(Conv1D(filters=32, kernel_size=8, strides=1, activation='relu', padding='same'))
+        model.add(LSTM(lstm_units, activation='relu'))
+        model.add(Dense(1))
+        ada_dlt = optimizers.Adadelta(clipnorm=1.)
+        model.compile(optimizer=ada_dlt, loss='mse',  metrics=['mse', 'mae', 'mape'])
+        return model
+
+    def transform_data(self, data):
+        return data.reshape((data.shape[0], data.shape[1], 1))
+
 class MLP:
     def __init__(self, dense_units=dense_units):
         super().__init__()

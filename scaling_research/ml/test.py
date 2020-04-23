@@ -13,7 +13,7 @@ from keras.models import model_from_json
 
 from preparedata import get_data
 from config import epochs, batch_size, report_dir, test_iterations
-from models import CNN_LSTM, MLP, LSTM, CNN, DeeperCNN
+from models import CNN_LSTM, MLP, LSTM, CNN, DeeperCNN, CNN_LSTMv2
 
 def plot_train_history(history, rep_folder):
     plt.clf()
@@ -94,7 +94,8 @@ def run_test():
     X_train, Y_train, X_test, Y_test = get_data()
 
     # select model 
-    model_obj = CNN_LSTM()
+    #model_obj = CNN_LSTM()
+    model_obj = CNN_LSTMv2()
     #model_obj = CNN()
     #model_obj = MLP()
     #model_obj = DeeperCNN()

@@ -7,6 +7,15 @@ Best: -181333955.110093 using {'batch_size': 8, 'epochs': 100, 'lstm_units': 150
 -111546396106938.484375 (157748376119856.468750) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
 -1731899424656677333905702912.000000 (2449275655015633162881466368.000000) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 750}
 
+-- 18193.088843107224 seconds ---
+feature_no = 256
+cnn_seq = 16
+1cnn, 1lstm
+Best: -55043137.171994 using {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
+-55043137.171994 (25797225.678789) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
+-303639207.371956 (316183260.136144) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+-93652777119847567851520.000000 (132445027556792828166144.000000) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 750}
+
 - exploding gradients
 
 added gradient clipping 
