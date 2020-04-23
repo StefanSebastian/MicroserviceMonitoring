@@ -45,3 +45,10 @@ Best: -61837065.504840 using {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
 -137240625.939130 (67641049.459338) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
 -61837065.504840 (13591701.989263) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
 -93691570.655383 (22620531.907937) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 750}
+
+--- truncated
+feature_no= 256
+cnn_seq = 16
+-98380243.241503 (48442079.224377) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
+-161887410.139187 (94762638.267732) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+-333100702.983231 (349340167.012960) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 750}
