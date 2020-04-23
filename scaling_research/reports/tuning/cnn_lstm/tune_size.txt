@@ -11,6 +11,16 @@ Best: -181333955.110093 using {'batch_size': 8, 'epochs': 100, 'lstm_units': 150
 
 added gradient clipping 
 
+model = Sequential()
+model.add(TimeDistributed(Conv1D(filters=32, kernel_size=1, activation='relu'), input_shape=(None, self.cnn_steps_per_seq, 1)))
+model.add(TimeDistributed(MaxPooling1D(pool_size=2)))
+model.add(TimeDistributed(Flatten()))
+model.add(LSTM(lstm_units, activation='relu'))
+model.add(Dense(1))
+ada_dlt = optimizers.Adadelta(clipnorm=1.)
+model.compile(optimizer=ada_dlt, loss='mse',  metrics=['mse', 'mae', 'mape'])
+return model
+
 --- 14975.336343288422 seconds ---
 feature_no = 300
 cnn_seq = 15
