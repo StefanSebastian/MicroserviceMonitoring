@@ -37,3 +37,11 @@ Best: -246081628.198248 using {'batch_size': 8, 'epochs': 100, 'lstm_units': 500
 -255283366.089361 (168742590.385908) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
 -246081628.198248 (180881276.231587) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
 -393858807.106501 (140133545.746642) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 750}
+
+--- 12798.11640739441 seconds ---
+feaure_no = 144
+cnn_seq = 12
+Best: -61837065.504840 using {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+-137240625.939130 (67641049.459338) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
+-61837065.504840 (13591701.989263) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+-93691570.655383 (22620531.907937) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 750}
