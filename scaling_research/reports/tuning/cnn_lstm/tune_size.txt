@@ -7,7 +7,7 @@ Best: -181333955.110093 using {'batch_size': 8, 'epochs': 100, 'lstm_units': 150
 -111546396106938.484375 (157748376119856.468750) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
 -1731899424656677333905702912.000000 (2449275655015633162881466368.000000) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 750}
 
--- 18193.088843107224 seconds ---
+-- 18193.088843107224 seconds --- ran on my laptop ; same code; weird performance? - did not reach similar with/without gradient clipping
 feature_no = 256
 cnn_seq = 16
 1cnn, 1lstm
@@ -52,3 +52,11 @@ cnn_seq = 16
 -98380243.241503 (48442079.224377) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
 -161887410.139187 (94762638.267732) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
 -333100702.983231 (349340167.012960) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 750}
+
+--- 8782.48883318901 seconds ---
+feature_no = 64
+cnn_seq = 8
+Best: -370621888.125939 using {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+-430070436.071842 (15692643.942598) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
+-370621888.125939 (110194022.487403) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+-406012554.663382 (136238961.795293) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 750}
