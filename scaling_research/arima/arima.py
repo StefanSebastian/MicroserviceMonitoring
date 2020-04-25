@@ -17,8 +17,8 @@ def transform_series():
     series = df.groupby(pd.Grouper(freq=window_size)).sum()
     series.to_pickle("arima/pickled_series_jp15")
 #transform_series()
-series = pd.read_pickle("arima/pickled_series_jp15")
-print(series)
+series = pd.read_pickle("arima/data/pickled_series_de10")
+#print(series)
 
 def check_stationary(df):
     from statsmodels.tsa.stattools import adfuller
@@ -47,9 +47,9 @@ test = test.values
 
 def fit_model(history):
     start_time = time.time()
-    model = ARIMA(history, order=(1,0,15))
+    model = ARIMA(history, order=(1,0,20))
     model_fit = model.fit(disp=0)
-    #print(model_fit.summary())
+    print(model_fit.summary())
     train_time = time.time() - start_time
     print("--- %s seconds for training ---" % (train_time))
     return model_fit 
