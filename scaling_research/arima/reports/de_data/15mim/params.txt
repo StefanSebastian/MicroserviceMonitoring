@@ -1,0 +1,5 @@
+from pacf choose p at 1
+
+is stationary => d = 0
+
+from acf - q around 15
