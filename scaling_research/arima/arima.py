@@ -15,9 +15,9 @@ def transform_series():
     df["Count"] = 1
     df.set_index("Ts", inplace=True)
     series = df.groupby(pd.Grouper(freq=window_size)).sum()
-    series.to_pickle("arima/pickled_series_jp15")
+    return series
 #transform_series()
-series = pd.read_pickle("arima/data/pickled_series_de15")
+series = pd.read_pickle("arima/data/pickled_series_jp10")
 #print(series)
 
 def check_stationary(df):
