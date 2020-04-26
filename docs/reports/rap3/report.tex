@@ -87,7 +87,7 @@
   A naive baseline is set, to get an idea if the models are useful at all. The 
   naive predictor simply states that traffic in window t+2 will be the same as 
   in the last measured window. The prediction is ploted in figure \ref{fig:baseline_pred}
-  and achieves MSE: 20234787.901, MAE: 3572.657, MAPE: 7.072.
+  and achieves MSE: 20233320.341, MAE: 3577.844, MAPE: 7.106.
 
   \begin{figure}
     \centering
@@ -276,10 +276,10 @@
       \begin{tabular}{c|c|c|c|c|c}
         \textbf{Dataset} & \textbf{Naive} & \textbf{ARIMA} & \textbf{MLP} & \textbf{CNN} & \textbf{CNN-LSTM} \\
         \hline
-        Jp10 & 20234787 & 15289199 & 8591086 & 12766376 & 7252806 \\
-        Jp15 & 87806378 & 56662039 & 31042348 & 36278866 & todo \\
-        De10 & todo & todo & todo & todo & todo \\
-        De15 & todo & todo & todo & todo & todo \\
+        Jp10 & 20233320 & 15289199 & 8591086 & 12766376 & 7252806 \\
+        Jp15 & 87883950 & 56662039 & 31042348 & 36278866 & 57719162 \\
+        De10 & 16789198 & todo & todo & todo & todo \\
+        De15 & 77481580 & todo & todo & todo & todo \\
       \end{tabular}
     \end{center}
   \end{table}
