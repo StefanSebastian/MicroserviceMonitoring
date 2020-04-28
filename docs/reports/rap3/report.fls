@@ -27,6 +27,8 @@ INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.
 INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.sty
 INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3.sty
 INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3.sty
+INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty
+INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty
 INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.sty
 INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.sty
 INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\tex\generic\iftex\ifvtex.sty
@@ -94,6 +96,7 @@ INPUT c:\Users\Sebi\study\master\microservMonitor\MicroserviceMonitoring\docs\re
 INPUT c:\Users\Sebi\study\master\microservMonitor\MicroserviceMonitoring\docs\reports\rap3\report.bbl
 INPUT c:\Users\Sebi\study\master\microservMonitor\MicroserviceMonitoring\docs\reports\rap3\report.bbl
 INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmti12.tfm
+INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmtt12.tfm
 INPUT c:\Users\Sebi\study\master\microservMonitor\MicroserviceMonitoring\docs\reports\rap3\report.aux
 INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
@@ -105,3 +108,5 @@ INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfont
 INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr17.pfb
 INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti12.pfb
 INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti12.pfb
+INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt12.pfb
+INPUT C:\Users\Sebi\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt12.pfb

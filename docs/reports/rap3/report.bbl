@@ -6,6 +6,12 @@ Gianluca Bontempi, Souhaib Ben~Taieb, and Yann-A{\"e}l Le~Borgne.
   62--77.
 \newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2013.
 
+\bibitem{arima_prediction}
+R.~N. {Calheiros}, E.~{Masoumi}, R.~{Ranjan}, and R.~{Buyya}.
+\newblock Workload prediction using arima model and its impact on cloud
+  applications’ qos.
+\newblock {\em IEEE Transactions on Cloud Computing}, 3(4):449--458, 2015.
+
 \bibitem{Dickey-Fuller}
 Yin-Wong Cheung and Kon~S Lai.
 \newblock Lag order and critical values of the augmented dickey--fuller test.
@@ -41,6 +47,12 @@ I.~K. {Kim}, W.~{Wang}, Y.~{Qi}, and M.~{Humphrey}.
 \newblock In {\em 2018 IEEE 11th International Conference on Cloud Computing
   (CLOUD)}, pages 41--48, 2018.
 
+\bibitem{ann_prediction}
+Jitendra Kumar and Ashutosh~Kumar Singh.
+\newblock Workload prediction in cloud using artificial neural network and
+  adaptive differential evolution.
+\newblock {\em Future Generation Computer Systems}, 81:41 -- 52, 2018.
+
 \bibitem{cnn}
 Yann LeCun, Y.~Bengio, and Geoffrey Hinton.
 \newblock Deep learning.
@@ -50,6 +62,13 @@ Yann LeCun, Y.~Bengio, and Geoffrey Hinton.
 Tao Lin, Tian Guo, and Karl Aberer.
 \newblock Hybrid neural networks for learning the trend in time series.
 \newblock pages 2273--2279, 2017.
+
+\bibitem{brown_prediction}
+H.~{Mi}, H.~{Wang}, G.~{Yin}, Y.~{Zhou}, D.~{Shi}, and L.~{Yuan}.
+\newblock Online self-reconfiguration with performance guarantee for
+  energy-efficient large-scale cloud computing data centers.
+\newblock In {\em 2010 IEEE International Conference on Services Computing},
+  pages 514--521, 2010.
 
 \bibitem{kfold}
 Stuart Russell and Peter Norvig.
@@ -61,5 +80,11 @@ Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan
   Salakhutdinov.
 \newblock Dropout: A simple way to prevent neural networks from overfitting.
 \newblock {\em Journal of Machine Learning Research}, 15(56):1929--1958, 2014.
+
+\bibitem{wikidata}
+Guido Urdaneta, Guillaume Pierre, and Maarten van Steen.
+\newblock Wikipedia workload analysis for decentralized hosting.
+\newblock {\em Elsevier Computer Networks}, 53(11):1830--1845, July 2009.
+\newblock \url{http://www.globule.org/publi/WWADH_comnet2009.html}.
 
 \end{thebibliography}
