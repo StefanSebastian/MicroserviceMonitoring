@@ -7,45 +7,45 @@ Warning--can't use both author and editor fields in sliding_window
 Warning--empty booktitle in msc
 Warning--empty journal in batch_size
 Warning--empty journal in cnn_lstm
-You've used 15 entries,
+You've used 16 entries,
             2118 wiz_defined-function locations,
-            600 strings with 6844 characters,
-and the built_in function-call counts, 5745 in all, are:
-= -- 548
-> -- 284
+            606 strings with 7037 characters,
+and the built_in function-call counts, 6022 in all, are:
+= -- 574
+> -- 302
 < -- 5
-+ -- 112
-- -- 96
-* -- 421
-:= -- 929
-add.period$ -- 46
-call.type$ -- 15
-change.case$ -- 92
++ -- 119
+- -- 102
+* -- 441
+:= -- 981
+add.period$ -- 49
+call.type$ -- 16
+change.case$ -- 98
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 212
-empty$ -- 439
-format.name$ -- 96
-if$ -- 1223
+cite$ -- 20
+duplicate$ -- 222
+empty$ -- 456
+format.name$ -- 102
+if$ -- 1277
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 16
-newline$ -- 79
-num.names$ -- 30
-pop$ -- 102
+int.to.str$ -- 16
+missing$ -- 17
+newline$ -- 84
+num.names$ -- 32
+pop$ -- 106
 preamble$ -- 1
-purify$ -- 78
+purify$ -- 83
 quote$ -- 0
-skip$ -- 163
+skip$ -- 171
 stack$ -- 0
-substring$ -- 370
-swap$ -- 57
+substring$ -- 375
+swap$ -- 58
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 56
+type$ -- 60
 warning$ -- 4
-while$ -- 49
-width$ -- 17
-write$ -- 166
+while$ -- 51
+width$ -- 18
+write$ -- 177
 (There were 4 warnings)

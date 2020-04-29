@@ -32,7 +32,11 @@
 
   Other classic timeseries models have also been applied for this task, like Brown Exponential 
   Smoothing by Mi et al.\cite{brown_prediction} obtaining a Mean Relative Error of 0.064 on 
-  the France World Cup 1998 web server trace. TODO another classic model
+  the France World Cup 1998 web server trace. Another classic model is Weighted Moving Average,
+  applied by Aslanpour et al.\cite{wma_prediction} 
+  in which recent observations are given more weight based on the Fibonacci rule, and was tested 
+  on a NASA server 24h trace achieving a 5\% improvement in response time on a cloud scaling 
+  simulator.
 
   Kumar and Singh\cite{ann_prediction} applied artificial neural networks 
   for workload prediction on a seven month log of traffic from a Saskatchewan University 

@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{wma_prediction}
+Mohammad~Sadegh Aslanpour, Mostafa Ghobaei-Arani, and Adel Toosi.
+\newblock Auto-scaling web applications in clouds: A cost-aware approach.
+\newblock {\em Journal of Network and Computer Applications}, 95, 07 2017.
+
 \bibitem{sliding_window}
 Gianluca Bontempi, Souhaib Ben~Taieb, and Yann-A{\"e}l Le~Borgne.
 \newblock {\em Machine Learning Strategies for Time Series Forecasting}, pages
