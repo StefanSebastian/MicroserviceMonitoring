@@ -12,4 +12,4 @@
 \contentsline {subsubsection}{\numberline {3.4.3}CNN-LSTM Hybrid}{7}%
 \contentsline {subsection}{\numberline {3.5}Experiment Results}{7}%
 \contentsline {section}{\numberline {4}For article - REMOVE ME}{7}%
-\contentsline {section}{\numberline {5}Data preparation}{7}%
+\contentsline {subsection}{\numberline {4.1}Data preparation}{7}%
