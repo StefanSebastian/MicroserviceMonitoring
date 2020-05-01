@@ -11,6 +11,13 @@ Gianluca Bontempi, Souhaib Ben~Taieb, and Yann-A{\"e}l Le~Borgne.
   62--77.
 \newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2013.
 
+\bibitem{error_metrics}
+Alexei Botchkarev.
+\newblock Performance metrics (error measures) in machine learning regression,
+  forecasting and prognostics: Properties and typology.
+\newblock {\em Interdisciplinary Journal of Information, Knowledge, and
+  Management}, 14:045–076, 2019.
+
 \bibitem{dlts_book}
 Jason Brownlee.
 \newblock {\em Deep Learning for Time Series Forecasting: Predict the Future
@@ -78,6 +85,12 @@ Yann LeCun, Y.~Bengio, and Geoffrey Hinton.
 Tao Lin, Tian Guo, and Karl Aberer.
 \newblock Hybrid neural networks for learning the trend in time series.
 \newblock pages 2273--2279, 2017.
+
+\bibitem{mape_values}
+Nigel Meade.
+\newblock Industrial and business forecasting methods, lewis, c.d., borough
+  green, sevenoaks, kent: Butterworth, 1982. price: £9.25. pages: 144.
+\newblock {\em Journal of Forecasting}, 2(2):194--196, 1983.
 
 \bibitem{brown_prediction}
 H.~{Mi}, H.~{Wang}, G.~{Yin}, Y.~{Zhou}, D.~{Shi}, and L.~{Yuan}.

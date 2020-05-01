@@ -120,7 +120,25 @@
   model will not be influenced by it.
 
   \subsection{Performance metrics}
-  TODO detail mse, mape, mae
+  The error metrics selected for this experiment are: 
+  Mean squared error(MSE), Mean absolute error(MAE)
+  and Mean absolute percentage error(MAPE) as described in \cite{error_metrics} and defined in equation \ref{eq:metrics}. MSE was used as the 
+  loss function for training because it tends to penalize big deviations in prediction, which is desirable for 
+  our problem as we want to accurately predict traffic spikes. MAE is similar, but conceptually simpler, 
+  given that each prediction error contributes in proportion to its absolute value. 
+  
+  MAPE is independent of the problem scale and 
+  can be interpreted intuitively,  herefore can be used to give a general impression of how well a model
+  performs across diferrent datasets. According to \cite{mape_values} a highly accurate forecast would 
+  have MAPE lower 10\%, and a good forecast between 10 and 20\%.
+
+  \begin{equation}
+    \label{eq:metrics}
+    MSE=\frac{1}{n} \sum_{i=1}^{n}(Y_i - \hat{Y_i})^2 \quad
+    MAE=\frac{1}{n} \sum_{i=1}^{n}|Y_i - \hat{Y_i}| \quad
+    MAPE=\frac{1}{n} \sum_{i=1}^{n}\frac{Y_i - \hat{Y_i}}{Y_i}
+  \end{equation}
+  
 
 
   \subsection{Baseline}
