@@ -110,7 +110,7 @@
   Model tuning and validation was done on the Japanese wikipedia trace because 
   although presenting some patterns it also has some interesting irregularities, 
   like a huge spike which is not repeated. The selected time window for tuning 
-  is 10 min. (todo test on other windows - tune on other windows?)
+  is 10 min. todo plot of dataset
 
   The dataset is split into a training and testing with a ratio of 0.9.
   The validation method is k-fold Cross-Validation\cite{kfold} with k = 3, 
@@ -342,9 +342,48 @@
     \end{center}
   \end{table}
 
-  TODO t=5,10,15
-  TODO german wiki 5,10,15
-  TODO compare with cloudinsight article
+  \section{For article - REMOVE ME}
+  \section{Data preparation}
+  The raw data used for this experiment is a wikipedia 
+  trace for 12 days in september 2007\cite{wikidata}. 
+  From this a subset of requests was 
+  extracted as separate datasets: all requests to Japanese and German wikipedia
+  respectively. 
+  The subsets were selected 
+  in order to compare results with Kim et al.\cite{CloudInsight} which used 
+  the same data. Another reason for extracting subsets it's that the 
+  amount of data after preparation is the same as what we would extract from the global
+  trace, given it's the same time range,
+  but processing is much faster.
+
+  In order to turn a web request log file into a supervised dataset the following steps were,
+  taken: 
+  \begin{itemize}
+  \item extract timestamps of all requests for a country (e.g. all lines matching ja.wikipedia)
+  \item create buckets which contain the number of requests in a
+  time interval
+  \item iterate over the buckets using the sliding window technique\cite{sliding_window}, described below
+  \end{itemize}
+  
+  The starting point for the sliding window is a time series 
+  $(t_1, t_2, .., t_{size})$
+  where $t_i$ is the number of requests in the i-th bucket.
+  Training instances are then generated with input 
+  $(t_{i}, t_{i+1}, ... t_{i+n-1})$
+  and output $(t_{i+n+1})$, 
+  where n is the size of the sliding window. 
+  This process starts at i = 1 and is incremented by 1 until i = size - n + 1. 
+  The predicted value is $t_{i+n+1}$ instead of $t_{i+n}$ because a scaler using this model 
+  would need to have a buffer window during which to deploy the services.
+
+  \begin{figure}
+    \includegraphics[width=\linewidth]{resources/data/prepare.png}
+    \caption{Sliding window technique}
+    \label{fig:sliding_window}
+  \end{figure}
+
+  The size of the datasets before applying the sliding window are 111316009 requests 
+  for ja.wikipedia and 101917920 for de.wikipedia.
 
   \newpage
   \bibliography{bibliography}{}
