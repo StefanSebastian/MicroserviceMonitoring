@@ -1,5 +1,5 @@
-This is BibTeX, Version 0.99d (MiKTeX 2.9.7350 64-bit)
-Capacity: max_strings=4000, hash_size=5000, hash_prime=4253
+This is BibTeX, Version 0.99d (MiKTeX 2.9.7400 64-bit)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: report.aux
 The style file: plain.bst
 Database file #1: bibliography.bib
@@ -7,45 +7,45 @@ Warning--can't use both author and editor fields in sliding_window
 Warning--empty booktitle in msc
 Warning--empty journal in batch_size
 Warning--empty journal in cnn_lstm
-You've used 16 entries,
+You've used 18 entries,
             2118 wiz_defined-function locations,
-            606 strings with 7037 characters,
-and the built_in function-call counts, 6022 in all, are:
-= -- 574
-> -- 302
+            616 strings with 7270 characters,
+and the built_in function-call counts, 6447 in all, are:
+= -- 614
+> -- 316
 < -- 5
-+ -- 119
-- -- 102
-* -- 441
-:= -- 981
-add.period$ -- 49
-call.type$ -- 16
-change.case$ -- 98
++ -- 125
+- -- 106
+* -- 460
+:= -- 1059
+add.period$ -- 55
+call.type$ -- 18
+change.case$ -- 105
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 222
-empty$ -- 456
-format.name$ -- 102
-if$ -- 1277
+cite$ -- 22
+duplicate$ -- 244
+empty$ -- 495
+format.name$ -- 106
+if$ -- 1365
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 17
-newline$ -- 84
-num.names$ -- 32
-pop$ -- 106
+int.to.str$ -- 18
+missing$ -- 20
+newline$ -- 94
+num.names$ -- 36
+pop$ -- 116
 preamble$ -- 1
-purify$ -- 83
+purify$ -- 89
 quote$ -- 0
-skip$ -- 171
+skip$ -- 185
 stack$ -- 0
-substring$ -- 375
-swap$ -- 58
+substring$ -- 385
+swap$ -- 60
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
+type$ -- 66
 warning$ -- 4
-while$ -- 51
-width$ -- 18
-write$ -- 177
+while$ -- 55
+width$ -- 20
+write$ -- 198
 (There were 4 warnings)

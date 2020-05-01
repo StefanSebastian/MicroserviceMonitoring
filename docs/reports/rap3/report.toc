@@ -1,5 +1,5 @@
 \contentsline {section}{\numberline {1}State of the art}{1}%
-\contentsline {section}{\numberline {2}Approach}{1}%
+\contentsline {section}{\numberline {2}Approach}{2}%
 \contentsline {section}{\numberline {3}Evaluation of the approach}{2}%
 \contentsline {subsection}{\numberline {3.1}Validation and tuning}{2}%
 \contentsline {subsection}{\numberline {3.2}Performance metrics}{3}%
@@ -8,6 +8,6 @@
 \contentsline {subsubsection}{\numberline {3.3.2}ARIMA}{3}%
 \contentsline {subsection}{\numberline {3.4}Deep learning models}{4}%
 \contentsline {subsubsection}{\numberline {3.4.1}MLP}{4}%
-\contentsline {subsubsection}{\numberline {3.4.2}CNN}{6}%
-\contentsline {subsubsection}{\numberline {3.4.3}CNN-LSTM Hybrid}{6}%
-\contentsline {subsection}{\numberline {3.5}Experiment Results}{6}%
+\contentsline {subsubsection}{\numberline {3.4.2}CNN}{5}%
+\contentsline {subsubsection}{\numberline {3.4.3}CNN-LSTM Hybrid}{7}%
+\contentsline {subsection}{\numberline {3.5}Experiment Results}{7}%

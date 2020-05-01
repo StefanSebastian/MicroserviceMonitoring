@@ -53,7 +53,17 @@
   cloud data and on some generated workloads. An indicator of performance is normalized RMSE, meaning how much better it performs than 
   other models. On average it was 13\% to 27\% better than baselines (ARIMA, FFT, SVM, RSLR).
   
-  TODO some deep learning on timeseries stuff
+  A review of how deep learning methods can be applied to time series problems was created by Gamboa\cite{dl_ts}.
+  The paper distinguishes between three types of problems: classification, forecasting and anomaly detection, presents
+  methods for modelling them and guidance for selecting appropiate models. It also shows an improvement
+  in performance over the previously existing techniques. Brownlee\cite{dlts_book} published a 
+  comprehensive guide on applying MLPs, CNNs and LSTMs on various real datasets and discussed their 
+  advantages over classic methods, which were used as baselines for the experiments. 
+
+  Lin et al\cite{cnn_lstm} proposed a hybrid CNN LSTM architecture for learning trend in time series.
+  It relies on on CNN to extract important features from raw timeseries data and LSTM to 
+  find long range dependencies in historical data. The model was shown to outperform both CNN and LSTM 
+  with around 30\% lower RMSE on 3 real world datasets.
   
   \section{Approach}
   The main goal is to find a performant model for web application 
@@ -274,8 +284,7 @@
 
   \subsubsection{CNN-LSTM Hybrid}
   This model was applied on a range of timeseries tasks by Lin et al.\cite{cnn_lstm}.
-  It relies on LSTM to find long range dependencies and historical trends and on CNN 
-  to extract important features from raw timeseries data. The starting values for 
+  The starting values for 
   some parameters were influenced by this research: 32 cnn filters, 1 lstm layer with 
   a couple hundred units.
 

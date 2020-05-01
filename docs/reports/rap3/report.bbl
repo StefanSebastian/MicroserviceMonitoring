@@ -11,6 +11,12 @@ Gianluca Bontempi, Souhaib Ben~Taieb, and Yann-A{\"e}l Le~Borgne.
   62--77.
 \newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2013.
 
+\bibitem{dlts_book}
+Jason Brownlee.
+\newblock {\em Deep Learning for Time Series Forecasting: Predict the Future
+  with MLPs, CNNs and LSTMs in Python}.
+\newblock Machine Learning Mastery, 8 2018.
+
 \bibitem{arima_prediction}
 R.~N. {Calheiros}, E.~{Masoumi}, R.~{Ranjan}, and R.~{Buyya}.
 \newblock Workload prediction using arima model and its impact on cloud
@@ -27,6 +33,11 @@ Yin-Wong Cheung and Kon~S Lai.
 Neeraj~Joshi Daniel~Jacobson, Danny~Yuan.
 \newblock Scryer: Netflix’s predictive auto scaling engine, November 2013.
 \newblock [Online; posted 05-November-2013].
+
+\bibitem{dl_ts}
+John Cristian~Borges Gamboa.
+\newblock Deep learning for time-series analysis.
+\newblock {\em CoRR}, abs/1701.01887, 2017.
 
 \bibitem{arima}
 S.~L. Ho and M.~Xie.
