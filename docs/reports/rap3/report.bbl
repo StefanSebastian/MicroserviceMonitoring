@@ -46,10 +46,21 @@ John Cristian~Borges Gamboa.
 \newblock Deep learning for time-series analysis.
 \newblock {\em CoRR}, abs/1701.01887, 2017.
 
+\bibitem{mit_dlbook}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+\newblock {\em Deep Learning}.
+\newblock MIT Press, 2016.
+\newblock \url{http://www.deeplearningbook.org}.
+
 \bibitem{arima}
 S.~L. Ho and M.~Xie.
 \newblock The use of arima models for reliability forecasting and analysis.
 \newblock {\em Comput. Ind. Eng.}, 35(1–2):213–216, October 1998.
+
+\bibitem{lstm}
+Sepp Hochreiter and J\"{u}rgen Schmidhuber.
+\newblock Long short-term memory.
+\newblock {\em Neural Comput.}, 9(8):1735–1780, November 1997.
 
 \bibitem{msc}
 Anshul Jindal, Vladimir Podolskiy, and Michael Gerndt.
@@ -99,10 +110,21 @@ H.~{Mi}, H.~{Wang}, G.~{Yin}, Y.~{Zhou}, D.~{Shi}, and L.~{Yuan}.
 \newblock In {\em 2010 IEEE International Conference on Services Computing},
   pages 514--521, 2010.
 
+\bibitem{neural_smithing}
+Russell~D. Reed and Robert~J. Marks.
+\newblock {\em Neural Smithing: Supervised Learning in Feedforward Artificial
+  Neural Networks}.
+\newblock MIT Press, Cambridge, MA, USA, 1998.
+
 \bibitem{kfold}
 Stuart Russell and Peter Norvig.
 \newblock {\em Artificial Intelligence: A Modern Approach}.
 \newblock Prentice Hall Press, USA, 3rd edition, 2009.
+
+\bibitem{dlrev}
+Terrence~J. Sejnowski.
+\newblock {\em The Deep Learning Revolution}.
+\newblock The MIT Press, 2018.
 
 \bibitem{dropout}
 Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan

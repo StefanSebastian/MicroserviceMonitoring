@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.1)  1 MAY 2020 15:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.1)  2 MAY 2020 18:27
 entering extended mode
 **c:/Users/Seb/study/master/MicroserviceMonitoring/docs/reports/rap3/report.tex
 (c:/Users/Seb/study/master/MicroserviceMonitoring/docs/reports/rap3/report.tex
@@ -176,53 +176,74 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
- [2] [1] [2]
-<resources/baseline/naive_predictions_10.png, id=17, 462.528pt x 346.896pt>
+ [2] [3] [1] [2]
+<resources/baseline/naive_predictions_10.png, id=20, 462.528pt x 346.896pt>
 File: resources/baseline/naive_predictions_10.png Graphic file (type png)
 <use resources/baseline/naive_predictions_10.png>
 Package pdftex.def Info: resources/baseline/naive_predictions_10.png  used on input line 154.
 (pdftex.def)             Requested size: 218.51521pt x 163.88805pt.
-<resources/baseline/arima_10.png, id=19, 385.44pt x 289.08pt>
+<resources/baseline/arima_10.png, id=22, 385.44pt x 289.08pt>
 File: resources/baseline/arima_10.png Graphic file (type png)
 <use resources/baseline/arima_10.png>
 Package pdftex.def Info: resources/baseline/arima_10.png  used on input line 158.
 (pdftex.def)             Requested size: 218.51521pt x 163.88628pt.
  [3]
-<resources/baseline/arima_10_acf.png, id=28, 462.528pt x 346.896pt>
+<resources/baseline/arima_10_acf.png, id=31, 462.528pt x 346.896pt>
 File: resources/baseline/arima_10_acf.png Graphic file (type png)
 <use resources/baseline/arima_10_acf.png>
 Package pdftex.def Info: resources/baseline/arima_10_acf.png  used on input line 186.
 (pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
-<resources/baseline/arima_10_pacf.png, id=29, 462.528pt x 346.896pt>
+<resources/baseline/arima_10_pacf.png, id=32, 462.528pt x 346.896pt>
 File: resources/baseline/arima_10_pacf.png Graphic file (type png)
 <use resources/baseline/arima_10_pacf.png>
 Package pdftex.def Info: resources/baseline/arima_10_pacf.png  used on input line 190.
 (pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
  [4 <c:/Users/Seb/study/master/MicroserviceMonitoring/docs/reports/rap3/resources/baseline/naive_predictions_10.png> <c:/Users/Seb/study/master/MicroserviceMonitoring/docs/reports/rap3/resources/baseline/arima_10.png> <c:/Users/Seb/study/master/MicroserviceMonitoring/docs/reports/rap3/resources/baseline/arima_10_acf.png> <c:/Users/Seb/study/master/MicroserviceMonitoring/docs/reports/rap3/resources/baseline/arima_10_pacf.png>]
-<resources/mlp/epochs_batch.png, id=38, 1110.0672pt x 554.3109pt>
+<resources/mlp/epochs_batch.png, id=42, 1110.0672pt x 554.3109pt>
 File: resources/mlp/epochs_batch.png Graphic file (type png)
 <use resources/mlp/epochs_batch.png>
 Package pdftex.def Info: resources/mlp/epochs_batch.png  used on input line 212.
 (pdftex.def)             Requested size: 455.24411pt x 227.31969pt.
  [5 <c:/Users/Seb/study/master/MicroserviceMonitoring/docs/reports/rap3/resources/mlp/epochs_batch.png>] [6] [7]
-<resources/data/prepare.png, id=50, 369.63094pt x 176.91093pt>
+<resources/data/prepare.png, id=53, 310.15875pt x 146.04562pt>
 File: resources/data/prepare.png Graphic file (type png)
 <use resources/data/prepare.png>
-Package pdftex.def Info: resources/data/prepare.png  used on input line 380.
-(pdftex.def)             Requested size: 455.24411pt x 217.88799pt.
- [8 <c:/Users/Seb/study/master/MicroserviceMonitoring/docs/reports/rap3/resources/data/prepare.png>] (c:/Users\Seb\study\master\MicroserviceMonitoring\docs\reports\rap3\report.bbl [9]) [10] (c:/Users\Seb\study\master\MicroserviceMonitoring\docs\reports\rap3\report.aux) ) 
+Package pdftex.def Info: resources/data/prepare.png  used on input line 362.
+(pdftex.def)             Requested size: 148.8745pt x 70.10109pt.
+ [8 <c:/Users/Seb/study/master/MicroserviceMonitoring/docs/reports/rap3/resources/data/prepare.png>] [9]
+<resources/data/jp10.png, id=63, 462.528pt x 346.896pt>
+File: resources/data/jp10.png Graphic file (type png)
+<use resources/data/jp10.png>
+Package pdftex.def Info: resources/data/jp10.png  used on input line 424.
+(pdftex.def)             Requested size: 208.13567pt x 156.10175pt.
+ [10 <c:/Users/Seb/study/master/MicroserviceMonitoring/docs/reports/rap3/resources/data/jp10.png>]
+File: resources/baseline/arima_10_pacf.png Graphic file (type png)
+<use resources/baseline/arima_10_pacf.png>
+Package pdftex.def Info: resources/baseline/arima_10_pacf.png  used on input line 449.
+(pdftex.def)             Requested size: 208.13567pt x 156.10175pt.
+File: resources/baseline/arima_10_acf.png Graphic file (type png)
+<use resources/baseline/arima_10_acf.png>
+Package pdftex.def Info: resources/baseline/arima_10_acf.png  used on input line 457.
+(pdftex.def)             Requested size: 208.13567pt x 156.10175pt.
+ [11] [12]
+<resources/mlp/epochs_batch_scaled.png, id=75, 508.90125pt x 283.0575pt>
+File: resources/mlp/epochs_batch_scaled.png Graphic file (type png)
+<use resources/mlp/epochs_batch_scaled.png>
+Package pdftex.def Info: resources/mlp/epochs_batch_scaled.png  used on input line 495.
+(pdftex.def)             Requested size: 455.24411pt x 253.22473pt.
+ [13 <c:/Users/Seb/study/master/MicroserviceMonitoring/docs/reports/rap3/resources/mlp/epochs_batch_scaled.png>] [14] [15] [16] (c:/Users\Seb\study\master\MicroserviceMonitoring\docs\reports\rap3\report.bbl [17]) [18] (c:/Users\Seb\study\master\MicroserviceMonitoring\docs\reports\rap3\report.aux) ) 
 Here is how much of TeX's memory you used:
- 3095 strings out of 480930
- 51071 string characters out of 2900700
- 294810 words of memory out of 3000000
- 18958 multiletter control sequences out of 15000+200000
+ 3121 strings out of 480930
+ 51637 string characters out of 2900700
+ 294908 words of memory out of 3000000
+ 18982 multiletter control sequences out of 15000+200000
  538659 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,9n,46p,344b,445s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,9n,46p,730b,445s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Seb\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/Seb/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Seb/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Seb/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Seb/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Seb/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Seb/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Seb/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Seb/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Seb/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Seb/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Seb/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Seb/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on c:/Users\Seb\study\master\MicroserviceMonitoring\docs\reports\rap3\report.pdf (12 pages, 325123 bytes).
+Output written on c:/Users\Seb\study\master\MicroserviceMonitoring\docs\reports\rap3\report.pdf (21 pages, 418411 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
+ 141 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

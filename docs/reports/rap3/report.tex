@@ -344,46 +344,287 @@
 
   \section{For article - REMOVE ME}
   \subsection{Data preparation}
-  The raw data used for this experiment is a wikipedia 
-  trace for 12 days in september 2007\cite{wikidata}. 
-  From this a subset of requests was 
-  extracted as separate datasets: all requests to Japanese and German wikipedia
-  respectively. 
-  The subsets were selected 
-  in order to compare results with Kim et al.\cite{CloudInsight} which used 
-  the same data. Another reason for extracting subsets it's that the 
-  amount of data after preparation is the same as what we would extract from the global
-  trace, given it's the same time range,
-  but processing is much faster.
+  The raw data used for this experiment is a wikipedia trace for 12 days in september 2007\cite{wikidata}. From this a subset of requests was extracted as separate datasets: all requests to Japanese and German wikipedia respectively. 
+The subsets were selected in order to compare results with Kim et al.\cite{CloudInsight} which used the same data. Another reason for extracting subsets it's that the amount of data after preparation is the same as what we would extract from the global trace, given it's the same time range,
+but processing is much faster.
 
-  In order to turn a web request log file into a supervised dataset the following steps were,
-  taken: 
-  \begin{itemize}
-  \item extract timestamps of all requests for a country (e.g. all lines matching ja.wikipedia)
-  \item create buckets which contain the number of requests in a
-  time interval
-  \item iterate over the buckets using the sliding window technique\cite{sliding_window}, described below
-  \end{itemize}
-  
-  The starting point for the sliding window is a time series 
-  $(t_1, t_2, .., t_{size})$
-  where $t_i$ is the number of requests in the i-th bucket.
-  Training instances are then generated with input 
-  $(t_{i}, t_{i+1}, ... t_{i+n-1})$
-  and output $(t_{i+n+1})$, 
-  where n is the size of the sliding window. 
-  This process starts at i = 1 and is incremented by 1 until i = size - n + 1. 
-  The predicted value is $t_{i+n+1}$ instead of $t_{i+n}$ because a scaler using this model 
-  would need to have a buffer window during which to deploy the services.
+In order to turn a web request log file into a supervised dataset the following steps were taken: 
+\begin{itemize}
+\item extract timestamps of all requests for a country (e.g. all lines matching ja.wikipedia)
+\item create buckets which contain the number of requests in a time interval
+\item iterate over the buckets using the sliding window technique, described below
+\end{itemize}
 
-  \begin{figure}
-    \includegraphics[width=\linewidth]{resources/data/prepare.png}
-    \caption{Sliding window technique}
-    \label{fig:sliding_window}
-  \end{figure}
+The starting point for the sliding window technique\cite{sliding_window} is a time series $(t_1, t_2, .., t_{size})$ where $t_i$ is the number of requests in the i-th bucket. Training instances are then generated with input $(t_{i}, t_{i+1}, ... t_{i+n-1})$ and output $(t_{i+n+1})$, where n is the size of the sliding window. This process starts at i = 1 and is incremented by 1 until i = size - n + 1. The predicted value is $t_{i+n+1}$ instead of $t_{i+n}$ because a scaler using this model would need to have a buffer window during which to deploy the services.
 
-  The size of the datasets before applying the sliding window are 111316009 requests 
-  for ja.wikipedia and 101917920 for de.wikipedia.
+\begin{figure}
+  \centering{
+    \includegraphics[scale=0.48]{resources/data/prepare.png}
+  }
+  \caption{Sliding window technique}
+  \label{fig:sliding_window}
+\end{figure}
+
+The size of the datasets before applying the sliding window are 111316009 requests for ja.wikipedia and 101917920 for de.wikipedia.
+
+
+\subsection{Approach tex}
+\subsubsection{Baseline models}
+Two baseline models were applied: a naive approach and a classic timeseries model, ARIMA.
+They were selected to verify if machine learning is at all useful for this problem
+and if it can learn features not considered by simpler methods.
+
+The naive approach just assumes that the predicted workload is the same 
+as the last observed workload. No proactive scaler could use this model 
+as the predicted change in traffic is always 0, but we must check if the 
+proposed models perform better than doing no prediction at all.
+
+ARIMA\cite{arima}, which stands for autoregressive integrated moving average, is a classic approach
+to modelling timeseries. It has been selected because it has been applied to 
+workload prediction before\cite{arima_prediction} and because it combines 
+multiple simpler models into a performant one. Autoregressive models
+make predictions based on previous observations while moving average models 
+use recent forecast errors. The integrated part indicates whether the 
+series needs to be differentiated, and how many times.
+
+
+\subsection{Deep Learning Models}
+
+We have chosen in this investigation to apply the following deep learning architectures: MLP, CNN, CNN-LSTM hybrid, all of which have been shown to perform well on timeseries tasks \cite{dl_ts}\cite{dlts_book}\cite{cnn_lstm}. Also, deep learning has constantly outperformed classic methods in prediction tasks\cite{dlrev}. 
+
+The selected models all have advantages and drawbacks among each other regarding training speed, the amount of data required to produce good answers and the tuning of the size of the sliding window to capture relevant recent information.
+
+\subsubsection{MLP}
+MLPs are quintessential deep learning models which although efficient in their own right also serve as baselines for more sophisticated architectures\cite{mit_dlbook}. It is made up out of an input layer, a number of hidden layers and an output layer, linked by weights which are learned through the backpropagaton algorithm. While a MLP with one hidden layer is theoretically sufficient to represent any function, that layer may be too large and training could be affected by overfitting, therefore deeper models can help reduce the generalization error\cite{neural_smithing}. 
+
+This model has been selected to check whether looking at a smaller sliding window, without taking into account further historical dependencies, achieves satisfactory results.
+
+\subsubsection{CNN}
+CNNs are specialized in dealing with data that has a grid-like topology such as images(2d) or timeseries(1d)\cite{mit_dlbook}. They have the ability to learn filters which assign importance to some aspects of the input data, which is done by the convolutional layers. Another type of layer they usually contain are the pooling layers which reduce the spatial size of the convolved features and make the representation invariant to small translations in input.
+
+CNN has been tested in this experiment because it looks like a natural fit for a timeseries problem given its assumed spatial dependencies. CNNs can extract only the important features of the input, therefore they can efficiently work with a larger sliding window, and take into account more recent measurements when making a prediction. 
+
+\subsubsection{CNN-LSTM Hybrid}
+This model was applied on a range of timeseries tasks by Lin et al.\cite{cnn_lstm} and was shown to outperform both CNN and LSTM baselines.
+
+Recurrent Neural Networks are Neural Networks that take into account the outcome of previous predictions while making the current one\cite{mit_dlbook}. LSTM, Long Short-Term Memory, networks are an improvement over RNNs in the sense that they are better at capturing long-term dependencies\cite{lstm}.
+
+This model has been chosen because it combines the ability of CNNs to extract salient features from raw timeseries data with the capability of LSTMs to find long range dependencies and historical trends.
+
+\section{Experiments tex remove me}
+In this section we will describe the experiments that we conducted, their results and a comparative analysis of these results.
+
+We have chosen for the tuning phase the Japanese wiki dataset described in section 4 because besides that fact that includes significant patterns, it also has some interesting irregularities, like a huge spike which is not repeated. This dataset was also used by Kim et al.\cite{CloudInsight} and we intend to compare to obtained results.
+
+\subsection{Settings}
+The selected time window for tuning is 10 min, because it seemed a reasonable prediction time to allow a scaler to spin out new instances based on data from netflix\cite{scryer}. A plot of this dataset can be seen in figure \ref{fig:jp10}.
+
+\begin{figure}
+	\centering{
+	   \includegraphics[scale=0.45]{resources/data/jp10.png}
+	}
+	\caption{Japanese wiki dataset, grouped by number of requests in 10 minute windows}
+	\label{fig:jp10}
+\end{figure}
+
+After creating the 10min buckets we end up with 1747 data points. They are split into training and testing with a ratio of 0.9.
+
+The validation method is k-fold Cross-Validation\cite{kfold} with k = 3, which means splitting the training dataset into k equal parts, perform training on k - 1 and evaluation on the part left out and then repeat this process until evaluation was done on each of the parts. The instances themselves are not shuffled inside the partitions, as their ordering is significant for LSTM models. 
+
+K-fold validation estimates how well a model will perform on previously unseen data and offers a less biased skill estimation than the classic train/test validation method.
+We do not want to see the testing data while tuning the model, because then the evaluation would influence the training process.
+
+\subsection{Naive baseline}
+The naive baseline obtains the following results, 20.2 mil MSE, 3577.8 MAE and 7.1 MAPE. This illustrates the fact that although the MAPE score would classify it as a very good predictor it does not do anything useful and the proposed models should achieve better results.
+
+\subsection{ARIMA}
+In order to apply the ARIMA model we need to find appropiate values for its parameters: p, q, d. The value of d means the number of times the series needs to be differentiated in order to make it stationary. The series stationarity was checked using he augmented Dickey-Fuller test\cite{Dickey-Fuller} which found the p-value to be $1.09e-08$. This is lower than 0.05, the commonly used threshold, meaning we can set the d to 0.
+
+The partial autocorrelation plot was analyzed to set the autoregression parameter(p). From figure \ref{fig:pacfplot} we can see that the significance region is confidently passed at 1, with a steep decline afterwards. The moving average parameter(q) is approximated from the autocorrelation plot. It suggests a value of around 20 would be a good start. After fitting ARIMA(1,0,20) the final 2 layers had p-value of 0.547 and 0.758 which meant that they were not significant. 
+
+After trying some values for q: 5, 10, 15, 18, illustrated in table \ref{tab:arima_sesults}, the best results were obtained on ARIMA(1, 0, 15) with 14.2mil MSE, 3056.7 MAE and 6.3 MAPE.
+
+\begin{figure}
+    \centering{
+    	\includegraphics[scale=0.45]{resources/baseline/arima_10_pacf.png}
+    }
+    \caption{Partial autocorrelation plot (for ARIMA)}
+    \label{fig:pacfplot}
+\end{figure}
+
+\begin{figure}
+    \centering{
+    	\includegraphics[scale=0.45]{resources/baseline/arima_10_acf.png}
+    }
+    \caption{Autocorrelation plot (for ARIMA)}
+    \label{fig:acfplot}
+\end{figure}
+
+
+\begin{table}[htbp]
+\caption{ARIMA tuning}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+p,d,q & MSE & prediction time \\
+\hline
+1,0,5 & 16.3m & 0.4s\\
+\hline
+1,0,10 & 15.3m & 9.6s\\
+\hline
+1,0,15 & 15.2m & 31s\\
+\hline
+1,0,18 & 15.3m & 71s\\
+\hline
+\end{tabular}
+\label{tab:arima_sesults}
+\end{center}
+\end{table}
+
+\subsection{MLP}
+
+\subsubsection{Settings}
+After some manual experiments we started with a MLP with 2 hidden layers (150, 100 neurons) and a sliding window size of 24 (input size). To find an optimal combination of batch size and epoch no a 2d grid search was performed, figure \ref{fig:epochs_batch_scaled}. Batch size should ideally be a power of 2 for extra performance on GPU architectures, as some experiments were ran on Google Colab's cloud GPU. Lower batch size is more accurate but training is slower\cite{batch_size}. As expected the best MSE is obtained for the lowest batch size(4) however it does not drop significantly at 8, regardless of epochs no. The
+selection of epoch no is again a trade-off between speed and accuracy. We see a smaller no of epochs(50) performs poorly, while the difference between 100 and 250 is not that great,
+meaning that we can get a good approximation of a model using a batch size of 100.
+
+Some experiments were done with adding Dropout layers on different values (0.2, 0.1, 0.05) however it did not improve performance. These are generally used to prevent over-fitting, when the network is too big, the data is scarce or training is done for too long\cite{dropout}, which was not the case for this experiment.
+
+\begin{figure}
+    \centering{
+    	\includegraphics[width=\linewidth]{resources/mlp/epochs_batch_scaled.png}
+    }
+    \caption{Grid search for epoch no and batch size}
+    \label{fig:epochs_batch_scaled}
+\end{figure}
+
+Various optimizer and activation functions were tested. The Adadelta optimizer and the relu activation were selected. ReLU is also the default recommendation\cite{mit_dlbook} for modern neural networks, because it is non-linear while preserving many advantages of linear functions that make them generalize well. Although the ADAM optimizer is widely used in research there is no consensus on which is the optimal one\cite{mit_dlbook} therefore we chose Adadelta which in our experiments performed better (19.2m vs 25.8m MSE).
+
+A comprehensive grid search was performed for sliding window size and number and content of hidden layers, of around 90 combinations. Some of the best performing are presented in table \ref{tab:mlp_tune}.
+
+\begin{table}[htbp]
+\caption{MLP tuning}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Sliding window & Hidden layers & MSE \\
+\hline
+4 & (100, 50, 25, 20, 10) & 18.8m\\
+\hline
+4 & (100, 50, 50, 20, 10) & 18.8m\\
+\hline
+8 & (100, 50, 25, 20, 10) & 17.0m\\
+\hline
+8 & (150, 50, 50, 50, 50, 10) & 17.2m\\
+\hline
+8 & (50, 50, 50, 50) & 18.3m\\
+\hline
+16 & (10, 20, 30, 40, 50) & 18.1m\\
+\hline
+16 & (100, 20, 20, 20, 10) & 18.4m\\
+\hline
+\end{tabular}
+\label{tab:mlp_tune}
+\end{center}
+\end{table}
+
+\subsubsection{Results}
+The final parameters for the proposed MLP model are: Adadelta optimizer with ReLU activation function, a sliding window of size 8 with 5 hidden layers of size: 100, 50, 25, 20, 10.
+
+\subsection{CNN}
+
+\subsubsection{Settings}
+Firstly, a baseline model was selected through manual experimentation. This had the following structure: input of size 20, a 1d convolutional layer, a maxpooling layer, a flatten layer, a dense layer of size 150 and the output layer. The same batch size, epoch no grid search was performed and it yielded similar results to \ref{fig:epochs_batch_scaled}. This was followed by iterating the same optimizers and activation function in 
+order to select Adadelta and softplus.
+
+A grid search was again performed in order to find out the optimal sizes for sliding window, hidden layers and their neurons (see table \ref{tab:cnn_tune}). This proves our assumption that CNNs can extract better features from larger sliding window as best results were obtained with a window of 128 as opposed to 8 for MLPs.
+
+\begin{table}[htbp]
+\caption{CNN tuning}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Sliding window & Hidden layers & MSE \\
+\hline
+8 & (25, 10, 5) & 35.3m\\
+\hline
+64 & (100, 20, 10, 5) & 35.0m\\
+\hline
+128 & (100, 20, 10, 5) & 21.0m\\
+\hline
+128 & (300, 50) & 22.2m\\
+\hline
+128 & (10, 10, 10) & 23.4m\\
+\hline
+256 & (100, 20, 10, 5) & 23.7m\\
+\hline
+\end{tabular}
+\label{tab:cnn_tune}
+\end{center}
+\end{table}
+
+\subsubsection{Results}
+The parameters selected for the CNN model are: Adadelta optimizer, softplus activation function, a window of size 128 and 4 hidden layers of size: 100, 20, 10, 5.
+
+\subsection{CNN-LSTM Hybrid}
+
+\subsubsection{Settings}
+The starting values for some parameters were influenced by the research done by Lin et al.\cite{cnn_lstm}: a convolutional layer with 32 cnn filters, a max pooling layer, a lstm layer with a couple hundred units. In order to feed the output of the convolutional layers into the LSTM layer the input was broken into multiple sequences. This provided the time dimension which LSTM input shape specifies, as the sequences are arranged in a temporal order.
+
+A similar search as in previous sections was performed to select Adadelta optimizer and ReLU activation function.
+
+While searching for the size of the LSTM layer we observed a trend where error value would become very large after a couple of epochs, of approximatevely $1.7 \cdot 10^{27}$. This might be linked with gradient explosion\cite{mit_dlbook} which causes a network to become unstable because of an increase in the number or values of the gradients with which the inputs are multiplied. Therefore, we applied a common solution, to rescale elements in a gradient vector if their norm exceeds 1, which has solved the issue.
+
+A search was then performed for different combinations of sliding window size, cnn sequences and lstm units, which can be observed in table \ref{tab:cnn_lstm_tune}.
+
+\begin{table}[htbp]
+\caption{CNN-LSTM tuning}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Input shape & LSTM Units & MSE \\
+\hline
+(20, 15) & 500 & 246.0m\\
+\hline
+(16, 16) & 150 & 98.3m\\
+\hline
+(12, 12) & 750 & 93.6m\\
+\hline
+(12, 12) & 500 & 61.8m\\
+\hline
+(8, 8) & 500 & 370.1m\\
+\hline
+\end{tabular}
+\label{tab:cnn_lstm_tune}
+\end{center}
+\end{table}
+
+\subsubsection{Results}
+From the previously described experiments we selected the following parameters for this model: Adadelta optimizer, ReLU function, (12, 12) input shape with 500 lstm units.
+
+\subsection{Analysis}
+Each of the most promising models were then trained again on all training data, and evaluated on the testing data, which was unseen during tuning. This measurement has been repeated multiple times to account for the random weight initialization. The best results were then compared to baselines and to each other as seen in table \ref{tab:final_results}.
+
+\begin{table}[htbp]
+\caption{Final results}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+DataSet & Naive & ARIMA & MLP & CNN & CNN-LSTM \\
+\hline
+Jp10& 20.2m & 15.2m & 8.5m & 11.7m & todo\\
+\hline
+Jp15 & 87.8m & 56.6m & 31.0m & 35.0m & todo\\
+\hline
+De10 & 16.7m & 10.3m & 5.1m & 10.5m & todo\\
+\hline
+De15 & 77.4m & 43.3m & 17.2m & 35.4m & todo\\
+\hline
+\end{tabular}
+\label{tab:final_results}
+\end{center}
+\end{table}
+
 
   \newpage
   \bibliography{bibliography}{}
