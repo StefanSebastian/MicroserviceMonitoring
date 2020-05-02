@@ -6,3 +6,12 @@ p,d,q,mse,mae,mape,time
 
 1,0,15 - arima - without the last invalid value
 14263566.564, MAE: 3056.765, MAPE: 6.349
+
+1,0,5 - arima - without the last invalid value
+MSE: 15430394.712, MAE: 3166.170, MAPE: 6.274
+
+1,0,10 
+MSE: 14372203.098, MAE: 3063.005, MAPE: 6.179
+
+1,0,18
+MSE: 14312783.703, MAE: 3066.762, MAPE: 6.618
