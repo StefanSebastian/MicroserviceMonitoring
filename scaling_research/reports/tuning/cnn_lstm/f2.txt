@@ -1,0 +1,7 @@
+144, 12
+-62875260.998186 (37359227.990882) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+
+--- 9202.306346178055 seconds ---
+256, 16
+Best: -179040572.460807 using {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+-179040572.460807 (99747063.067859) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
