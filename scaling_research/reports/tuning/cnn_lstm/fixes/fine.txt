@@ -1,0 +1,13 @@
+300, 15
+-246081628.198248 (180881276.231587) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+
+256, 16
+-98380243.241503 (48442079.224377) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
+-90243986.787576 (33072293.437875) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+
+144, 12
+-97380478.751252 (32670634.890152) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+-93691570.655383 (22620531.907937) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 750}
+
+64, 8
+-370621888.125939 (110194022.487403) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
