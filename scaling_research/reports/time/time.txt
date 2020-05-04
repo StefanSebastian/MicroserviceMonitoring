@@ -1,0 +1,11 @@
+prediction time for one instance on jp10 dataset
+
+ARIMA
+1,0,5 - 15.4 MSE - 0.4s
+1,0,10 - 14.3 MSE - 9.6s
+1,0,15 - 14.2 MSE - 31s
+1,0,18 - 14.3 MSE - 71s
+
+MLP : 0.16s
+CNN: 0.21s
+CNN_LSTM: 0.24s
