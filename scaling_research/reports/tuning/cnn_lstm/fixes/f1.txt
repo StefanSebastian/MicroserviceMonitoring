@@ -5,6 +5,7 @@ CNN LSTM
 -128048906.972222 (58526246.365932) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
 -137985554.196728 (62421649.707611) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
 -90243986.787576 (33072293.437875) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 500}
+-183709277.679604 (103055519.587305) with: {'batch_size': 8, 'epochs': 100, 'lstm_units': 150}
 
 --- 3822.0789453983307 seconds ---
 144, 12
