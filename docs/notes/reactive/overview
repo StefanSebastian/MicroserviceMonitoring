@@ -1,0 +1,23 @@
+Performance Modeling for Cloud Microservice Applications
+- SLO = Service Level Objective - specifies guarantees for the level of performance, reliability 
+and availability
+RSR (Request Success Rate) - ratio of user requests succesfully completed within a given time to the overall no of req
+submitted in the same time 
+P90RT - value of response time for interval T that 90% requests that arrived during T received the response in the given time
+
+Amazon - https://docs.aws.amazon.com/autoscaling/plans/userguide/as-plans-ug.pdf#what-is-aws-auto-scaling
+strategy to optimize for : availability (keeps resource utilization at 40%), cost(keeps resource utilization at 70%), or in between(at 50%)
+dynamic + proactive 
+you can define your metrics, or use the default ones, like: CPU utilization disk read/write operations, network traffic in/out
+
+A Review of Auto-scaling Techniques for Elastic
+Applications in Cloud Environments - Tania Lorido-Botran · Jose Miguel-Alonso · Jose A. Lozano
+- application specific metrics obtain better performance than system-specific metrics (e.g. CPU load)
+- some popular metrics : avg CPU load of VM, the response time, input request rate 
+
+
+-------------------------
+How to simulate some process 
+
+Analysis and Development of *Java Grade Benchmarks J.A. Mathew, P.D. Coddington and K.A. Hawick 
+some benchmarks, e.g. Fibonacci
