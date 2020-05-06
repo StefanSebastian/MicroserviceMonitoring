@@ -3,6 +3,8 @@ package datastreams.stats;
 import datastreams.stats.dtos.AverageRequestTimes;
 import datastreams.stats.dtos.Microservice;
 import datastreams.stats.dtos.RequestsPerService;
+import datastreams.stats.dtos.SLAStat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -34,5 +36,10 @@ public class StatsController {
     @RequestMapping("/avgtimes")
     public @ResponseBody List<AverageRequestTimes> getAverageRequestTimes() {
         return statsEngine.getAverageRequestTimes();
+    }
+    
+    @RequestMapping("/slaStats")
+    public @ResponseBody List<SLAStat> getSlaStats() {
+    	return statsEngine.getSlaStats();
     }
 }
