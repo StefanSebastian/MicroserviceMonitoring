@@ -1,12 +1,14 @@
 import { GET_ONLINE_SERVICES_STARTED, GET_ONLINE_SERVICES_SUCCESS, GET_ONLINE_SERVICES_FAILED } from "./actions";
 import { GET_REQUESTS_PER_SERVICE_STARTED, GET_REQUESTS_PER_SERVICE_SUCCESS, GET_REQUESTS_PER_SERVICE_FAILED } from "./actions";
 import { GET_AVERAGE_REQUEST_TIMES_STARTED, GET_AVERAGE_REQUEST_TIMES_SUCCESS, GET_AVERAGE_REQUEST_TIMES_FAILED } from "./actions";
+import { GET_SLA_STATS_STARTED, GET_SLA_STATS_SUCCESS, GET_SLA_STATS_FAILED} from "./actions";
 
 const monitorReducer = (
     state = {
         onlineServices: [],
         requestsPerService: [],
-        averageRequestTimes: []
+        averageRequestTimes: [],
+        slaStats: []
     }, 
     action) => {
         switch(action.type) {
@@ -30,6 +32,13 @@ const monitorReducer = (
                 return {...state}
             case GET_AVERAGE_REQUEST_TIMES_SUCCESS:
                 return {...state, averageRequestTimes: action.averageRequestTimes}
+
+            case GET_SLA_STATS_STARTED:
+                return {...state}
+            case GET_SLA_STATS_FAILED:
+                return {...state}
+            case GET_SLA_STATS_SUCCESS:
+                return {...state, slaStats: action.slaStats}
 
             default:
                 return state;

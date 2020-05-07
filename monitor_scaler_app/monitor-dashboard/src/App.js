@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Monitor from './Monitor';
+import Dashboard from './Dashboard';
 
 class App extends Component {
     render() {
         return (
-            <Monitor/>
+            <Dashboard />
         )
     }
 }

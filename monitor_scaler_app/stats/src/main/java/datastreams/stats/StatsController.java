@@ -38,7 +38,7 @@ public class StatsController {
         return statsEngine.getAverageRequestTimes();
     }
     
-    @RequestMapping("/slaStats")
+    @RequestMapping("/slastats")
     public @ResponseBody List<SLAStat> getSlaStats() {
     	return statsEngine.getSlaStats();
     }

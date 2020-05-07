@@ -12,6 +12,10 @@ export const GET_AVERAGE_REQUEST_TIMES_STARTED = 'GET_AVERAGE_REQUEST_TIMES_STAR
 export const GET_AVERAGE_REQUEST_TIMES_SUCCESS = 'GET_AVERAGE_REQUEST_TIMES_SUCCESS';
 export const GET_AVERAGE_REQUEST_TIMES_FAILED = 'GET_AVERAGE_REQUEST_TIMES_FAILED';
 
+export const GET_SLA_STATS_STARTED = 'GET_SLA_STATS_STARTED';
+export const GET_SLA_STATS_SUCCESS = 'GET_SLA_STATS_SUCCESS';
+export const GET_SLA_STATS_FAILED = 'GET_SLA_STATS_FAILED';
+
 export function getAverageRequestTimesStarted() {
     return {
         type: GET_AVERAGE_REQUEST_TIMES_STARTED
@@ -96,5 +100,34 @@ export function getOnlineServices() {
         .then(handleError)
         .then(json => dispatch(getOnlineServicesSuccess(json)))
         .catch(function(error) {dispatch(getOnlineServicesFailed(error.message))})
+    }
+}
+
+export function getSLAStatsStarted() {
+    return {
+        type: GET_SLA_STATS_STARTED
+    }
+}
+
+export function getSLAStatsSuccess(json) {
+    return {
+        type: GET_SLA_STATS_SUCCESS,
+        slaStats: json
+    }
+}
+
+export function getSLAStatsFailed() {
+    return {
+        type: GET_SLA_STATS_FAILED
+    }
+}
+
+export function getSLAStats() {
+    return dispatch => {
+        dispatch(getSLAStatsStarted())
+        return fetch(`http://localhost:8080/slastats`)
+        .then(handleError)
+        .then(json => dispatch(getSLAStatsSuccess(json)))
+        .catch(function(error) {dispatch(getSLAStatsFailed(error.message))})
     }
 }
