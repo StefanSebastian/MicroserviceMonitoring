@@ -10,8 +10,8 @@ class Dashboard extends Component {
         return(
             <section style={sectionStyle}>
                 <div><OnlineServices /></div>
-                <div><SLAStats /></div>
                 <div><RequestsPerService /></div>
+                <div><SLAStats /></div>
                 <div><AverageRequestTimes /></div>    
             </section>
         )
@@ -23,7 +23,7 @@ const sectionStyle = {
     gridTemplateColumns: '1fr 1fr',
     gridTemplateRows: 'auto auto',
     gridGap: "10px",
-    gridAutoFlow: "column"
+    gridAutoFlow: "column",
 }
 
 export default Dashboard;

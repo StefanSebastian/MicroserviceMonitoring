@@ -35,7 +35,7 @@ class RequestsPerService extends Component {
         }
         return(
             <div>
-                <h1>Nr requests per service in the last minute</h1>
+                <h1>Nr requests per service</h1>
                 <Bar data={data} options={options} height={300} width={400}/>
             </div>
         )
