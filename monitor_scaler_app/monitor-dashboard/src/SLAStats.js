@@ -24,8 +24,8 @@ class SLAStats extends Component {
                 </thead>
                 <tbody>
                 {this.props.slaStats.map((service) => (
-                    <tr key={service.name}>
-                        <td>{service.name}</td>
+                    <tr key={service.service}>
+                        <td>{service.service}</td>
                         <td>{service.ninetyPercentileResponseTime}</td>
                     </tr>
                 ))}
