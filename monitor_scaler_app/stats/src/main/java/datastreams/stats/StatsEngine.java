@@ -98,7 +98,9 @@ public class StatsEngine {
     		List<Long> times = timesPerServ.get(microserviceName);
     		Collections.sort(times);
     		int index = (int)Math.ceil(((double)90 / (double)100) * (double)times.size());
-    		slaStats.add(new SLAStat(microserviceName, times.get(index)));
+    		if (index < times.size() && times.size() > 0) {
+    			slaStats.add(new SLAStat(microserviceName, times.get(index)));
+    		}
     	}
     	return slaStats;
     }
