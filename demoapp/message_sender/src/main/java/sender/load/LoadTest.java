@@ -14,13 +14,7 @@ public class LoadTest {
 	
 	private String url = "http://localhost:8762/api/microservice1/method2?n=30";
 	
-	public LoadTest(String url) {
-		this.url = url;
-	}
-	
-	public LoadTest(int usersBatch) {
-		this.usersBatch = usersBatch;
-	}
+	public LoadTest() {}
 	
 	public void performTest() {
 		try {
@@ -73,6 +67,22 @@ public class LoadTest {
 			long elapsed = System.currentTimeMillis() - start;
 			System.out.println(Thread.currentThread().getName() + " Request time : " + elapsed);
 	    }	
+	}
+
+	public int getUsersBatch() {
+		return usersBatch;
+	}
+
+	public void setUsersBatch(int usersBatch) {
+		this.usersBatch = usersBatch;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 }
