@@ -1,0 +1,4 @@
+Chamulteon: Coordinated Auto-Scaling of Micro-Services
+
+User oriented metrics: percentage of SLO violations
+Provisioning accuracy : relative amount of resources that are under or over provisioned

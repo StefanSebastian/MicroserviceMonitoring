@@ -1,0 +1,13 @@
+https://dzone.com/articles/how-we-do-performance-testing-easily-efficiently-a
+threads = users, fire req at around ~1 sec
+
+Evaluating Load Generation in Virtualized Environments for
+Software Performance Testing
+Marco A. S. Netto1,Suzane Menon1,Hugo V. Vieira1,Leandro T. Costa1, Flavio M. de Oliveira1, Rodrigo Saad2,Avelino Zorzo1
+general approach to testing
+--
+general approach to load testing
+record users actions 
+create users (as threads/processes); connect to application and perform similar actions
+e.g. log in, sleep 1 sec (think), do action1, sleep 1 sec etc
+
