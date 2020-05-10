@@ -10,14 +10,16 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class LoadTest {
 	
-	private int usersBatch;
+	private int usersBatch = 50;
+	
+	private String url = "http://localhost:8762/api/microservice1/method2?n=30";
+	
+	public LoadTest(String url) {
+		this.url = url;
+	}
 	
 	public LoadTest(int usersBatch) {
 		this.usersBatch = usersBatch;
-	}
-	
-	public LoadTest() {
-		this.usersBatch = 100;//default
 	}
 	
 	public void performTest() {
@@ -60,7 +62,7 @@ public class LoadTest {
 		private void sendMessage() {
 			long start = System.currentTimeMillis();
 			try {
-				URL obj = new URL("http://localhost:8762/api/microservice1/method2?n=30");
+				URL obj = new URL(url);
 		        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		        con.setRequestMethod("GET");
 		        int responseCode = con.getResponseCode();
