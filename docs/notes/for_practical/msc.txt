@@ -1,0 +1,5 @@
+experiment with 
+100 users, ramped every 30s 
+- user = thread, sends a req, sleps around a seq repeat
+- fibonacci 30 operation on a microservice
+it was run on different machine
