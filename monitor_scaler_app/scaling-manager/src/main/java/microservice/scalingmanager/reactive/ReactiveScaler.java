@@ -34,6 +34,11 @@ public class ReactiveScaler {
 	@Value("${stats.sla.lowerbound}")
 	private long slaLowerbound;
 	
+	@Value("${stats.sla.cooldown}")
+	private long slaCooldown;
+	
+	private long lastScaleUp = 0;
+	
 	@Autowired
     private ScalingCommandExecutor scalingCommandExecutor;
 	
@@ -68,11 +73,18 @@ public class ReactiveScaler {
 		for (SLAStats slaStats : statsList) {
 			if (slaStats.getNinetyPercentileResponseTime() > slaThreshold) {
 				System.out.println("Threshold reached: " + slaThreshold + " for " + slaStats);
-				scalingCommandExecutor.scaleUp(slaStats.getName());
+				handleScaleUp(slaStats);
 			} else if (slaStats.getNinetyPercentileResponseTime() < slaLowerbound) {
 				System.out.println("Lower bound reached: " + slaLowerbound + " for " + slaStats);
 				handleScaleDown(slaStats);
 			}
+		}
+	}
+	
+	private void handleScaleUp(SLAStats slaStats) {
+		if (System.currentTimeMillis() - slaCooldown > lastScaleUp) {
+			scalingCommandExecutor.scaleUp(slaStats.getName());
+			lastScaleUp = System.currentTimeMillis();
 		}
 	}
 	

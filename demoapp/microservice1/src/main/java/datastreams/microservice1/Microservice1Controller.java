@@ -44,7 +44,7 @@ public class Microservice1Controller {
         logger.info("Method 2, with workload param " + n);
         long res = workloadSimulator.fibonacci(n);
         
-        return "method2:" + res;
+        return "method2:" + res + ";" + System.currentTimeMillis();
     }
 
 }

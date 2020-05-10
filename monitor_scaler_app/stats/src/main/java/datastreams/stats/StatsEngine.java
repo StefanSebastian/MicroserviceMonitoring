@@ -1,25 +1,24 @@
 package datastreams.stats;
 
-import datastreams.stats.dtos.AverageRequestTimes;
-import datastreams.stats.dtos.Microservice;
-import datastreams.stats.dtos.RequestsPerService;
-import datastreams.stats.dtos.SLAStat;
-import datastreams.stats.kafkadtos.HeartbeatDTO;
-import datastreams.stats.kafkadtos.TimerDTO;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import datastreams.stats.dtos.AverageRequestTimes;
+import datastreams.stats.dtos.Microservice;
+import datastreams.stats.dtos.RequestsPerService;
+import datastreams.stats.dtos.SLAStat;
+import datastreams.stats.kafkadtos.HeartbeatDTO;
+import datastreams.stats.kafkadtos.TimerDTO;
 
 /**
  * @author stefansebii@gmail.com
@@ -61,7 +60,6 @@ public class StatsEngine {
 
     public synchronized void addTimer(TimerDTO timerDTO) {
         timerList.add(timerDTO);
-        expireCache();
     }
 
     public synchronized List<RequestsPerService> getRequestsPerService() {
@@ -91,7 +89,6 @@ public class StatsEngine {
     
     public synchronized List<SLAStat> getSlaStats() {
     	expireCache();
-    	
     	Map<String, List<Long>> timesPerServ = getTimesPerMicroservice();
     	List<SLAStat> slaStats = new LinkedList<>();
     	for (String microserviceName : timesPerServ.keySet()) {
