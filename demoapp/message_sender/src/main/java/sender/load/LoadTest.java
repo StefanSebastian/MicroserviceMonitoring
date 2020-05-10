@@ -1,6 +1,8 @@
 package sender.load;
 
 import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ThreadLocalRandom;
@@ -19,6 +21,23 @@ public class LoadTest {
 	public LoadTest() {}
 	
 	public void performTest() {
+		spikeScenario();
+		//mscBenchmark();
+	}
+	
+	public void spikeScenario() {
+		try {
+			startUsers(50);
+			Thread.sleep(60000);
+			startUsers(150);
+			Thread.sleep(120000);
+		} catch (Exception ex) {
+		}
+	}
+	
+	public void mscBenchmark() {
+		usersBatch = 100;
+		rampInterval = 30000;
 		try {
 			while (true) {
 				System.out.println("Starting users: " + usersBatch);
@@ -31,7 +50,9 @@ public class LoadTest {
 	
 	public void startUsers(int users) {
 		for (int i = 0; i < users; i++) {
-			new Thread(new User()).start();
+			Thread user = new Thread(new User());
+			user.setDaemon(true);
+			user.start();
 		}
 	}
 	
@@ -62,13 +83,29 @@ public class LoadTest {
 		        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		        con.setRequestMethod("GET");
 		        int responseCode = con.getResponseCode();
+				printResult(con);
 		        System.out.println("Response Code : " + responseCode);
 			} catch (IOException e) {
 				System.out.println(e.getMessage());
 			}
 			long elapsed = System.currentTimeMillis() - start;
 			System.out.println(Thread.currentThread().getName() + " Request time : " + elapsed);
-	    }	
+	    }
+		
+		private void printResult(HttpURLConnection con) throws IOException {
+			BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+			String inputLine;
+			StringBuilder response = new StringBuilder();
+
+			while ((inputLine = in.readLine()) != null) {
+				response.append(inputLine);
+			}
+			in.close();
+
+			//print result
+			System.out.println(response.toString());
+		}
 	}
 
 	public int getUsersBatch() {
