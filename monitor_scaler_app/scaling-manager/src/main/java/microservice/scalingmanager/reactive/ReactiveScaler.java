@@ -68,7 +68,7 @@ public class ReactiveScaler {
 		for (SLAStats slaStats : statsList) {
 			if (slaStats.getNinetyPercentileResponseTime() > slaThreshold) {
 				System.out.println("Threshold reached: " + slaThreshold + " for " + slaStats);
-				scalingCommandExecutor.scaleUp(slaStats.getService());
+				scalingCommandExecutor.scaleUp(slaStats.getName());
 			} else if (slaStats.getNinetyPercentileResponseTime() < slaLowerbound) {
 				System.out.println("Lower bound reached: " + slaLowerbound + " for " + slaStats);
 				handleScaleDown(slaStats);
@@ -85,7 +85,7 @@ public class ReactiveScaler {
 		OnlineService scaledServ = null;
 		int counter = 0;
 		for (OnlineService service : services) {
-			if (service.getName().equals(slaStats.getService())) {
+			if (service.getName().equals(slaStats.getName())) {
 				scaledServ = service;
 				counter += 1;
 			}

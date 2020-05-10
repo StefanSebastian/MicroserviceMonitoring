@@ -4,16 +4,16 @@ public class SLAStat {
 	private String name;
 	private Long ninetyPercentileResponseTime;
 	
-	public SLAStat(String service, Long ninetyPercentileResponseTime) {
-		this.name = service;
+	public SLAStat(String name, Long ninetyPercentileResponseTime) {
+		this.name = name;
 		this.ninetyPercentileResponseTime = ninetyPercentileResponseTime;
 	}
 	
 	public String getName() {
 		return name;
 	}
-	public void setName(String service) {
-		this.name = service;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public Long getNinetyPercentileResponseTime() {
 		return ninetyPercentileResponseTime;

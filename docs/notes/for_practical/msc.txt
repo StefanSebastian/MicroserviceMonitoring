@@ -3,3 +3,6 @@ experiment with
 - user = thread, sends a req, sleps around a seq repeat
 - fibonacci 30 operation on a microservice
 it was run on different machine
+
+if we set SLA of p90rt at around 50ms
+then from our experiment, that was obtained at around 5300 reqs in a 30s itnerval => MSC = 176
