@@ -10,7 +10,9 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class LoadTest {
 	
-	private int usersBatch = 50;
+	private int usersBatch = 100;
+	
+	private int rampInterval = 30000;
 	
 	private String url = "http://localhost:8762/api/microservice1/method2?n=30";
 	
@@ -21,7 +23,7 @@ public class LoadTest {
 			while (true) {
 				System.out.println("Starting users: " + usersBatch);
 				startUsers(usersBatch);
-				Thread.sleep(60000);
+				Thread.sleep(rampInterval);
 			}
 		} catch (Exception ex) {
 		}
