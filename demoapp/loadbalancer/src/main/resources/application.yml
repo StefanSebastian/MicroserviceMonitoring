@@ -20,7 +20,7 @@ zuul:
       path: /microservice1/**
       serviceId: microservice1
 
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 11000
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 40000
 ribbon:
   ConnectTimeout: 10000
   ReadTimeout: 10000

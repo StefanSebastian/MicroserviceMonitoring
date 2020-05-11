@@ -1,0 +1,5 @@
+how to run:
+docker run  -e PORT=2021 -p 2021:2021 microserv1 
+
+change port depending on need 
+will register with localhost eureka/kafka and work fine

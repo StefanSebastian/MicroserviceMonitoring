@@ -1,0 +1,12 @@
+most experiments were optimised away ; apps would just eat more cpu and mem and perform just as well with one instance
+than with 2
+
+-- 
+try to limit max concurrent req per process 
+then starting another service would be useful
+
+Exp1; 40 threads ; sending fib30 request; 4mins
+didnt work 
+
+docker :
+docker run -e PORT=2020 -p 2020:2020 microserv1

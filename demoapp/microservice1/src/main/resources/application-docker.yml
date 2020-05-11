@@ -2,18 +2,20 @@
 spring:
   application:
     name: microservice1
-
+  kafka:
+    bootstrap-servers: host.docker.internal:9092
+    
 # Discovery Server Access
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://host.docker.internal:1111/eureka/
   instance:
     leaseRenewalIntervalInSeconds: 5
     leaseExpirationDurationInSeconds: 10
+    hostname: afxm
 
 # HTTP Server
 server:
-  port: ${PORT:2222}
-  tomcat:
-    max-threads: 10
+  port: ${PORT:8080}
+  

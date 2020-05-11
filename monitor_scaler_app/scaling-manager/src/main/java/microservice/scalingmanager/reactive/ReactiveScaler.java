@@ -38,11 +38,12 @@ public class ReactiveScaler {
 	private long slaCooldown;
 	
 	private long lastScaleUp = 0;
+	private long lastScaleDown = 0;
 	
 	@Autowired
     private ScalingCommandExecutor scalingCommandExecutor;
 	
-	@Scheduled(fixedDelay=60000)
+	@Scheduled(fixedDelay=10000)
 	public void checkSLA() {
 		System.out.println("Sending get sla stats message to : " + slaUrl);
 		String response = getResource(slaUrl);
@@ -89,6 +90,11 @@ public class ReactiveScaler {
 	}
 	
 	private void handleScaleDown(SLAStats slaStats) {
+		if (System.currentTimeMillis() - slaCooldown < lastScaleDown) {
+			return;
+		}
+		lastScaleDown = System.currentTimeMillis();
+		
 		String response = getResource(serviceUrl);
 		Gson gson = new Gson();
 		OnlineService[] services = gson.fromJson(response, OnlineService[].class);
