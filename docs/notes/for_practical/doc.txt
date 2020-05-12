@@ -10,3 +10,20 @@ didnt work
 
 docker :
 docker run -e PORT=2020 -p 2020:2020 microserv1
+
+added options : --memory and --cpu ; to restric services on cpu and ram memory
+
+ran the following test:
+40 threads sending req ~1/sec
+over 3 min 
+
+1 microserv : 1096/1266 avg/p90rt
+2 microserv : 384/691 avg/p90rt 
+
+over 1 min the p90rt difference wasnt that great
+and measurement was done by profiler ; p90rt reported by each microserv is rather constant - only the time for fibo workload 
+however time is lost while waiting in queue
+
+todo : 
+perform a msc benchmark ; like existing template, to get a capacity
+change sla stats into nr req compared to msc

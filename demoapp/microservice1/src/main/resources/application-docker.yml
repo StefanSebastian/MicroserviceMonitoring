@@ -18,4 +18,6 @@ eureka:
 # HTTP Server
 server:
   port: ${PORT:8080}
+  tomcat:
+    max-threads: 10
   

@@ -5,6 +5,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -12,13 +15,17 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class LoadTest {
 	
-	private int usersBatch = 100;
+	public static void main(String[] args) {
+		LoadTest tester = new LoadTest();
+		if (args.length > 0) {
+			String url = args[0];
+			tester.setUrl(url);
+		}
+		tester.performTest();
+	}
 	
-	private int rampInterval = 30000;
+	private String url = "http://localhost:8762/api/microservice1/method2?n=35";
 	
-	private String url = "http://localhost:8762/api/microservice1/method2?n=30";
-	
-	public LoadTest() {}
 	
 	public void performTest() {
 		spikeScenario();
@@ -27,17 +34,21 @@ public class LoadTest {
 	
 	public void spikeScenario() {
 		try {
-			startUsers(50);
-			Thread.sleep(60000);
-			startUsers(150);
+			startUsers(40);
 			Thread.sleep(120000);
+			System.out.println("Avg: " + times.stream().mapToDouble(a -> a).average().getAsDouble());
+			Collections.sort(times);
+			int index = (int)Math.ceil(((double)90 / (double)100) * (double)times.size());
+			System.out.println("90 prt: " + times.get(index));
+			//startUsers(150);
+			//Thread.sleep(120000);
 		} catch (Exception ex) {
 		}
 	}
 	
 	public void mscBenchmark() {
-		usersBatch = 100;
-		rampInterval = 30000;
+		int usersBatch = 100;
+		int rampInterval = 30000;
 		try {
 			while (true) {
 				System.out.println("Starting users: " + usersBatch);
@@ -46,6 +57,12 @@ public class LoadTest {
 			}
 		} catch (Exception ex) {
 		}
+	}
+	
+	private List<Long> times = new LinkedList<>();
+	
+	private synchronized void addTime(Long time) {
+		times.add(time);
 	}
 	
 	public void startUsers(int users) {
@@ -90,6 +107,7 @@ public class LoadTest {
 			}
 			long elapsed = System.currentTimeMillis() - start;
 			System.out.println(Thread.currentThread().getName() + " Request time : " + elapsed);
+			addTime(elapsed);
 	    }
 		
 		private void printResult(HttpURLConnection con) throws IOException {
@@ -106,14 +124,6 @@ public class LoadTest {
 			//print result
 			System.out.println(response.toString());
 		}
-	}
-
-	public int getUsersBatch() {
-		return usersBatch;
-	}
-
-	public void setUsersBatch(int usersBatch) {
-		this.usersBatch = usersBatch;
 	}
 
 	public String getUrl() {
