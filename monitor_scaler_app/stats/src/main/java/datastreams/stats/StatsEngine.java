@@ -3,7 +3,6 @@ package datastreams.stats;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -35,12 +34,12 @@ public class StatsEngine {
     /**
      * Last heartbeat for each service
      */
-    private Map<Long, HeartbeatDTO> heartbeatMap = new HashMap<>();
+    private Map<String, HeartbeatDTO> heartbeatMap = new HashMap<>();
 
     private List<TimerDTO> timerList = new LinkedList<>();
 
     public synchronized void addHeartbeat(HeartbeatDTO heartbeatDTO) {
-        heartbeatMap.put(heartbeatDTO.getPid(), heartbeatDTO);
+        heartbeatMap.put(heartbeatDTO.getPid() + "_" + heartbeatDTO.getMachine(), heartbeatDTO);
     }
 
     public synchronized List<Microservice> getOnlineServices() {
@@ -93,11 +92,10 @@ public class StatsEngine {
     	List<SLAStat> slaStats = new LinkedList<>();
     	for (String microserviceName : timesPerServ.keySet()) {
     		List<Long> times = timesPerServ.get(microserviceName);
-    		Collections.sort(times);
-    		int index = (int)Math.ceil(((double)90 / (double)100) * (double)times.size());
-    		if (index < times.size() && times.size() > 0) {
-    			slaStats.add(new SLAStat(microserviceName, times.get(index)));
-    		}
+    		long count = times.size();
+    		long monitored_secs = monitored_window / 1000;
+    		long reqsPerSec = count / monitored_secs;
+    		slaStats.add(new SLAStat(microserviceName, reqsPerSec));
     	}
     	return slaStats;
     }

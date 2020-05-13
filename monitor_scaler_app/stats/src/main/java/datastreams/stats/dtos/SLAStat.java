@@ -2,11 +2,11 @@ package datastreams.stats.dtos;
 
 public class SLAStat {
 	private String name;
-	private Long ninetyPercentileResponseTime;
+	private Long reqsPerSec;
 	
-	public SLAStat(String name, Long ninetyPercentileResponseTime) {
+	public SLAStat(String name, Long reqsPerSec) {
 		this.name = name;
-		this.ninetyPercentileResponseTime = ninetyPercentileResponseTime;
+		this.reqsPerSec = reqsPerSec;
 	}
 	
 	public String getName() {
@@ -15,11 +15,11 @@ public class SLAStat {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Long getNinetyPercentileResponseTime() {
-		return ninetyPercentileResponseTime;
+	public Long getReqsPerSec() {
+		return reqsPerSec;
 	}
-	public void setNinetyPercentileResponseTime(Long ninetyPercentileResponseTime) {
-		this.ninetyPercentileResponseTime = ninetyPercentileResponseTime;
+	public void setReqsPerSec(Long reqsPerSec) {
+		this.reqsPerSec = reqsPerSec;
 	}
 	
 }

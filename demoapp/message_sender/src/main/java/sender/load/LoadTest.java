@@ -2,7 +2,10 @@ package sender.load;
 
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Collections;
@@ -28,41 +31,83 @@ public class LoadTest {
 	
 	
 	public void performTest() {
-		spikeScenario();
-		//mscBenchmark();
+		msc();
 	}
 	
-	public void spikeScenario() {
+	public void msc() {
 		try {
-			startUsers(40);
-			Thread.sleep(120000);
-			System.out.println("Avg: " + times.stream().mapToDouble(a -> a).average().getAsDouble());
-			Collections.sort(times);
-			int index = (int)Math.ceil(((double)90 / (double)100) * (double)times.size());
-			System.out.println("90 prt: " + times.get(index));
-			//startUsers(150);
-			//Thread.sleep(120000);
-		} catch (Exception ex) {
-		}
-	}
-	
-	public void mscBenchmark() {
-		int usersBatch = 100;
-		int rampInterval = 30000;
-		try {
-			while (true) {
-				System.out.println("Starting users: " + usersBatch);
-				startUsers(usersBatch);
-				Thread.sleep(rampInterval);
+			startUsers(30);
+			Thread.sleep(45000);
+			startUsers(30);
+			Thread.sleep(45000);
+			startUsers(30);
+			Thread.sleep(45000);
+			startUsers(30);
+			Thread.sleep(45000);
+			startUsers(30);
+			Thread.sleep(45000);
+			
+			synchronized (this) {
+				System.out.println("Storing logs");
+				storeLogs();
+				System.out.println("Stored logs");
+				System.out.println("Printing stats");
+				printStats();
+				System.out.println("Pritned stats");
 			}
 		} catch (Exception ex) {
 		}
 	}
 	
-	private List<Long> times = new LinkedList<>();
+	private void storeLogs() {
+		String filename = System.currentTimeMillis() + ".csv";
+		File csvFile = new File(filename);
+		try (PrintWriter csvWriter = new PrintWriter(new FileWriter(csvFile));){
+			csvWriter.println("timestamp,duration,respCode");
+			for(RequestLog item : logs){
+				csvWriter.println(item);
+			}
+		} catch (IOException e) {
+		    //Handle exception
+		    e.printStackTrace();
+		}
+	}
 	
-	private synchronized void addTime(Long time) {
-		times.add(time);
+	private void printStats() {
+		System.out.println("printing stats");
+		List<Long> durations = new LinkedList<>();
+		for (RequestLog req : logs) {
+			durations.add(req.getDuration());
+		}
+		long sum = 0;
+		for (Long d : durations) {
+			sum += d;
+		}
+		double avg = sum / durations.size();
+		
+		Collections.sort(durations);
+		int idx = (int) (0.9 * durations.size());	
+		double p90rt = durations.get(idx);
+		
+		System.out.println("Avg : " + avg);
+		System.out.println("P90RT : " + p90rt);
+		
+		String filename = System.currentTimeMillis() + ".stats";
+		File csvFile = new File(filename);
+		try (PrintWriter csvWriter = new PrintWriter(new FileWriter(csvFile));){
+			csvWriter.println("avg,p90rt");
+			csvWriter.println(avg + "," + p90rt);
+		} catch (IOException e) {
+		    //Handle exception
+		    e.printStackTrace();
+		}
+	}
+	
+	
+	private List<RequestLog> logs = new LinkedList<>();
+	
+	private synchronized void addLog(RequestLog log) {
+		logs.add(log);
 	}
 	
 	public void startUsers(int users) {
@@ -95,11 +140,12 @@ public class LoadTest {
 		
 		private void sendMessage() {
 			long start = System.currentTimeMillis();
+			int responseCode = -1;
 			try {
 				URL obj = new URL(url);
 		        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		        con.setRequestMethod("GET");
-		        int responseCode = con.getResponseCode();
+		        responseCode = con.getResponseCode();
 				printResult(con);
 		        System.out.println("Response Code : " + responseCode);
 			} catch (IOException e) {
@@ -107,7 +153,7 @@ public class LoadTest {
 			}
 			long elapsed = System.currentTimeMillis() - start;
 			System.out.println(Thread.currentThread().getName() + " Request time : " + elapsed);
-			addTime(elapsed);
+			addLog(new RequestLog(start, elapsed, responseCode));
 	    }
 		
 		private void printResult(HttpURLConnection con) throws IOException {

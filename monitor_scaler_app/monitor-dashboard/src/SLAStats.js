@@ -17,7 +17,7 @@ class SLAStats extends Component {
     render() {
         return(
             <div>
-                <h1 className="sla_stats_heading">SLA Stats</h1>
+                <h1 className="sla_stats_heading">Requests per second</h1>
                 <table border="1">
                 <thead>
                 <tr><th>Name</th><th>P90RT</th></tr>
@@ -26,7 +26,7 @@ class SLAStats extends Component {
                 {this.props.slaStats.map((service) => (
                     <tr key={service.name}>
                         <td>{service.name}</td>
-                        <td>{service.ninetyPercentileResponseTime}</td>
+                        <td>{service.reqsPerSec}</td>
                     </tr>
                 ))}
                 </tbody>
