@@ -1,0 +1,15 @@
+following script:
+startUsers(30);
+Thread.sleep(45000);
+startUsers(30);
+Thread.sleep(45000);
+startUsers(30);
+Thread.sleep(45000);
+startUsers(30);
+Thread.sleep(45000);
+startUsers(30);
+Thread.sleep(45000);
+
+each user sleeps around 1sec then sends req to "http://localhost:8762/api/microservice1/method2?n=35";
+
+if we set p90rt threshold at 2sec then we would have around 15rps as our MSC

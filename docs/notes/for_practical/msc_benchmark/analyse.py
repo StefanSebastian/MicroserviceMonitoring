@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 
 
-df = pd.read_csv('msc.csv')
+df = pd.read_csv('report.csv')
 df.info()
 
 def check_nr_req(df):
@@ -10,7 +10,7 @@ def check_nr_req(df):
     ts_df["timestamp"] = pd.to_datetime(ts_df["timestamp"], unit='ms')
     ts_df["count"] = 1
     ts_df.set_index("timestamp", inplace=True)
-    gdf = ts_df.groupby(pd.Grouper(freq='30s')).sum()
+    gdf = ts_df.groupby(pd.Grouper(freq='45s')).sum()
     gdf.drop(gdf.tail(1).index,inplace=True) # drop last interval 
     gdf.plot()
     plt.show()
@@ -19,7 +19,7 @@ def check_mean_duration(df):
     ts_df = df[["timestamp", "duration"]]
     ts_df["timestamp"] = pd.to_datetime(ts_df["timestamp"], unit='ms')
     ts_df.set_index("timestamp", inplace=True)
-    gdf = ts_df.groupby(pd.Grouper(freq='30s')).mean()
+    gdf = ts_df.groupby(pd.Grouper(freq='45s')).mean()
     gdf.drop(gdf.tail(1).index,inplace=True) # drop last interval 
     gdf.plot()
     plt.show()
@@ -44,11 +44,12 @@ def msc_calcuate(df):
     ts_df["timestamp"] = pd.to_datetime(ts_df["timestamp"], unit='ms')
     ts_df.set_index("timestamp", inplace=True)
     ts_df["count"] = 1
-    gdf = ts_df.groupby(pd.Grouper(freq='30s')).agg({"duration": q90, "count": np.sum})
+    gdf = ts_df.groupby(pd.Grouper(freq='45s')).agg({"duration": q90, "count": np.sum})
     gdf.drop(gdf.tail(1).index,inplace=True) # drop last interval 
-    gdf.drop(gdf.tail(2).index,inplace=True) # from prev analysis, the performance in the last 2 windows was already impacted; not relevant as SLA was already passed
     print(gdf)
     gdf.plot(x="count", y="duration")
     plt.show()
-    
+
+check_nr_req(df)
+check_mean_duration(df)
 msc_calcuate(df)
