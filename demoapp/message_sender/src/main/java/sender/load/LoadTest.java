@@ -36,16 +36,11 @@ public class LoadTest {
 	
 	public void msc() {
 		try {
-			startUsers(30);
-			Thread.sleep(45000);
-			startUsers(30);
-			Thread.sleep(45000);
-			startUsers(30);
-			Thread.sleep(45000);
-			startUsers(30);
-			Thread.sleep(45000);
-			startUsers(30);
-			Thread.sleep(45000);
+			startUsers(10);
+			Thread.sleep(60000);
+			
+			startUsers(60);
+			Thread.sleep(180000);
 			
 			synchronized (this) {
 				System.out.println("Storing logs");
