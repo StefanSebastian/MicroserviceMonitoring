@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 
 
-df = pd.read_csv('proact.csv')
+df = pd.read_csv('60p.csv')
 df.info()
 
 def reqs_per_sec(df, freq='30s'):
