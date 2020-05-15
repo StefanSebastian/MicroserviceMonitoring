@@ -1,0 +1,16 @@
+startUsers(20);
+Thread.sleep(30000);
+startUsers(20);
+Thread.sleep(30000);
+startUsers(20);
+Thread.sleep(30000);
+startUsers(20);
+Thread.sleep(30000);
+startUsers(20);
+Thread.sleep(30000);
+startUsers(20);
+Thread.sleep(30000);
+
+n = 30 ; 0.5cpu 
+
+break at around 50 rps - to keep p90rt at around 50ms

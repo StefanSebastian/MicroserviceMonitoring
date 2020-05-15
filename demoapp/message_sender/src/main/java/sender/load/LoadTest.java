@@ -27,20 +27,25 @@ public class LoadTest {
 		tester.performTest();
 	}
 	
-	private String url = "http://localhost:8762/api/microservice1/method2?n=35";
+	private String url = "http://localhost:8762/api/microservice1/method2?n=20";
+
+	private String okSpike = "http://localhost:8762/api/microservice1/method2?n=35";
 	
 	
 	public void performTest() {
-		msc();
+		spike();
 	}
 	
-	public void msc() {
+	public void spike() {
 		try {
 			startUsers(10);
-			Thread.sleep(60000);
-			
-			startUsers(60);
-			Thread.sleep(180000);
+			Thread.sleep(15000);
+			startUsers(30);
+			Thread.sleep(45000);
+			//startUsers(10);
+			//Thread.sleep(60000);
+			//startUsers(60);
+			//Thread.sleep(180000);
 			
 			synchronized (this) {
 				System.out.println("Storing logs");

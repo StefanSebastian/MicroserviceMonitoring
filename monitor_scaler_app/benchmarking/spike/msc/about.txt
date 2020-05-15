@@ -1,0 +1,38 @@
+1cpu / 10 reqs per sec / 1024mb
+ran from different machine
+
+Scenario : 
+sending fib 35 req
+startUsers(30);
+Thread.sleep(45000);
+startUsers(30);
+Thread.sleep(45000);
+startUsers(30);
+Thread.sleep(45000);
+startUsers(30);
+Thread.sleep(45000);
+startUsers(30);
+Thread.sleep(45000);
+
+(from plot of 90prt / reqs)
+a decent target is to keep it under 4000 ms 
+thats around 850 / 45 ~ 18rps
+
+
+1serv
+                     duration  count
+timestamp
+2020-05-15 07:25:30     961.1    584
+2020-05-15 07:26:15    2824.6    832
+2020-05-15 07:27:00    4808.0    859
+2020-05-15 07:27:45    6734.5    956
+2020-05-15 07:28:30    8503.0   1201
+
+2serv
+                     duration  count
+timestamp
+2020-05-15 10:19:30     713.0     36
+2020-05-15 10:20:15     622.8   1114
+2020-05-15 10:21:00    2854.0   1174
+2020-05-15 10:21:45    8173.8   1195
+2020-05-15 10:22:30   11501.0   1185

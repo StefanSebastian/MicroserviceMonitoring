@@ -2,48 +2,54 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 
 
-df = pd.read_csv('55_05n.csv')
+df = pd.read_csv('1serv.csv')
 df.info()
 
-def reqs_per_sec(df, freq='30s'):
+def check_nr_req(df):
     ts_df = df[["timestamp"]]
     ts_df["timestamp"] = pd.to_datetime(ts_df["timestamp"], unit='ms')
     ts_df["count"] = 1
     ts_df.set_index("timestamp", inplace=True)
-    gdf = ts_df.groupby(pd.Grouper(freq=freq)).sum()
+    gdf = ts_df.groupby(pd.Grouper(freq='45s')).sum()
+    gdf.drop(gdf.tail(1).index,inplace=True) # drop last interval 
     gdf.plot()
     plt.show()
 
-def duration_plot(df):
+def check_mean_duration(df):
     ts_df = df[["timestamp", "duration"]]
     ts_df["timestamp"] = pd.to_datetime(ts_df["timestamp"], unit='ms')
     ts_df.set_index("timestamp", inplace=True)
-    ts_df.plot()
+    gdf = ts_df.groupby(pd.Grouper(freq='45s')).mean()
+    gdf.drop(gdf.tail(1).index,inplace=True) # drop last interval 
+    gdf.plot()
     plt.show()
 
 # 90th Percentile
 def q90(x):
     return x.quantile(0.9)
 
-def msc_calcuate(df):
+def check_count_duration(df):
     ts_df = df[["timestamp", "duration"]]
     ts_df["timestamp"] = pd.to_datetime(ts_df["timestamp"], unit='ms')
     ts_df.set_index("timestamp", inplace=True)
     ts_df["count"] = 1
     gdf = ts_df.groupby(pd.Grouper(freq='30s')).agg({"duration": q90, "count": np.sum})
+    gdf.drop(gdf.tail(1).index,inplace=True) # drop last interval 
     print(gdf)
     gdf.plot(x="count", y="duration")
     plt.show()
 
-def check_mean_duration(df, freq='10s'):
+def msc_calcuate(df):
     ts_df = df[["timestamp", "duration"]]
     ts_df["timestamp"] = pd.to_datetime(ts_df["timestamp"], unit='ms')
     ts_df.set_index("timestamp", inplace=True)
-    gdf = ts_df.groupby(pd.Grouper(freq=freq)).agg({"duration": q90})
+    ts_df["count"] = 1
+    gdf = ts_df.groupby(pd.Grouper(freq='45s')).agg({"duration": q90, "count": np.sum})
     gdf.drop(gdf.tail(1).index,inplace=True) # drop last interval 
-    gdf.plot()
-    plt.axhline(y=50, color='r', linestyle='-')
+    print(gdf)
+    gdf.plot(x="count", y="duration")
     plt.show()
 
-#duration_plot(df)
+check_nr_req(df)
 check_mean_duration(df)
+msc_calcuate(df)
