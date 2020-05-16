@@ -2,4 +2,7 @@ n=35
 start 10 sleep 60sec 
 start 60 
 
-need to play with sla's a bit
+sla ; around 18rps to keep sla under 4000 on avg
+
+window for proactive scaler 1min , about the time to start a microserv and be able to process reqs
+window for reactive 5sec with cooldown of 2min (no more than one scaling op per 2 min)
