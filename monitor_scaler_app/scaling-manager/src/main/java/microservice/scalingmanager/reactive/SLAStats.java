@@ -3,7 +3,7 @@ package microservice.scalingmanager.reactive;
 public class SLAStats {
 	
 	private String name;
-	private Long ninetyPercentileResponseTime;
+	private Long reqsPerSec;
 	
 	public SLAStats() {}
 	
@@ -13,16 +13,16 @@ public class SLAStats {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Long getNinetyPercentileResponseTime() {
-		return ninetyPercentileResponseTime;
+	public Long getReqsPerSec() {
+		return reqsPerSec;
 	}
-	public void setNinetyPercentileResponseTime(Long ninetyPercentileResponseTime) {
-		this.ninetyPercentileResponseTime = ninetyPercentileResponseTime;
+	public void setReqsPerSec(Long reqsPerSec) {
+		this.reqsPerSec = reqsPerSec;
 	}
 
 	@Override
 	public String toString() {
-		return "SLAStats [service=" + name + ", ninetyPercentileResponseTime=" + ninetyPercentileResponseTime + "]";
+		return "SLAStats [service=" + name + ", reqsPerSec=" + reqsPerSec + "]";
 	}
 	
 }

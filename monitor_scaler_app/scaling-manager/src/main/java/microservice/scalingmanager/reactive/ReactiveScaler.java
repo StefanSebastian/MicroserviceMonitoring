@@ -46,7 +46,7 @@ public class ReactiveScaler {
 	@Autowired
     private ScalingCommandExecutor scalingCommandExecutor;
 	
-	@Scheduled(fixedDelay=10000)
+	@Scheduled(fixedDelay=5000)
 	public void checkSLA() {
 		if (!useReactive) {
 			System.out.println("Reactive scaling deactivated");
@@ -79,10 +79,10 @@ public class ReactiveScaler {
 	
 	private void checkSLA(SLAStats[] statsList) {
 		for (SLAStats slaStats : statsList) {
-			if (slaStats.getNinetyPercentileResponseTime() > slaThreshold) {
+			if (slaStats.getReqsPerSec() > slaThreshold) {
 				System.out.println("Threshold reached: " + slaThreshold + " for " + slaStats);
 				handleScaleUp(slaStats);
-			} else if (slaStats.getNinetyPercentileResponseTime() < slaLowerbound) {
+			} else if (slaStats.getReqsPerSec() < slaLowerbound) {
 				System.out.println("Lower bound reached: " + slaLowerbound + " for " + slaStats);
 				handleScaleDown(slaStats);
 			}
@@ -91,8 +91,11 @@ public class ReactiveScaler {
 	
 	private void handleScaleUp(SLAStats slaStats) {
 		if (System.currentTimeMillis() - slaCooldown > lastScaleUp) {
+			System.out.println("Scaling up service" + slaStats.getName());
 			scalingCommandExecutor.scaleUp(slaStats.getName());
 			lastScaleUp = System.currentTimeMillis();
+		} else {
+			System.out.println("A scaling up operation was recently done for " + slaStats.getName() + " at " + lastScaleUp);
 		}
 	}
 	
