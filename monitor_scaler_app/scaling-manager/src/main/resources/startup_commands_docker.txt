@@ -1,0 +1,1 @@
+microservice1:docker run  -e PORT=$port$ -p $port$:$port$ --memory="1024m" --cpus="1" microserv1 

@@ -37,6 +37,9 @@ public class ReactiveScaler {
 	@Value("${stats.sla.cooldown}")
 	private long slaCooldown;
 	
+	@Value("${stats.sla.use_reactive}")
+	private boolean useReactive;
+	
 	private long lastScaleUp = 0;
 	private long lastScaleDown = 0;
 	
@@ -45,6 +48,10 @@ public class ReactiveScaler {
 	
 	@Scheduled(fixedDelay=10000)
 	public void checkSLA() {
+		if (!useReactive) {
+			System.out.println("Reactive scaling deactivated");
+			return;
+		}
 		System.out.println("Sending get sla stats message to : " + slaUrl);
 		String response = getResource(slaUrl);
 		if (response == null) {
