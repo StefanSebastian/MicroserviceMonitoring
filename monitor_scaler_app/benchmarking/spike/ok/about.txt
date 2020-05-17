@@ -3,6 +3,7 @@ start 10 sleep 60sec
 start 60 
 
 sla ; around 18rps to keep sla under 4000 on avg
+- around 1093 reqs (60min) starts going up
 
 window for proactive scaler 1min , about the time to start a microserv and be able to process reqs
 window for reactive 5sec with cooldown of 2min (no more than one scaling op per 2 min)

@@ -1,0 +1,14 @@
+Model for simple benchmark test 
+- generates data like this : 2 windows of (100, 300) and 2 winodws of (1300, 1700)
+- fits a model on this 
+- tests whether prediction is accurate
+
+This is used for the simple demo spike scenario of reactive vs proactive scaling 
+It assumes a traffic of cyclic spikes 
+
+prediction demo
+for the 1 min, scale at 18 reqs per sec = 1080 reqs in a min 
+
+[[ 156 1456 1500  167  289 1572 1305  167]]
+[[1431.5503]]
+
