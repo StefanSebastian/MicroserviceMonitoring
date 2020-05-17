@@ -73,7 +73,7 @@ def main_loop():
 
     reqs = query_db()
     history = transform_data(reqs)
-    history = np.array([156, 1456, 1500, 167, 289, 1572, 1305, 167])
+    #history = np.array([156, 1456, 1500, 167, 289, 1572, 1305, 167]) -- used for benchmark
     history = history.reshape(1, monitor_hist)
     print(history)
 
