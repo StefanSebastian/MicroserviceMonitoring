@@ -49,22 +49,6 @@ def split_target_var(data, feature_no):
     Y = data[:,feature_no]
     return X, Y
 
-class MinMaxScaler:
-    def __init__(self):
-        self.min_d = None
-        self.max_d = None
-
-    def fit_transform(self, data):
-        self.min_d = np.amin(data)
-        self.max_d = np.amax(data)
-        return self.transform(data)
-
-    def transform(self, data):
-        print("Normalizing data with min : " + str(self.min_d) + " max " + str(self.max_d))
-        normalizer = lambda t: (t - self.min_d) / (self.max_d - self.min_d)
-        normalized = np.array([normalizer(xi) for xi in data])
-        return normalized
-
 if (__name__ == '__main__'):
     X_train, Y_train, X_test, Y_test = get_data()
     print(X_train, Y_train, X_test, Y_test)

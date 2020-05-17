@@ -13,9 +13,10 @@ from config import monitor_window, monitor_hist, microservice_name, scaleup_url,
 def query_db():
     query = """select count(*), date_trunc('minute', to_timestamp(timestamp/1000)) as selected_minute 
                from request_log
+               where microservice_name='{}'
                group by selected_minute 
                order by selected_minute desc
-               limit {} offset 1""".format(monitor_hist)
+               limit {} offset 1""".format(microservice_name, monitor_hist)
 
     print("Querying db")
     con = psycopg2.connect(database="microserv_monitor", user="microserv_monitor", password="m", host="127.0.0.1", port="5432")
