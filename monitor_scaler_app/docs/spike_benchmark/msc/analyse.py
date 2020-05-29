@@ -44,7 +44,7 @@ def msc_calcuate(df):
     ts_df["timestamp"] = pd.to_datetime(ts_df["timestamp"], unit='ms')
     ts_df.set_index("timestamp", inplace=True)
     ts_df["count"] = 1
-    gdf = ts_df.groupby(pd.Grouper(freq='1min')).agg({"duration": q90, "count": np.sum})
+    gdf = ts_df.groupby(pd.Grouper(freq='45s')).agg({"duration": q90, "count": np.sum})
     gdf.drop(gdf.tail(1).index,inplace=True) # drop last interval 
     print(gdf)
     gdf.plot(x="count", y="duration")
