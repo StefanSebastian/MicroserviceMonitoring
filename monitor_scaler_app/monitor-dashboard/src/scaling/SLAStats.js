@@ -20,7 +20,7 @@ class SLAStats extends Component {
                 <h1 className="sla_stats_heading">Requests per second</h1>
                 <table border="1">
                 <thead>
-                <tr><th>Name</th><th>P90RT</th></tr>
+                <tr><th>Name</th><th>RPS</th></tr>
                 </thead>
                 <tbody>
                 {this.props.slaStats.map((service) => (
