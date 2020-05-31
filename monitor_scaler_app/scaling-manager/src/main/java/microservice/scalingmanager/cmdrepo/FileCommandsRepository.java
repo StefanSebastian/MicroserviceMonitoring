@@ -16,7 +16,7 @@ public class FileCommandsRepository implements CommandsRepository {
 
     private Logger log = LoggerFactory.getLogger(FileCommandsRepository.class);
 
-    private static final String startupCmdsFile = "startup_commands_docker.txt";
+    private static final String startupCmdsFile = "startup_commands.txt";
     private static final String shutdownCmdsFile = "shutdown_commands.txt";
     private static final String delimiter = ":";
 

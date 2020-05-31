@@ -16,6 +16,14 @@ export const GET_SLA_STATS_STARTED = 'GET_SLA_STATS_STARTED';
 export const GET_SLA_STATS_SUCCESS = 'GET_SLA_STATS_SUCCESS';
 export const GET_SLA_STATS_FAILED = 'GET_SLA_STATS_FAILED';
 
+export const SCALEUP_STARTED = 'SCALEUP_STARTED';
+export const SCALEUP_SUCCESS = 'SCALEUP_SUCCESS';
+export const SCALEUP_FAILED = 'SCALEUP_FAILED';
+
+export const SCALEDOWN_STARTED = 'SCALEDOWN_STARTED';
+export const SCALEDOWN_SUCCESS = 'SCALEDOWN_SUCCESS';
+export const SCALEDOWN_FAILED = 'SCALEDOWN_FAILED';
+
 export function getAverageRequestTimesStarted() {
     return {
         type: GET_AVERAGE_REQUEST_TIMES_STARTED
@@ -129,5 +137,61 @@ export function getSLAStats() {
         .then(handleError)
         .then(json => dispatch(getSLAStatsSuccess(json)))
         .catch(function(error) {dispatch(getSLAStatsFailed(error.message))})
+    }
+}
+
+export function scaleUpStarted() {
+    return {
+        type: SCALEUP_STARTED
+    }
+}
+
+export function scaleUpSuccess() {
+    return {
+        type: SCALEUP_SUCCESS
+    }
+}
+
+export function scaleUpFailed() {
+    return {
+        type: SCALEUP_FAILED
+    }
+}
+
+export function scaleUp(service) {
+    return dispatch => {
+        dispatch(scaleUpStarted())
+        return fetch(`http://localhost:8081/scaleup?microserviceName=${service}`)
+        .then(handleError)
+        .then(dispatch(scaleUpSuccess()))
+        .catch(function(error) {dispatch(scaleUpFailed(error.message))})
+    }
+}
+
+export function scaleDownStarted() {
+    return {
+        type: SCALEDOWN_STARTED
+    }
+}
+
+export function scaleDownSuccess() {
+    return {
+        type: SCALEDOWN_SUCCESS
+    }
+}
+
+export function scaleDownFailed() {
+    return {
+        type: SCALEDOWN_FAILED
+    }
+}
+
+export function scaleDown(service, machine, pid) {
+    return dispatch => {
+        dispatch(scaleDownStarted())
+        return fetch(`http://localhost:8081/scaledown?microserviceName=${service}&machine=${machine}&pid=${pid}`)
+        .then(handleError)
+        .then(dispatch(scaleDownSuccess()))
+        .catch(function(error) {dispatch(scaleDownFailed(error.message))})
     }
 }

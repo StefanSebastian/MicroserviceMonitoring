@@ -120,7 +120,7 @@ public class ReactiveScaler {
 		}
 		
 		if (counter > 1) { // keep at least one service after scale down
-			scalingCommandExecutor.scaleDown(scaledServ.getName(), scaledServ.getPid());
+			scalingCommandExecutor.scaleDown(scaledServ.getName(), scaledServ.getMachine(), scaledServ.getPid());
 		}
 	}
 

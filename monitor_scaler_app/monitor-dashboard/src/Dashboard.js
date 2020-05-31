@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import OnlineServices from './OnlineServices';
 import RequestsPerService from './RequestsPerService';
 import AverageRequestTimes from './AverageRequestTimes';
-import SLAStats from './SLAStats';
+import ScalingView from './scaling/ScalingView';
+
 
 class Dashboard extends Component {
 
@@ -11,7 +12,7 @@ class Dashboard extends Component {
             <section style={sectionStyle}>
                 <div><OnlineServices /></div>
                 <div><RequestsPerService /></div>
-                <div><SLAStats /></div>
+                <div><ScalingView /></div>
                 <div><AverageRequestTimes /></div>    
             </section>
         )

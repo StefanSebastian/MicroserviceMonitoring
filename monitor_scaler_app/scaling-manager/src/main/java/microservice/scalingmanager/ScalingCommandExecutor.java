@@ -16,6 +16,7 @@ public class ScalingCommandExecutor {
 
     private static final String PID_ID = "$pid$";
     private static final String PORT_ID = "$port$";
+    private static final String MACHINE_ID = "$machine$";
 
     @Autowired
     private CommandsRepository commandsRepository;
@@ -38,9 +39,10 @@ public class ScalingCommandExecutor {
     }
 
 
-    public void scaleDown(String microserviceName, long pid) {
+    public void scaleDown(String microserviceName, String machine, long pid) {
         String cmd = commandsRepository.getShutdownCmd(microserviceName);
         cmd = cmd.replace(PID_ID, String.valueOf(pid));
+        cmd = cmd.replace(MACHINE_ID, machine);
         executeCmd(cmd);
     }
 

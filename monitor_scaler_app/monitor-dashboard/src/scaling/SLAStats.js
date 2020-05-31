@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSLAStats } from './actions';
+import { getSLAStats } from '../actions';
 
 class SLAStats extends Component {
 
