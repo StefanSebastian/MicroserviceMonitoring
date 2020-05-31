@@ -70,6 +70,8 @@ class ScaleActions extends Component {
             <div>
                 <h1 className="sla_stats_heading">Scale Actions</h1>
 
+                <p>{this.props.error}</p>
+
                 <form onSubmit={this.handleScaleUp}>
                     <label>
                         <select value={this.state.nameUp} onChange={this.handleNameUpChange}>
@@ -115,7 +117,8 @@ class ScaleActions extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        onlineServices: state.onlineServices
+        onlineServices: state.onlineServices,
+        error: state.error
     }
 }
 
