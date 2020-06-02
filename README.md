@@ -1,2 +1,2 @@
 # MicroserviceMonitoring
-Project for data streams course. Monitor microservice status using kafka messages.
+Dissertation project for monitoring and proactive scaling of microservice architectures.
